@@ -24,3 +24,7 @@ hs_err_pid*
 
 #DS Store MAC
 *.DS_Store
+
+#IntellijIDEA Exclude
+/.idea/
+*.iml
