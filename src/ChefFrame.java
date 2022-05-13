@@ -6,7 +6,7 @@ public class ChefFrame extends JFrame {
     JComboBox menu = new JComboBox<String>();
     public ChefFrame(){
         super("Chef");
-        setLayout(new FlowLayout());
+        setLayout(null);
 
     }
 
