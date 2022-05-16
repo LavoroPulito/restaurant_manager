@@ -12,17 +12,18 @@ public class Dish {
     private boolean available;
 
 
-    public Dish(String name, double price, String description, String category ) {
+    public Dish(String name, double price, String description, String category) {
         this.name = name;
         this.category = category;
         this.price = price;
         this.description = description;
         this.available = true;
     }
-    public String toJson(){
+
+    public String toJson() {
         Gson gson = new Gson();
         Type fooType = new TypeToken<Dish>() {}.getType();
-        String json = gson.toJson(this,fooType);
+        String json = gson.toJson(this, fooType);
         return json;
     }
 
@@ -65,11 +66,14 @@ public class Dish {
     @Override
     public String toString() {
         return "Dish{" +
-                "name='" + name + '\'' +
+                "name='" + name + '\''; //+ PROVVISORIO
+                /*
                 ", price=" + price +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
                 ", availability=" + available +
                 '}';
+
+                 */
     }
 }
