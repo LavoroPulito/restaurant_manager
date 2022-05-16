@@ -1,22 +1,19 @@
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 
-public class MenùDemo {
+public class MenuDemo {
     public static void main(String[] args) {
-        DishMenù carta = new DishMenù();
+        DishMenu carta = new DishMenu();
         carta.addDish(new Dish("calamari",23.4,"calamari fritti","Secondo"));
         carta.addDish(new Dish("patate",13,"patate lesse","Secondo"));
         carta.addDish(new Dish("pasta al sugo",10,"pasta col pomodoro","primo"));
         carta.addDish(new Dish("tiramisù",15,"mascarpone e caffè","Dolce"));
         for (Dish e:
-             carta.getMenù()) {
+             carta.getMenu()) {
             System.out.println(e.toJson());
         }
         String jsonMenu = carta.toJson();
@@ -34,8 +31,8 @@ public class MenùDemo {
             }
         }
         Gson gson = new Gson();
-        DishMenù carta2 = gson.fromJson(jsonMenu, DishMenù.class);
+        DishMenu carta2 = gson.fromJson(jsonMenu, DishMenu.class);
         System.out.println("al ritorno:");
-        System.out.println(carta2.getMenù().toString());
+        System.out.println(carta2.getMenu().toString());
     }
 }
