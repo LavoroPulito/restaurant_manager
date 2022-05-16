@@ -3,28 +3,36 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 public class DishMenu {
-    private ArrayList<Dish> menù;
+    private ArrayList<Dish> menu;
 
     public DishMenu() {
-        menù = new ArrayList<Dish>();
+        menu = new ArrayList<Dish>();
     }
 
     public ArrayList<Dish> getMenu() {
-        return menù;
+        return menu;
     }
 
 
     public void addDish(Dish e) {
-        menù.add(e);
+        menu.add(e);
+    }
+    public void removeDish(Dish e){
+        menu.remove(e);
+    }
+    public Dish getDish(String name){
+        for (Dish e:
+             menu) {
+            if (e.getName().equals(name)){
+                return e;
+            }
+        }
+        return null;
     }
 
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this, DishMenu.class);
-    }
-
-    public void saveMenu() {
-
     }
 
 }

@@ -8,8 +8,8 @@ public class Dish {
     private final String name;
     private double price;
     private String category;
-    private String description = "";
-    private boolean availability = true;
+    private String description;
+    private boolean available;
 
 
     public Dish(String name, double price, String description, String category ) {
@@ -17,6 +17,7 @@ public class Dish {
         this.category = category;
         this.price = price;
         this.description = description;
+        this.available = true;
     }
     public String toJson(){
         Gson gson = new Gson();
@@ -24,8 +25,29 @@ public class Dish {
         String json = gson.toJson(this,fooType);
         return json;
     }
-    public void setAvailability(boolean availability) {
-        this.availability = availability;
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public void setDescription(String description) {
@@ -47,7 +69,7 @@ public class Dish {
                 ", price=" + price +
                 ", category='" + category + '\'' +
                 ", description='" + description + '\'' +
-                ", availability=" + availability +
+                ", availability=" + available +
                 '}';
     }
 }
