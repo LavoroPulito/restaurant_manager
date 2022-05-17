@@ -35,5 +35,10 @@ public class OrderRegister {
         return gson.toJson(this, OrderRegister.class);
     }
 
+    public void cleanTable(int table){
+        if( register.containsKey(table)){
+            register.remove(table);
+        }
+    }
 
 }
