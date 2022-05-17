@@ -1,8 +1,6 @@
 import com.google.gson.Gson;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,7 +9,8 @@ public class OrderRegister {
 
     public  OrderRegister(){
         register =  new HashMap<Integer, ArrayList<Order>>();
-}
+    }
+    
     public void addOrder(Order order){
         Integer tav = (Integer) order.getTable();
         if (register.containsKey(tav)) {
@@ -48,7 +47,7 @@ public class OrderRegister {
         try {
             FileWriter w = new FileWriter(new File("orders.json"));
             BufferedWriter writer = new BufferedWriter(w);
-            writer.write(this.toJson()); //??? non so che cazzo ho fatto
+            writer.write(this.toJson()); //??? non ho capito se funziona così il metodo toJson
             writer.close();
             w.close();
         } catch (IOException ex) {
