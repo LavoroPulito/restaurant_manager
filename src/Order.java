@@ -4,6 +4,7 @@ public class Order {
     private String category;
     private int table;
     private String note;
+    
     public Order(Dish dish, int table, String note){
         this.dishName = dish.getName();
         this.dishPrice = dish.getPrice();
