@@ -42,11 +42,11 @@ public class DishMenu {
             category = e.getCategory();
             if (dictionary.containsKey(category)) {
                 dictionary.get(category).add(e);
-                System.out.println("si: " + dictionary.get(e));
+                //System.out.println("si: " + dictionary.get(e));
             } else {
                 ArrayList<Dish> lis = new ArrayList<Dish>();
                 lis.add(e);
-                System.out.println("si");
+                //System.out.println("si");
                 dictionary.put(category, lis);
             }
         }
@@ -54,7 +54,7 @@ public class DishMenu {
     }
 
     public ArrayList<String> toArrayList() {
-        //TO ADD: sorter per gli elementi del menù in base alla categoria
+        //TO ADD: sorter per gli elementi del menù in base alla categoriaw
         ArrayList<String> strings = new ArrayList<>();
 
         for (Dish e :
