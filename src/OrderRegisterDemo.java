@@ -44,5 +44,8 @@ public class OrderRegisterDemo {
                 ex.printStackTrace();
             }
         }
+
+        //salvo il file usando il metodo
+        orderRegister.writeOrder();
     }
 }

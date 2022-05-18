@@ -47,7 +47,7 @@ public class OrderRegister {
         try {
             FileWriter w = new FileWriter(new File("orders.json"));
             BufferedWriter writer = new BufferedWriter(w);
-            writer.write(this.toJson()); //??? non ho capito se funziona così il metodo toJson
+            writer.write(this.toJson());
             writer.close();
             w.close();
         } catch (IOException ex) {
