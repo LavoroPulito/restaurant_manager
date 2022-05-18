@@ -1,0 +1,11 @@
+interfacce grafiche:
+  cassa
+    deve costruire uno scontrino partendo dalla lista di Order presente nel dizionario alla rispettiva chiave del tavolo, [Nicco]
+    
+  cuoco
+    metodo nextState: passa l'ordine selezionato allo stato successivo
+  cameriere
+    
+  chef
+ 
+ 
