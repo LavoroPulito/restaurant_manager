@@ -15,16 +15,11 @@ public class OrderRegister {
         register =  new HashMap<Integer, ArrayList<Order>>();
     }
     
-    public void addOrder(Order order){
-        Integer tav = (Integer) order.getTable();
+    public void add(ArrayList orders, int tav){ //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
         if (register.containsKey(tav)) {
-            register.get(tav).add(order);
-            //System.out.println("si: " + dictionary.get(e));
+            register.get(tav).addAll(orders);
         } else {
-            ArrayList<Order> lis = new ArrayList<>();
-            lis.add(order);
-            //System.out.println("si");
-            register.put(tav, lis);
+            register.put(tav, orders);
         }
     }
 
@@ -36,7 +31,11 @@ public class OrderRegister {
         this.register = register;
     }
 
-    public String toJson() {
+    public String toString(){
+        return this.toJson();
+    }
+
+    private String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this, OrderRegister.class);
     }
@@ -47,7 +46,7 @@ public class OrderRegister {
         }
     }
 
-    public void writeOrder(){
+    public void save(){
         try {
             FileWriter w = new FileWriter(new File("orders.json"));
             BufferedWriter writer = new BufferedWriter(w);
@@ -59,7 +58,7 @@ public class OrderRegister {
         }
     }
 
-    public void loadOrders(){
+    public void load(){
         String string="";
         String sCurrentLine="";
         try {
