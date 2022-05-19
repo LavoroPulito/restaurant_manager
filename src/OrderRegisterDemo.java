@@ -1,7 +1,5 @@
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.ArrayList;
 
 public class OrderRegisterDemo {
 
@@ -20,13 +18,18 @@ public class OrderRegisterDemo {
         OrderRegister orderRegister = new OrderRegister();
 
         //aggungo al registro gli ordini
-        orderRegister.addOrder(new Order(dish1, 1, " "));
-        orderRegister.addOrder(new Order(dish2, 1, " "));
-        orderRegister.addOrder(new Order(dish3, 2, " "));
-        orderRegister.addOrder(new Order(dish4, 2, " "));
-        orderRegister.addOrder(new Order(dish6, 3, " "));
-        orderRegister.addOrder(new Order(dish6, 3, " "));
-        orderRegister.addOrder(new Order(dish7, 4, " "));
+        ArrayList<Order> orders = new ArrayList<Order>();
+
+        orders.add(new Order(dish1, 1, " "));
+        orders.add(new Order(dish2, 1, " "));
+        orders.add(new Order(dish3, 2, " "));
+        orders.add(new Order(dish4, 2, " "));
+        orders.add(new Order(dish5, 2, " "));        
+        orders.add(new Order(dish6, 3, " "));
+        orders.add(new Order(dish6, 3, " "));
+        orders.add(new Order(dish7, 4, " "));
+
+        orderRegister.add(orders);
 
         //creo la stringa json e la stampo
         String jsonOrderRegister = orderRegister.toString();
@@ -46,10 +49,10 @@ public class OrderRegisterDemo {
         }
 
         //salvo il file usando il metodo
-        orderRegister.writeOrder();
+        orderRegister.save();
         System.out.println("ripreso: ##################");
         OrderRegister secondoRegistro = new OrderRegister();
-        secondoRegistro.loadOrders();
+        secondoRegistro.load();
         System.out.println(secondoRegistro.getRegister());
     }
 }

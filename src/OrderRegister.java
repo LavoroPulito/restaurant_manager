@@ -15,7 +15,8 @@ public class OrderRegister {
         register =  new HashMap<Integer, ArrayList<Order>>();
     }
     
-    public void add(ArrayList orders, int tav){ //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
+    public void add(ArrayList<Order> orders){ //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
+        int tav=orders.get(0).getTable();
         if (register.containsKey(tav)) {
             register.get(tav).addAll(orders);
         } else {
