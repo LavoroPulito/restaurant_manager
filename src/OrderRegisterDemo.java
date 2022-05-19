@@ -47,5 +47,9 @@ public class OrderRegisterDemo {
 
         //salvo il file usando il metodo
         orderRegister.writeOrder();
+        System.out.println("ripreso: ##################");
+        OrderRegister secondoRegistro = new OrderRegister();
+        secondoRegistro.loadOrders();
+        System.out.println(secondoRegistro.getRegister());
     }
 }

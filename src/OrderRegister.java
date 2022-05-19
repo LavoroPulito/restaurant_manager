@@ -1,9 +1,13 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+/*
+Questa classe si occupa della gestione degli ordini
+inserisce un ArrayList
+ */
 public class OrderRegister {
     private HashMap<Integer, ArrayList<Order>> register;
 
@@ -61,16 +65,16 @@ public class OrderRegister {
         try {
             FileReader r = new FileReader(new File("orders.json"));
             BufferedReader br = new BufferedReader(r);
-            while ((sCurrentLine = br.readLine()) != null) 
+            while ((sCurrentLine = br.readLine()) != null)
             {
             string+=sCurrentLine;
             }
-        }
+            }
         catch(Exception e){
             //crea File ordinazioni
         }
-
-        register = gson.fromJson(new FileReader("orders.json"), OrderRegister.class);
+        Gson gson= new Gson();
+        register = gson.fromJson(string, HashMap.class);
     }
 
 }
