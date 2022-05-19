@@ -49,7 +49,8 @@ public class OrderRegister {
 
     public void save(){
         try {
-            FileWriter w = new FileWriter(new File("orders.json"));
+            File f = new File("orders.json");
+            FileWriter w = new FileWriter(f);
             BufferedWriter writer = new BufferedWriter(w);
             writer.write(this.toJson());
             writer.close();
@@ -63,16 +64,19 @@ public class OrderRegister {
         String string="";
         String sCurrentLine="";
         try {
-            FileReader r = new FileReader(new File("orders.json"));
+            File f = new File("orders.json");
+            FileReader r = new FileReader(f);
             BufferedReader br = new BufferedReader(r);
             while ((sCurrentLine = br.readLine()) != null)
             {
             string+=sCurrentLine;
             }
-            }
-        catch(Exception e){
-            //crea File ordinazioni
+            br.close();
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
         Gson gson= new Gson();
         register = gson.fromJson(string, HashMap.class);
     }

@@ -22,7 +22,7 @@ public class MenuDemo {
         carta.addDish(new Dish("tiramisù", 15, "mascarpone e caffè", "Dolce"));
 
         //stampo il menù in un dizionario ordinato per portate
-        System.out.println("dizionerio per portate:");
+        System.out.println("dizionrio per portate:");
         System.out.println(carta.toDict());
         System.out.println(" ");
 
@@ -43,17 +43,17 @@ public class MenuDemo {
         System.out.println(jsonMenu);
 
         //salvo il json come file
-        {
-            try {
-                FileWriter w = new FileWriter(new File("test_menu.json"));
-                BufferedWriter writer = new BufferedWriter(w);
-                writer.write(jsonMenu);
-                writer.close();
-                w.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
+        
+        try {
+            FileWriter w = new FileWriter(new File("test_menu.json"));
+            BufferedWriter writer = new BufferedWriter(w);
+            writer.write(jsonMenu);
+            writer.close();
+            w.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
+        
 
         //ricreo un nuovo menù partendo dal file json salvato
         Gson gson = new Gson();

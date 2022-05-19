@@ -1,8 +1,7 @@
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.io.*;
 
 public class DishMenu {
 
@@ -71,7 +70,7 @@ public class DishMenu {
     }
 
     public ArrayList<String> getCategoryList(){
-        ArrayList<String> ar = new ArrayList();
+        ArrayList<String> ar = new ArrayList<String>();
 
         for (Dish d : menu){
             if (ar.indexOf (d.getCategory()) == -1){    //se non c'è nella lista di categorie la aggiunge
@@ -79,6 +78,43 @@ public class DishMenu {
             }
         }
         return ar;
+    }
+
+    public void save(){
+
+        String jsonMenu = this.toJson();
+
+        try {
+            File f = new File("test_menu.json");
+            FileWriter w = new FileWriter(f);
+            BufferedWriter writer = new BufferedWriter(w);
+            writer.write(jsonMenu);
+            writer.close();
+            w.close();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void load(){
+        String string="";
+        String sCurrentLine="";
+        try {
+            File f = new File("menu");
+            FileReader r = new FileReader(f);
+            BufferedReader br = new BufferedReader(r);
+            while ((sCurrentLine = br.readLine()) != null)
+            {
+            string+=sCurrentLine;
+            }
+            br.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+
+        Gson gson= new Gson();
+        menu = gson.fromJson(string, ArrayList.class);
     }
 
 }
