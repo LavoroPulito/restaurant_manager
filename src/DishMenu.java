@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DishMenu {
+
     private ArrayList<Dish> menu;
 
     public DishMenu() {
@@ -67,6 +68,17 @@ public class DishMenu {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this, DishMenu.class);
+    }
+
+    public ArrayList<String> getCategoryList(){
+        ArrayList<String> ar = new ArrayList();
+
+        for (Dish d : menu){
+            if (ar.indexOf (d.getCategory()) == -1){    //se non c'è nella lista di categorie la aggiunge
+                ar.add(d.getCategory());
+            }
+        }
+        return ar;
     }
 
 }

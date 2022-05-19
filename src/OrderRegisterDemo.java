@@ -29,7 +29,7 @@ public class OrderRegisterDemo {
         orderRegister.addOrder(new Order(dish7, 4, " "));
 
         //creo la stringa json e la stampo
-        String jsonOrderRegister = orderRegister.toJson();
+        String jsonOrderRegister = orderRegister.toString();
         System.out.println(jsonOrderRegister);
 
         //salvo il json come file
