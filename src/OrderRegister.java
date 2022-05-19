@@ -55,4 +55,22 @@ public class OrderRegister {
         }
     }
 
+    public void loadOrders(){
+        String string="";
+        String sCurrentLine="";
+        try {
+            FileReader r = new FileReader(new File("orders.json"));
+            BufferedReader br = new BufferedReader(r);
+            while ((sCurrentLine = br.readLine()) != null) 
+            {
+            string+=sCurrentLine;
+            }
+        }
+        catch(Exception e){
+            //crea File ordinazioni
+        }
+
+        register = gson.fromJson(new FileReader("orders.json"), OrderRegister.class);
+    }
+
 }
