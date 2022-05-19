@@ -1,7 +1,7 @@
 # restaurant_manager
 Restaurant Manager pd
 
-- [ ] cose da fare
+- [x] cose da fare
 - [ ] folliaa
 - [ ] 
 
