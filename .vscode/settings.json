@@ -1,0 +1,9 @@
+{
+    "java.import.generatesMetadataFilesAtProjectRoot": true,
+    "java.referencesCodeLens.enabled": true,
+    
+    "java.project.referencedLibraries": [
+            "libs/gson-2.8.2.jar"
+        ]
+    
+}
