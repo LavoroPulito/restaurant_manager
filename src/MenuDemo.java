@@ -1,8 +1,3 @@
-import com.google.gson.Gson;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 
 /*
 classe demo per testare la classe MenuDish e la classe Dish
@@ -22,7 +17,7 @@ public class MenuDemo {
         carta.addDish(new Dish("tiramisù", 15, "mascarpone e caffè", "Dolce"));
 
         //stampo il menù in un dizionario ordinato per portate
-        System.out.println("dizionrio per portate:");
+        System.out.println("dizionario per portate:");
         System.out.println(carta.toDict());
         System.out.println(" ");
 
@@ -38,36 +33,29 @@ public class MenuDemo {
 
         }
 
-        //creo un file Json di tutto il menù e lo stampo
-        String jsonMenu = carta.toJson();
-        System.out.println(jsonMenu);
-
-        //salvo il json come file
+        //creo un file Json di tutto il menù, lo stampo e lo salvo
+        System.out.println(carta.toJson());
+        carta.save();
         
-        try {
-            FileWriter w = new FileWriter(new File("test_menu.json"));
-            BufferedWriter writer = new BufferedWriter(w);
-            writer.write(jsonMenu);
-            writer.close();
-            w.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
         
 
         //ricreo un nuovo menù partendo dal file json salvato
-        Gson gson = new Gson();
-        DishMenu carta2 = gson.fromJson(jsonMenu, DishMenu.class);
+        //carta.load();
 
         //recupero un piatto tramite getDish passando una stringa e lo stampo
-        Dish next_del = carta2.getDish("patate");
+        Dish next_del = carta.getDish("patate");
         System.out.println(next_del);
 
         //elimino il piatto recuperato
-        carta2.removeDish(next_del);
+        carta.removeDish(next_del);
 
         //stampo il menù modificato modificato
         System.out.println("al ritorno:");
-        System.out.println(carta2.getMenu().toString());
+       // System.out.println(carta.getMenu().toString());
+
+        DishMenu dm = new DishMenu();
+        dm.load();
+        System.out.println(dm.toJson());
+        dm.save();
     }
 }

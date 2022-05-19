@@ -85,7 +85,7 @@ public class DishMenu {
         String jsonMenu = this.toJson();
 
         try {
-            File f = new File("test_menu.json");
+            File f = new File("menu.json");
             FileWriter w = new FileWriter(f);
             BufferedWriter writer = new BufferedWriter(w);
             writer.write(jsonMenu);
@@ -100,7 +100,7 @@ public class DishMenu {
         String string="";
         String sCurrentLine="";
         try {
-            File f = new File("menu");
+            File f = new File("menu.json");
             FileReader r = new FileReader(f);
             BufferedReader br = new BufferedReader(r);
             while ((sCurrentLine = br.readLine()) != null)
@@ -114,7 +114,7 @@ public class DishMenu {
         }
 
         Gson gson= new Gson();
-        menu = gson.fromJson(string, ArrayList.class);
+        menu = gson.fromJson(string, DishMenu.class).getMenu(); 
     }
 
 }

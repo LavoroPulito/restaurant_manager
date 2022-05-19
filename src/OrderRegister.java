@@ -9,6 +9,7 @@ Questa classe si occupa della gestione degli ordini
 inserisce un ArrayList
  */
 public class OrderRegister {
+    
     private HashMap<Integer, ArrayList<Order>> register;
 
     public  OrderRegister(){
@@ -36,7 +37,7 @@ public class OrderRegister {
         return this.toJson();
     }
 
-    private String toJson() {
+    public String toJson() { 
         Gson gson = new Gson();
         return gson.toJson(this, OrderRegister.class);
     }
@@ -78,7 +79,7 @@ public class OrderRegister {
         }
 
         Gson gson= new Gson();
-        register = gson.fromJson(string, HashMap.class);
+        register = gson.fromJson(string, OrderRegister.class).getRegister();
     }
 
 }

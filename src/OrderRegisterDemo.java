@@ -35,18 +35,13 @@ public class OrderRegisterDemo {
         String jsonOrderRegister = orderRegister.toString();
         System.out.println(jsonOrderRegister);
 
+        //carico il json dentro l'oggetto
+        orderRegister.load();
+
         //salvo il json come file
-        {
-            try {
-                FileWriter w = new FileWriter(new File("test_OrderRegister.json"));
-                BufferedWriter writer = new BufferedWriter(w);
-                writer.write(jsonOrderRegister);
-                writer.close();
-                w.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
+        
+        orderRegister.save();
+        
 
         //salvo il file usando il metodo
         orderRegister.save();
