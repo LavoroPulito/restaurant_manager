@@ -5,63 +5,62 @@ import java.io.*;
 
 public class DishMenu {
 
-    private ArrayList<Dish> menu;
+    private HashMap<String, ArrayList<Dish>> menu;
 
     public DishMenu() {
-        menu = new ArrayList<Dish>();
+        menu =  new HashMap<String, ArrayList<Dish>>();
     }
 
-    public ArrayList<Dish> getMenu() {
+    public HashMap<String, ArrayList<Dish>> getMenu() {
         return menu;
     }
 
 
-    public void addDish(Dish e) {
-        menu.add(e);
+    public void add(Dish dish){
+        String key = dish.getCategory();
+        if (menu.containsKey(key)) { //se la categoria esiste già aggiunge il dish alla lista
+            menu.get(key).add(dish);
+        } else { // altrimenti crea una nuova lista con dentro il dish e la inserisce nella nuova categoria
+            ArrayList <Dish> lis= new ArrayList<>();
+            lis.add(dish);
+            menu.put(key, lis);
+        }
     }
 
     public void removeDish(Dish e) {
-        menu.remove(e);
+        menu.get(e.getCategory()).remove(e);  // DA TESTARE
+    }
+
+    public Dish getDish(String name, String category) {
+        for (Dish e:
+                menu.get(category)) {
+            if (name.equals(e.getName())){
+                return e;
+            }
+            }
+    return null;
     }
 
     public Dish getDish(String name) {
-        for (Dish e :
-                menu) {
-            if (e.getName().equals(name)) {
-                return e;
+        for (String key:
+                menu.keySet()) {
+            for (Dish e:
+                    menu.get(key)) {
+                if (name.equals(e.getName())){
+                    return e;
+                }
             }
         }
         return null;
     }
 
-    public Map<String, ArrayList<Dish>> toDict() {
-        String category;
-        Map<String, ArrayList<Dish>> dictionary = new HashMap<String, ArrayList<Dish>>();
-        for (Dish e :
-                menu) {
-            category = e.getCategory();
-            if (dictionary.containsKey(category)) {
-                dictionary.get(category).add(e);
-                //System.out.println("si: " + dictionary.get(e));
-            } else {
-                ArrayList<Dish> lis = new ArrayList<Dish>();
-                lis.add(e);
-                //System.out.println("si");
-                dictionary.put(category, lis);
-            }
+    public ArrayList<Dish> toArrayList() {
+        ArrayList <Dish> total = new ArrayList<>();
+        for (String key:
+        menu.keySet()) {
+            total.addAll(menu.get(key));
         }
-        return dictionary;
-    }
-
-    public ArrayList<String> toArrayList() {
-        //TO ADD: sorter per gli elementi del menù in base alla categoriaw
-        ArrayList<String> strings = new ArrayList<>();
-
-        for (Dish e :
-                menu) {
-            strings.add(e.getName());
-        }
-        return strings;
+        return total;
     }
 
     public String toJson() {
@@ -69,16 +68,6 @@ public class DishMenu {
         return gson.toJson(this, DishMenu.class);
     }
 
-    public ArrayList<String> getCategoryList(){
-        ArrayList<String> ar = new ArrayList<String>();
-
-        for (Dish d : menu){
-            if (ar.indexOf (d.getCategory()) == -1){    //se non c'è nella lista di categorie la aggiunge
-                ar.add(d.getCategory());
-            }
-        }
-        return ar;
-    }
 
     public void save(){
 
@@ -114,7 +103,7 @@ public class DishMenu {
         }
 
         Gson gson= new Gson();
-        menu = gson.fromJson(string, DishMenu.class).getMenu(); 
+        menu = gson.fromJson(string, DishMenu.class).getMenu();
     }
 
 }
