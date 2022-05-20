@@ -2,8 +2,6 @@
 Restaurant Manager pd
 
 - [ ] tenere aggiornata la uml
-- [ ] trasformare DishMenu in hashmap
-- [ ] aggiungere il metodo tolist a DishMenu
-- [ ] 
+- [ ] cambiare nome a OrderRegister in OrderMenager
 
 
