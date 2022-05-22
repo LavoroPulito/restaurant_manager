@@ -90,6 +90,7 @@ public class OrderManager {
             register =new HashMap<Integer, ArrayList<Order>>();
         }
         else{
+            System.out.print(string);
         register = gson.fromJson(string, OrderManager.class).getRegister();
         }
     }

@@ -30,3 +30,6 @@ hs_err_pid*
 
 #cartella di Fradap
 youRow/
+/.classpath
+/.project
+

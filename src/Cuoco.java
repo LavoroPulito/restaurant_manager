@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 public class Cuoco {
 
     private OrderManager orderList;
@@ -10,10 +11,9 @@ public class Cuoco {
         this.tables=orderList.getTableList();
     }
 
-    public static void changeState(int indexOrder, int table){
-        OrderManager or = new OrderManager();
-        or.load();  //carica tutto il dizionario dal json
-        or.getRegister().get(table).get(indexOrder).setNextState(); //Spacchettamento del HashMap e cambio lo stato dell'ordine
-        or.save();  //Aggiornamento nel json
+    public void changeState(int indexOrder, int table){
+
+        orderList.getRegister().get(table).get(indexOrder).setNextState(); //Spacchettamento del HashMap e cambio lo stato dell'ordine
+        orderList.save();  //Aggiornamento nel json
     }
 }
