@@ -27,3 +27,6 @@ hs_err_pid*
 #IntellijIDEA Exclude
 /.idea/
 *.iml
+
+#cartella di Fradap
+youRow/
