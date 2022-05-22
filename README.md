@@ -1,7 +1,6 @@
 # restaurant_manager
 ##To Do List:
 - [ ] tenere aggiornata la uml
-- [ ] cambiare nome a OrderRegister in OrderMenager
 ###divisioni interfacce grafiche:
   - [ ] main menu `Nicco`
   - [ ] cassa `Nicco`
