@@ -18,7 +18,7 @@ public class Scontrino {
         if (pagato == true)
         {
             return true ;
-            //facciamo in modo che la classe OrderRegister ripuliusca il tavolo
+            //facciamo in modo che la classe OrderManager ripuliusca il tavolo
         }
         else
         {
@@ -30,7 +30,7 @@ public class Scontrino {
 
 }
 /*
-prendo dalla lista con un for, prendo il nome dello piatto, e prendo il costo
+prendo dalla lista con un for, prendo il nome del piatto, e prendo il costo
 a capo, e poi 
 
 */

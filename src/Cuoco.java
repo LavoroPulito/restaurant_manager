@@ -1,5 +1,14 @@
+import java.util.*;
+
 public class Cuoco {
-    public Cuoco(){}
+
+    private OrderManager orderList;
+    private ArrayList<Integer> tables;
+
+    public Cuoco(){
+        this.orderList=new OrderManager();
+        this.tables=orderList.getTableList();
+    }
 
     public static void changeState(int indexOrder, int table){
         OrderManager or = new OrderManager();

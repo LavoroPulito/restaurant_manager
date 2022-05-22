@@ -9,10 +9,11 @@ inserisce un ArrayList
  */
 public class OrderManager {
     
-    private HashMap<Integer, ArrayList<Order>> register;
+    private HashMap<Integer, ArrayList<Order>> register;    //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
 
     public  OrderManager(){
         register =  new HashMap<Integer, ArrayList<Order>>();
+        this.load();
     }
     
     public void add(ArrayList<Order> orders){ //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
@@ -22,6 +23,13 @@ public class OrderManager {
         } else {
             register.put(tav, orders);
         }
+    }
+
+    public ArrayList<Integer> getTableList(){
+        if (register==null){
+            return null;
+        }
+        return new ArrayList<Integer>(register.keySet());
     }
 
     public HashMap<Integer, ArrayList<Order>> getRegister() {
@@ -78,7 +86,12 @@ public class OrderManager {
         }
 
         Gson gson= new Gson();
+        if (string==""){
+            register =new HashMap<Integer, ArrayList<Order>>();
+        }
+        else{
         register = gson.fromJson(string, OrderManager.class).getRegister();
+        }
     }
 
 }
