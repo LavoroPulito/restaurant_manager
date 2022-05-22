@@ -6,8 +6,13 @@ public class ChefFrame extends JFrame {
     public ChefFrame(){
         super("Chef");
         setLayout(null);
-
+        setSize(1920, 1080);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setVisible(true);
     }
+
 
 
 }
