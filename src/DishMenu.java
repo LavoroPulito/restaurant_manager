@@ -9,6 +9,7 @@ public class DishMenu {
 
     public DishMenu() {
         menu =  new HashMap<String, ArrayList<Dish>>();
+
     }
 
     public HashMap<String, ArrayList<Dish>> getMenu() {

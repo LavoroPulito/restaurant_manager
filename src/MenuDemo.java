@@ -5,7 +5,7 @@ classe demo per testare la classe MenuDish e la classe Dish
 
 public class MenuDemo {
     public static void main(String[] args) {
-
+/**
         //creo un menù e aggiungo dei piatti
         DishMenu carta = new DishMenu();
         carta.add(new Dish("pasta con tonno", 8.0, "pasta con tonno","Primo"));
@@ -57,12 +57,12 @@ public class MenuDemo {
         System.out.println("al ritorno:");
         System.out.println(carta.getMenu().toString());
 
-        /*
+*/
         DishMenu dm = new DishMenu();
         dm.load();
-        System.out.println(dm.toJson());
-        dm.save();
+        System.out.println(dm.getMenu());
 
-         */
+
+
     }
 }

@@ -4,8 +4,14 @@ import java.util.ArrayList;
 
 public class MenuPanel extends JPanel {
 
-    public MenuPanel(ArrayList list){
-        //setLayout(new BoxLayout(list,1));
+    public MenuPanel(ArrayList<Dish> list){
+        Box m = Box.createVerticalBox();
+        for (Dish e:
+             list) {
+            m.add(new JButton(e.getName()));
+
+        }
+
 
     }
 }
