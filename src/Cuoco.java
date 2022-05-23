@@ -8,7 +8,8 @@ public class Cuoco {
 
     public Cuoco(){
         this.orderList=new OrderManager();
-        this.tables=orderList.getTableList();
+        this.orderList.load();
+        this.tables=this.orderList.getTableList();
     }
 
     public void changeState(int indexOrder, int table){

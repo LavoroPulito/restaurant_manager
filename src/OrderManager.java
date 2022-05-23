@@ -13,7 +13,6 @@ public class OrderManager {
 
     public  OrderManager(){
         register =  new HashMap<Integer, ArrayList<Order>>();
-        this.load();
     }
     
     public void add(ArrayList<Order> orders){ //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
