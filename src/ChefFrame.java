@@ -5,14 +5,14 @@ public class ChefFrame extends JFrame {
     final int WIDTH = 700;
     final int HEIGHT = 400;
     DishMenu menu = new DishMenu();
-    
-    MenuPanel menuPanel = new MenuPanel(menu.toArrayList());
     public ChefFrame(){
         super("Chef");
+        menu.load();
+        MenuPanel menuPanel = new MenuPanel(menu.toArrayList());
         Box p = Box.createHorizontalBox();
-        this.getContentPane().add(new JScrollPane(menuPanel));
+        p.add(new JScrollPane(menuPanel));
         setSize(WIDTH, HEIGHT);
-        setResizable(false);
+        //setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
