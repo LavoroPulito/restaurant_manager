@@ -1,25 +1,26 @@
-//import com.google.gson.Gson;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
 
-public class Scontrino 
+public class Scontrino extends OrderManager
 {
-    public Scontrino(){
-    String testo = " ";
-    getJSONFromFile("orders.json");
-    System.out.println("orders.json".getClass());
-    for(int i = 0; i<= "orders.json".length();i++)
+    private HashMap<Integer, ArrayList<Order>> preconto;
+        //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
+    public Scontrino()
     {
-////
+        
     }
+
+    add(ArrayList<Order> orders);
+
+
+
     
     
     
     
-    
-    
-    }
+
         
         public static  String getJSONFromFile (String filename) {
             String jsonText = "";
