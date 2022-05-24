@@ -20,13 +20,6 @@ public class Dish {
         this.available = true;
     }
 
-    public String toJson() {
-        Gson gson = new Gson();
-        Type fooType = new TypeToken<Dish>() {}.getType();
-        String json = gson.toJson(this, fooType);
-        return json;
-    }
-
     public String getName() {
         return name;
     }
@@ -51,6 +44,10 @@ public class Dish {
         this.available = available;
     }
 
+    public void switchAvailable(){
+        available = !available;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -65,14 +62,6 @@ public class Dish {
 
     @Override
     public String toString() {
-        return name ; //+ PROVVISORIO
-                /*
-                ", price=" + price +
-                ", category='" + category + '\'' +
-                ", description='" + description + '\'' +
-                ", availability=" + available +
-                '}';
-
-                 */
+        return name ;
     }
 }

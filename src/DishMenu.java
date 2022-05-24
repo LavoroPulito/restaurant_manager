@@ -16,7 +16,6 @@ public class DishMenu {
         return menu;
     }
 
-
     public void add(Dish dish){
         String key = dish.getCategory();
         if (menu.containsKey(key)) { //se la categoria esiste già aggiunge il dish alla lista
@@ -68,7 +67,6 @@ public class DishMenu {
         Gson gson = new Gson();
         return gson.toJson(this, DishMenu.class);
     }
-
 
     public void save(){
 
