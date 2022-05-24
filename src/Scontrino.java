@@ -25,9 +25,7 @@ public class Scontrino
             return jsonText;
         }
         
-        getJSONFromFile("orders.json");
 
-    
 }
     
             
