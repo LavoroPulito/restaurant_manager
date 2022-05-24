@@ -1,10 +1,25 @@
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
 
 public class Scontrino 
 {
+    public Scontrino(){
+    String testo = " ";
+    getJSONFromFile("orders.json");
+    System.out.println("orders.json".getClass());
+    for(int i = 0; i<= "orders.json".length();i++)
+    {
+////
+    }
+    
+    
+    
+    
+    
+    
+    }
         
         public static  String getJSONFromFile (String filename) {
             String jsonText = "";
@@ -24,8 +39,7 @@ public class Scontrino
             System.out.println(jsonText);
             return jsonText;
         }
-        
-
+    
 }
     
             
