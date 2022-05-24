@@ -1,6 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,13 +11,14 @@ public class WaiterFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	final int WIDTH = 700;
 	final int HEIGHT = 400;
+	final Dimension dimension = new Dimension(WIDTH,HEIGHT);
 	DishMenu menu = new DishMenu();
 	private JTextField txtSelezionaIlTavolo;
 	public JFrame frame;
 
 	public WaiterFrame() {
 		
-		super("Chef");
+		super("Waiter");
 
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -61,6 +60,8 @@ public class WaiterFrame extends JFrame {
 
 		JPanel panel_5 = new JPanel();
 		panel_3.add(panel_5);
+		setMinimumSize(dimension);
+		setLocationRelativeTo(null);
 		setVisible(true);
 
 	}
