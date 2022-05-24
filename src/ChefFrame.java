@@ -1,14 +1,5 @@
-package restaurant_manager;
-
 import java.awt.*;
-
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 
 public class ChefFrame extends JFrame {
 	private JTextField textField;
@@ -40,7 +31,10 @@ public class ChefFrame extends JFrame {
 		sl_panel.putConstraint(SpringLayout.EAST, panel_1, -4, SpringLayout.WEST, panel_2);
 		panel_1.setLayout(new BorderLayout(0, 0));
 
-		JList list = new JList();
+		DishMenu menu = new DishMenu();
+		menu.load();
+		JList list = new JList(menu.toArrayList().toArray());
+
 		panel_1.add(list, BorderLayout.CENTER);
 		sl_panel.putConstraint(SpringLayout.NORTH, panel_2, 10, SpringLayout.NORTH, panel);
 		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, 262, SpringLayout.NORTH, panel);
