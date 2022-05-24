@@ -3,8 +3,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
 
-public class Scontrino 
+public class Scontrino extends OrderManager
 {
+    private HashMap<Integer, ArrayList<Order>> preconto;
+        //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
+    public Scontrino()
+    {
+        
+    }
+
+    add(ArrayList<Order> orders);
+
+
+
+    
+    
+    
+    
+
         
         public static  String getJSONFromFile (String filename) {
             String jsonText = "";
@@ -24,8 +40,7 @@ public class Scontrino
             System.out.println(jsonText);
             return jsonText;
         }
-        
-
+    
 }
     
             
