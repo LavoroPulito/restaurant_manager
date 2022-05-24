@@ -1,6 +1,8 @@
 # restaurant_manager
 ##To Do List:
 - [ ] tenere aggiornata la uml
+- [ ] sistemare la classe main
+
 ###divisioni interfacce grafiche:
   - [ ] main menu `Nicco`
   - [ ] cassa `Nicco`
