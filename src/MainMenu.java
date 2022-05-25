@@ -2,12 +2,6 @@ import javax.swing.JFrame;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.NoSuchElementException;
-import java.util.Vector;
 
 
 @SuppressWarnings("serial")
@@ -53,7 +47,7 @@ public class MainMenu extends JFrame implements ActionListener{
 		btnWaiter.setToolTipText("Clicca qui per prendere gli ordini e controllare lo stato");
 		btnWaiter.addActionListener(this); 
 
-		btnChef.setBackground(new java.awt.Color(0, 0, 153));
+		btnChef.setBackground(new java.awt.Color(0, 0, 0));
 		btnChef.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
 		btnChef.setForeground(new java.awt.Color(255, 255, 255));
 		btnChef.setText("Chef");
@@ -144,7 +138,7 @@ public class MainMenu extends JFrame implements ActionListener{
 
 		if(e.getSource().equals(btnCuoco)) {
 
-				CuocoFrame a =new CuocoFrame();
+				CookFrame a =new CookFrame();
 				a.setVisible(true);
 		}
 

@@ -32,7 +32,7 @@ public class Scontrino
         {
             for (Order ordine : register.get(numerotavolo))
             {
-                preconto += ""
+                preconto += "";
             }
         }
         else
