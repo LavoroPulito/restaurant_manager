@@ -10,7 +10,7 @@ public class Scontrino extends OrderManager
 
     private HashMap<Integer, ArrayList<Order>> register;
         //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
-    public Scontrino()
+    public Scontrino(double amount)
     {
         ordermanager.load();
         ordermanager.getRegister();
