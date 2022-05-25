@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
 
-public class Scontrino extends OrderManager
+public class Scontrino 
 
 {
     OrderManager ordermanager = new OrderManager();
@@ -15,6 +15,7 @@ public class Scontrino extends OrderManager
         ordermanager.load();
         ordermanager.getRegister();
         System.out.println(register);
+        for (int i = 0; i< register.length(); )
 
 
         
@@ -30,7 +31,7 @@ public class Scontrino extends OrderManager
         
     }
 
-    public 
+    
 
     //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO
   
