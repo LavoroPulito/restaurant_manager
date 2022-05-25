@@ -19,8 +19,11 @@ public class OrderManager {
         int tav=orders.get(0).getTable();
         if (register.containsKey(tav)) {
             register.get(tav).addAll(orders);
-        } else {
+        } else 
+        {
+
             register.put(tav, orders);
+            
         }
     }
 

@@ -14,9 +14,7 @@ public class Scontrino
     {
         ordermanager.load();
         ordermanager.getRegister();
-        System.out.println(register);
-        for (int i = 0; i< register.length(); )
-
+        System.out.println(register.size());
 
         
 
@@ -26,8 +24,26 @@ public class Scontrino
 
         
     }
-    public String Preconto()
+    public String Preconto(int numerotavolo)
     {
+        ordermanager.load();
+        ordermanager.getRegister();
+        String preconto = "";
+        for (int i = 0; i< register.size(); i++ );
+        {
+            if (register.containsKey(numerotavolo))
+            {
+                for (int i = 0; i< register.get(numerotavolo).size(); i++)
+                {
+                    preconto += register.get(numerotavolo)
+                }
+            }
+            else
+            {
+                
+            }
+
+        }
         
     }
 
