@@ -150,7 +150,7 @@ public class MainMenu extends JFrame implements ActionListener{
 
 		if(e.getSource().equals(btnCash)) {
 			CashFrame a = new CashFrame();
-			a.setVisible();
+			a.setVisible(true);
 
 		}
 
