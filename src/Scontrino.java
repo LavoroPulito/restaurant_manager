@@ -19,8 +19,9 @@ public class Scontrino
         for (int i = 0; i<register.size() ;i++ )
         {
 
+        
         }
-    }
+}
 
 
 
@@ -48,6 +49,7 @@ public class Scontrino
 
 
 
+
 String stringadelcazzo = " ";
 return stringadelcazzo;
     
@@ -55,7 +57,13 @@ return stringadelcazzo;
 
 }
 
+    //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO dio porco
+
+
 }
+
+
+
 
 /*
 prendo dalla lista con un for, prendo il nome dello piatto, e prendo il costo
