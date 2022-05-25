@@ -16,12 +16,21 @@ public class Scontrino extends OrderManager
         ordermanager.getRegister();
         System.out.println(register);
 
+
+        
+
         
 
 
 
         
     }
+    public String Preconto()
+    {
+        
+    }
+
+    public 
 
     //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO
   
