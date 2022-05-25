@@ -136,7 +136,7 @@ public class MainMenu extends JFrame implements ActionListener{
 
 		if(e.getSource().equals(btnChef)) {
 
-				WaiterFrame a =new WaiterFrame();
+				ChefFrame a =new ChefFrame();
 				a.setVisible(true);
 				a.pack();
 		}

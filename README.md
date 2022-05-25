@@ -2,6 +2,7 @@
 ##To Do List:
 - [ ] tenere aggiornata la uml
 - [ ] sistemare la classe main
+- [ ] finire tasto menù principale di chef frame
 
 ###divisioni interfacce grafiche:
   - [ ] main menu `Nicco`
