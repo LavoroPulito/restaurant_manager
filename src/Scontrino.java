@@ -12,7 +12,8 @@ public class Scontrino extends OrderManager
         
     }
 
-    add(ArrayList<Order> orders);
+    //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO
+
 
 
 

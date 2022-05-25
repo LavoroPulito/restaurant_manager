@@ -5,7 +5,7 @@ import java.lang.reflect.Type;
 
 public class Dish {
 
-    private final String name;
+    private String name;
     private double price;
     private String category;
     private String description;
@@ -38,6 +38,10 @@ public class Dish {
 
     public boolean isAvailable() {
         return available;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setAvailable(boolean available) {

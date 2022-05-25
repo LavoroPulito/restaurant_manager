@@ -23,7 +23,7 @@ public class ChefFrame extends JFrame {
 	private JTextField txtPrice;
 	private JTextField txtCateg;
 	private JTextArea textArea = new JTextArea();
-	private JCheckBox chckbxNewCheckBox = new JCheckBox("available");
+	private JCheckBox availableCkBx = new JCheckBox("available");
 	final int WIDTH = 700;
 	final int HEIGHT = 400;
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
@@ -35,49 +35,50 @@ public class ChefFrame extends JFrame {
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 
-		JPanel panel_1 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_1, 10, SpringLayout.NORTH, panel);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_1, 10, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_1, -10, SpringLayout.SOUTH, panel);
-		panel.add(panel_1);
+		JPanel menuPanel = new JPanel();
+		sl_panel.putConstraint(SpringLayout.NORTH, menuPanel, 10, SpringLayout.NORTH, panel);
+		sl_panel.putConstraint(SpringLayout.WEST, menuPanel, 10, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, menuPanel, -10, SpringLayout.SOUTH, panel);
+		panel.add(menuPanel);
 
-		JPanel panel_2 = new JPanel();
-		sl_panel.putConstraint(SpringLayout.EAST, panel_1, -4, SpringLayout.WEST, panel_2);
-		sl_panel.putConstraint(SpringLayout.WEST, panel_2, 147, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.SOUTH, panel_2, 0, SpringLayout.SOUTH, panel_1);
-		sl_panel.putConstraint(SpringLayout.EAST, panel_2, -10, SpringLayout.EAST, panel);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel settingsPanel = new JPanel();
+		sl_panel.putConstraint(SpringLayout.EAST, menuPanel, -4, SpringLayout.WEST, settingsPanel);
+		sl_panel.putConstraint(SpringLayout.WEST, settingsPanel, 147, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.SOUTH, settingsPanel, 0, SpringLayout.SOUTH, menuPanel);
+		sl_panel.putConstraint(SpringLayout.EAST, settingsPanel, -10, SpringLayout.EAST, panel);
+		menuPanel.setLayout(new BorderLayout(0, 0));
 
 		DishMenu menu = new DishMenu();
 		menu.load();
 		JList list = new JList(menu.toArrayList().toArray());
 		list.getSelectionModel().addListSelectionListener(e -> {
 
+			inCreation = false;
 			Dish dish = (Dish) list.getSelectedValue();
 			if (dish != null) {
 				txtNameDish.setText(dish.getName());
 				txtPrice.setText("" + dish.getPrice());
 				txtCateg.setText(dish.getCategory());
-				chckbxNewCheckBox.setSelected(dish.isAvailable());
+				availableCkBx.setSelected(dish.isAvailable());
 				txtDescription.setText(dish.getDescription());
 			}
 		});
 
-		panel_1.add(list, BorderLayout.CENTER);
-		sl_panel.putConstraint(SpringLayout.NORTH, panel_2, 10, SpringLayout.NORTH, panel);
-		panel.add(panel_2);
-		panel_2.setLayout(new GridLayout(2, 1, 0, 0));
+		menuPanel.add(list, BorderLayout.CENTER);
+		sl_panel.putConstraint(SpringLayout.NORTH, settingsPanel, 10, SpringLayout.NORTH, panel);
+		panel.add(settingsPanel);
+		settingsPanel.setLayout(new GridLayout(2, 1, 0, 0));
 
-		JPanel panel_3 = new JPanel();
-		panel_2.add(panel_3);
-		panel_3.setLayout(new BoxLayout(panel_3, BoxLayout.X_AXIS));
+		JPanel attributesPanel = new JPanel();
+		settingsPanel.add(attributesPanel);
+		attributesPanel.setLayout(new BoxLayout(attributesPanel, BoxLayout.X_AXIS));
 
-		JPanel panel_5 = new JPanel();
-		panel_3.add(panel_5);
-		panel_5.setLayout(new GridLayout(0, 1, 0, 0));
+		JPanel sideFieldPanel = new JPanel();
+		attributesPanel.add(sideFieldPanel);
+		sideFieldPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
 		txtNameDish = new JTextField();
-		panel_5.add(txtNameDish);
+		sideFieldPanel.add(txtNameDish);
 		txtNameDish.setColumns(10);
 
 		txtPrice = new JTextField();
@@ -89,30 +90,75 @@ public class ChefFrame extends JFrame {
 				}
 			}
 		});
-		panel_5.add(txtPrice);
+		sideFieldPanel.add(txtPrice);
 		txtPrice.setColumns(10);
 
 		txtCateg = new JTextField();
-		panel_5.add(txtCateg);
+		sideFieldPanel.add(txtCateg);
 		txtCateg.setColumns(10);
 
-		panel_5.add(chckbxNewCheckBox);
+		sideFieldPanel.add(availableCkBx);
 
 		txtDescription = new JTextField();
-		panel_3.add(txtDescription);
+		attributesPanel.add(txtDescription);
 		txtDescription.setColumns(10);
 
 		JPanel controlPanel = new JPanel();
-		panel_2.add(controlPanel);
-		controlPanel.setLayout(new BorderLayout(0, 0));
+		settingsPanel.add(controlPanel);
 		initInput();
+		SpringLayout sl_controlPanel = new SpringLayout();
+		sl_controlPanel.putConstraint(SpringLayout.NORTH, textArea, 98, SpringLayout.NORTH, controlPanel);
+		sl_controlPanel.putConstraint(SpringLayout.WEST, textArea, 0, SpringLayout.WEST, controlPanel);
+		sl_controlPanel.putConstraint(SpringLayout.SOUTH, textArea, 176, SpringLayout.NORTH, controlPanel);
+		sl_controlPanel.putConstraint(SpringLayout.EAST, textArea, 543, SpringLayout.WEST, controlPanel);
+		controlPanel.setLayout(sl_controlPanel);
 
 		JPanel buttonPanel = new JPanel();
-		controlPanel.add(buttonPanel, BorderLayout.NORTH);
-		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+		sl_controlPanel.putConstraint(SpringLayout.NORTH, buttonPanel, 0, SpringLayout.NORTH, controlPanel);
+		sl_controlPanel.putConstraint(SpringLayout.WEST, buttonPanel, 0, SpringLayout.WEST, controlPanel);
+		sl_controlPanel.putConstraint(SpringLayout.SOUTH, buttonPanel, -84, SpringLayout.SOUTH, controlPanel);
+		sl_controlPanel.putConstraint(SpringLayout.EAST, buttonPanel, 543, SpringLayout.WEST, controlPanel);
+		controlPanel.add(buttonPanel);
+		buttonPanel.setLayout(new GridLayout(2, 2, 0, 0));
 
 		JButton save_menu = new JButton("Save menù");
 		buttonPanel.add(save_menu);
+		save_menu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (inCreation) { //se ho premuto Add dish
+					menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
+							txtDescription.getText(), txtCateg.getText()));
+					inCreation = false;
+				} else {
+					if (list.getSelectedValue() != null) {
+						Dish selected = (Dish) list.getSelectedValue();
+
+						if (menu.removeDish(selected)) {
+							menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
+									txtDescription.getText(), txtCateg.getText()));
+						}
+					}
+				}
+				menu.save();
+				menu.load();
+				list.setListData(menu.toArrayList().toArray());
+			}});
+
+		JButton remove_dish = new JButton("Remove dish");
+		buttonPanel.add(remove_dish);
+		remove_dish.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (list.getSelectedValue() != null) {
+					menu.removeDish((Dish) list.getSelectedValue());
+
+				}
+			}
+		});
+
+		JButton add_new_dish = new JButton("Add new dish");
+		buttonPanel.add(add_new_dish);
 
 		JButton mainMenu = new JButton("Back to main menù");
 		buttonPanel.add(mainMenu);
@@ -120,12 +166,6 @@ public class ChefFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-
-		JButton remove_dish = new JButton("Remove dish");
-		buttonPanel.add(remove_dish);
-
-		JButton add_new_dish = new JButton("Add new dish");
-		buttonPanel.add(add_new_dish);
 		add_new_dish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				inCreation = true;
@@ -134,21 +174,8 @@ public class ChefFrame extends JFrame {
 			}
 		});
 
-		controlPanel.add(textArea, BorderLayout.CENTER);
+		controlPanel.add(textArea);
 
-		save_menu.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if (inCreation) {
-					menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
-							txtDescription.getText(), txtCateg.getText()));
-					inCreation = false;
-				}
-				menu.save();
-				menu.load();
-				list.setListData(menu.toArrayList().toArray());
-			}
-		});
 		setMinimumSize(dimension);
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -160,9 +187,9 @@ public class ChefFrame extends JFrame {
 		txtPrice.setText("Price");
 		txtCateg.setText("category");
 		txtDescription.setText("Description");
-		chckbxNewCheckBox.setSelected(true);
-		textArea.setText(
-				"select a dish to view its attributes or to modify it.\n" + "use the keys to modify the menu.");
+		availableCkBx.setSelected(true);
+		textArea.setText("select a dish to view its attributes or to modify it.\n" + "use the keys to modify the menu.\n"
+				+ "remember to save or your changes will be lost");
 
 	}
 

@@ -27,8 +27,12 @@ public class DishMenu {
         }
     }
 
-    public void removeDish(Dish e) {
-        menu.get(e.getCategory()).remove(e);  // DA TESTARE
+    public boolean removeDish(Dish e) {
+        boolean t = menu.get(e.getCategory()).remove(e);
+        if (menu.get(e.getCategory()).isEmpty()){
+            menu.remove(e.getCategory());// DA TESTARE
+        }
+        return t;
     }
 
     public Dish getDish(String name, String category) {
