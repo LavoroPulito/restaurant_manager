@@ -8,22 +8,22 @@ Questa classe si occupa della gestione degli ordini
 inserisce un ArrayList
  */
 public class OrderManager {
-    
+
     private HashMap<Integer, ArrayList<Order>> register;    //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
 
     public  OrderManager(){
         register =  new HashMap<Integer, ArrayList<Order>>();
     }
-    
+
     public void add(ArrayList<Order> orders){ //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
         int tav=orders.get(0).getTable();
         if (register.containsKey(tav)) {
             register.get(tav).addAll(orders);
-        } else 
+        } else
         {
 
             register.put(tav, orders);
-            
+
         }
     }
 
@@ -46,7 +46,7 @@ public class OrderManager {
         return this.toJson();
     }
 
-    public String toJson() { 
+    public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this, OrderManager.class);
     }
@@ -92,8 +92,7 @@ public class OrderManager {
             register =new HashMap<Integer, ArrayList<Order>>();
         }
         else{
-            System.out.print(string);
-        register = gson.fromJson(string, OrderManager.class).getRegister();
+          register = gson.fromJson(string, OrderManager.class).getRegister();
         }
     }
 

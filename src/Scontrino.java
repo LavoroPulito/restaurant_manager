@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.*;
 
-public class Scontrino 
+public class Scontrino
 
 {
     OrderManager ordermanager = new OrderManager();
@@ -12,49 +12,51 @@ public class Scontrino
         //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
     public Scontrino(double amount)
     {
-        
-
-        
-
-        
-
-
-
-        
-    }
-    public String Preconto(int numerotavolo)
-    {
         ordermanager.load();
-        ordermanager.getRegister();
-        String preconto = "";
-        for (int i = 0; i< register.size(); i++ );
+        register=ordermanager.getRegister();
+        System.out.println(register);
+
+        for (int i = 0; i<register.keySet().size() ;i++ )
         {
-            if (register.containsKey(numerotavolo))
-            {
-                for (int i = 0; i< register.get(numerotavolo).size(); i++)
-                {
-                    preconto += register.get(numerotavolo);
-                }
-            }
-            else
-            {
-                
-            }
-
         }
-        
-    
+    }
 
-    
 
-    //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO
-  
+
+    public String preconto(int numerotavolo)
+      {
+          ordermanager.load();
+          HashMap<Integer, ArrayList<Order>> reg = ordermanager.getRegister();
+          System.out.print(reg);
+          /*
+          String preconto = "";
+          for (int i = 0; i< register.size(); i++ );
+          {
+              if (register.containsKey(numerotavolo))
+              {
+                  for (int i = 0; i< register.get(numerotavolo).size(); i++)
+                  {
+                      preconto += register.get(numerotavolo);
+                  }
+              }
+              else
+              {
+
+              }}
+*/
+
+
+
+
+    //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO dio porco
+
+
 }
-  
+
 
 
 /*
 prendo dalla lista con un for, prendo il nome dello piatto, e prendo il costo
-a capo, 
+a capo,
 
 */
