@@ -4,6 +4,6 @@ public class Main {
 		System.out.print("Ciao");
 		MainMenu m= new MainMenu();
 		m.setVisible(true);
-		new Scontrino();
+		new Scontrino(5);
 	}
 }

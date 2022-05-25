@@ -51,7 +51,7 @@ public class CashFrame extends JFrame {
 
 		txtInserireI = new JTextField();
 		double amount= Double.parseDouble(txtInserireI.getText());
-		textArea.append();
+		//textArea.append();
 		sl_panel.putConstraint(SpringLayout.WEST, txtInserireI, 10, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, txtInserireI, -10, SpringLayout.EAST, panel);
 		sl_panel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 6, SpringLayout.SOUTH, txtInserireI);
