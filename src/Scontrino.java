@@ -16,10 +16,12 @@ public class Scontrino
         register=ordermanager.getRegister();
         System.out.println(register);
 
-        for (int i = 0; i<register.keySet().size() ;i++ )
+        for (int i = 0; i<register.size() ;i++ )
         {
+
+        
         }
-    }
+}
 
 
 
@@ -48,10 +50,18 @@ public class Scontrino
 
 
 
+String stringadelcazzo = " ";
+return stringadelcazzo;
+    
+
+
+}
+
     //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO dio porco
 
 
 }
+
 
 
 
