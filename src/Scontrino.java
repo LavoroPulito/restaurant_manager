@@ -13,9 +13,10 @@ public class Scontrino
     public Scontrino(double amount)
     {
         ordermanager.load();
-        ordermanager.getRegister();
+        register=ordermanager.getRegister();
         System.out.println(register);
-        for (int i = 0; i< register.length(); )
+        
+        for (int i = 0; i<register.keySet().size() ;i++ ){}
 
 
         
@@ -26,9 +27,9 @@ public class Scontrino
 
         
     }
-    public String Preconto()
+    public String preconto()
     {
-        
+        return "";
     }
 
     
