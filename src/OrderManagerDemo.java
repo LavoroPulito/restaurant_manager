@@ -30,6 +30,11 @@ public class OrderManagerDemo {
         orders1.add(new Order(dish7, 2, " "));
 
         orderRegister.add(orders);
+        orderRegister.add(orders1);
+
+        //salvo il json come file
+        
+        orderRegister.save();
 
         //creo la stringa json e la stampo
         String jsonOrderRegister = orderRegister.toString();
@@ -38,9 +43,7 @@ public class OrderManagerDemo {
         //carico il json dentro l'oggetto
         orderRegister.load();
 
-        //salvo il json come file
-        
-        orderRegister.save();
+
         
 
         //salvo il file usando il metodo
