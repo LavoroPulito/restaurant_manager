@@ -1,7 +1,7 @@
 import javax.swing.JFrame;
 import java.awt.event.*;
 import java.util.ArrayList;
-public class CookFrame extends JFrame implements ActionListener{
+public class CookFrame extends JFrame {
 
     private TablesPanel pt;
 
@@ -9,30 +9,32 @@ public class CookFrame extends JFrame implements ActionListener{
         this.initComponents();
     }
 
-//Manca connessione ad ActionListener con relativo popup di checkbox e aggiustamento stile
+//TODO: Manca relativo popup di checkbox e aggiustamento stile
     private void initComponents(){
-        OrderManager om = new OrderManager();
-        om.load();
-        ArrayList<Integer> tables=om.getTableList();
-        ArrayList<TableButton>buttons= new ArrayList<TableButton>();
-        for (int t:tables){
-            buttons.add(new TableButton(t));
-        }
+         
+        
 
-        pt =new TablesPanel(buttons);
-
+        pt =new TablesPanel();
+        pt.addActionListener(new Listener());
         
 		pt.getAccessibleContext().setAccessibleName("");
-        add(pt);
-		setResizable(true);
-		pack();
+        super.add(pt);
+		super.setResizable(true);
+		super.pack();
     }
 
 
-    @Override
+private class Listener implements ActionListener{
+
     public void actionPerformed(ActionEvent e) {
-        
-        
-    }
-    
+        if( e.getSource().getClass().getName() .equals("TableButton")){
+          int table = ((TableButton) e.getSource()).getTable();
+            new CheckBoxPopup(table);
+        }
+         
+     }
 }
+
+
+}  
+
