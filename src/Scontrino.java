@@ -76,17 +76,18 @@ public class Scontrino
             try{
                 FileWriter writer = new FileWriter(path + "//"+" titolo"+".txt");
                 writer.write(scontrino);
+                writer.close();
             } catch(IOException e ){
                 e.printStackTrace();
             }
         }
         else 
-        {
-            
+        {           
             Dir.mkdir();
             try{
                 FileWriter writer = new FileWriter(path + "//"+" titolo"+".txt");
                 writer.write(scontrino);
+                writer.close();
             } catch(IOException e ){
                 e.printStackTrace();
             }
