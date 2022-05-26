@@ -126,7 +126,7 @@ public class ChefFrame extends JFrame {
 		save_menu.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (inCreation) { //se ho premuto Add dish
+				if (inCreation) { // se ho premuto Add dish
 					menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
 							txtDescription.getText(), txtCateg.getText()));
 					inCreation = false;
@@ -143,7 +143,8 @@ public class ChefFrame extends JFrame {
 				menu.save();
 				menu.load();
 				list.setListData(menu.toArrayList().toArray());
-			}});
+			}
+		});
 
 		JButton remove_dish = new JButton("Remove dish");
 		buttonPanel.add(remove_dish);
@@ -188,8 +189,8 @@ public class ChefFrame extends JFrame {
 		txtCateg.setText("category");
 		txtDescription.setText("Description");
 		availableCkBx.setSelected(true);
-		textArea.setText("select a dish to view its attributes or to modify it.\n" + "use the keys to modify the menu.\n"
-				+ "remember to save or your changes will be lost");
+		textArea.setText("select a dish to view its attributes or to modify it.\n"
+				+ "use the keys to modify the menu.\n" + "remember to save or your changes will be lost");
 
 	}
 
