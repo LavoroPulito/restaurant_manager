@@ -160,6 +160,13 @@ public class ChefFrame extends JFrame {
 
 		JButton add_new_dish = new JButton("Add new dish");
 		buttonPanel.add(add_new_dish);
+		add_new_dish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				list.clearSelection();
+				initInput();
+				inCreation = true;
+			}
+		});
 
 		JButton mainMenu = new JButton("Back to main menù");
 		buttonPanel.add(mainMenu);
@@ -167,13 +174,7 @@ public class ChefFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		add_new_dish.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				inCreation = true;
-				list.clearSelection();
-				initInput();
-			}
-		});
+
 
 		controlPanel.add(textArea);
 
