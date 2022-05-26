@@ -92,8 +92,13 @@ public class OrderManager {
             register =new HashMap<Integer, ArrayList<Order>>();
         }
         else{
+<<<<<<< HEAD
             
             register = gson.fromJson(string, OrderManager.class).getRegister();
+=======
+            //System.out.print(string);
+        register = gson.fromJson(string, OrderManager.class).getRegister();
+>>>>>>> 4cb798620c1d68bfc9a9407975eb64f1c6d012da
         }
     }
 
