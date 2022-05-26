@@ -3,32 +3,32 @@ import com.google.gson.Gson;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 /*
 Questa classe si occupa della gestione degli ordini
 inserisce un ArrayList
  */
 public class OrderManager {
-    
+
     private HashMap<Integer, ArrayList<Order>> register;    //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
 
-    public  OrderManager(){
-        register =  new HashMap<Integer, ArrayList<Order>>();
+    public OrderManager() {
+        register = new HashMap<Integer, ArrayList<Order>>();
     }
-    
-    public void add(ArrayList<Order> orders){ //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
-        int tav=orders.get(0).getTable();
+
+    public void add(ArrayList<Order> orders) { //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
+        int tav = orders.get(0).getTable();
         if (register.containsKey(tav)) {
             register.get(tav).addAll(orders);
-        } else 
-        {
+        } else {
 
             register.put(tav, orders);
-            
+
         }
     }
 
-    public ArrayList<Integer> getTableList(){
-        if (register==null){
+    public ArrayList<Integer> getTableList() {
+        if (register == null) {
             return null;
         }
         return new ArrayList<Integer>(register.keySet());
@@ -42,22 +42,22 @@ public class OrderManager {
         this.register = register;
     }
 
-    public String toString(){
+    public String toString() {
         return this.toJson();
     }
 
-    public String toJson() { 
+    public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this, OrderManager.class);
     }
 
-    public void cleanTable(int table){
-        if( register.containsKey(table)){
+    public void cleanTable(int table) {
+        if (register.containsKey(table)) {
             register.remove(table);
         }
     }
 
-    public void save(){
+    public void save() {
         try {
             File f = new File("orders.json");
             FileWriter w = new FileWriter(f);
@@ -70,35 +70,30 @@ public class OrderManager {
         }
     }
 
-    public void load(){
-        String string="";
-        String sCurrentLine="";
+    public void load() {
+        String string = "";
+        String sCurrentLine = "";
         try {
             File f = new File("orders.json");
             FileReader r = new FileReader(f);
             BufferedReader br = new BufferedReader(r);
-            while ((sCurrentLine = br.readLine()) != null)
-            {
-            string+=sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                string += sCurrentLine;
             }
             br.close();
-        }
-        catch(Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            string = "";
         }
 
-        Gson gson= new Gson();
-        if (string==""){
-            register =new HashMap<Integer, ArrayList<Order>>();
-        }
-        else{
-<<<<<<< HEAD
-            
+
+        if (string == "") {
+            register = new HashMap<Integer, ArrayList<Order>>();
+        } else {
+
+            Gson gson = new Gson();
             register = gson.fromJson(string, OrderManager.class).getRegister();
-=======
-            //System.out.print(string);
-        register = gson.fromJson(string, OrderManager.class).getRegister();
->>>>>>> 4cb798620c1d68bfc9a9407975eb64f1c6d012da
+
+
         }
     }
 

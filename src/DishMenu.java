@@ -8,7 +8,7 @@ public class DishMenu {
     private HashMap<String, ArrayList<Dish>> menu;
 
     public DishMenu() {
-        menu =  new HashMap<String, ArrayList<Dish>>();
+        menu = new HashMap<String, ArrayList<Dish>>();
 
     }
 
@@ -16,12 +16,12 @@ public class DishMenu {
         return menu;
     }
 
-    public void add(Dish dish){
+    public void add(Dish dish) {
         String key = dish.getCategory();
         if (menu.containsKey(key)) { //se la categoria esiste già aggiunge il dish alla lista
             menu.get(key).add(dish);
         } else { // altrimenti crea una nuova lista con dentro il dish e la inserisce nella nuova categoria
-            ArrayList <Dish> lis= new ArrayList<>();
+            ArrayList<Dish> lis = new ArrayList<>();
             lis.add(dish);
             menu.put(key, lis);
         }
@@ -29,28 +29,28 @@ public class DishMenu {
 
     public boolean removeDish(Dish e) {
         boolean t = menu.get(e.getCategory()).remove(e);
-        if (menu.get(e.getCategory()).isEmpty()){
+        if (menu.get(e.getCategory()).isEmpty()) {
             menu.remove(e.getCategory());// DA TESTARE
         }
         return t;
     }
 
     public Dish getDish(String name, String category) {
-        for (Dish e:
+        for (Dish e :
                 menu.get(category)) {
-            if (name.equals(e.getName())){
+            if (name.equals(e.getName())) {
                 return e;
             }
-            }
-    return null;
+        }
+        return null;
     }
 
     public Dish getDish(String name) {
-        for (String key:
+        for (String key :
                 menu.keySet()) {
-            for (Dish e:
+            for (Dish e :
                     menu.get(key)) {
-                if (name.equals(e.getName())){
+                if (name.equals(e.getName())) {
                     return e;
                 }
             }
@@ -59,9 +59,9 @@ public class DishMenu {
     }
 
     public ArrayList<Dish> toArrayList() {
-        ArrayList <Dish> total = new ArrayList<>();
-        for (String key:
-        menu.keySet()) {
+        ArrayList<Dish> total = new ArrayList<>();
+        for (String key :
+                menu.keySet()) {
             total.addAll(menu.get(key));
         }
         return total;
@@ -72,7 +72,7 @@ public class DishMenu {
         return gson.toJson(this, DishMenu.class);
     }
 
-    public void save(){
+    public void save() {
 
         String jsonMenu = this.toJson();
 
@@ -88,25 +88,27 @@ public class DishMenu {
         }
     }
 
-    public void load(){
-        String string="";
-        String sCurrentLine="";
+    public void load() {
+        String string = "";
+        String sCurrentLine = "";
         try {
             File f = new File("menu.json");
             FileReader r = new FileReader(f);
             BufferedReader br = new BufferedReader(r);
-            while ((sCurrentLine = br.readLine()) != null)
-            {
-            string+=sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) {
+                string += sCurrentLine;
             }
             br.close();
+        } catch (Exception e) {
+            string = "";
         }
-        catch(Exception e){
-            e.printStackTrace();
+        if (string == "") {
+            menu = new HashMap<String, ArrayList<Dish>>();
+        } else {
+            Gson gson = new Gson();
+            menu = gson.fromJson(string, DishMenu.class).getMenu();
         }
-
-        Gson gson= new Gson();
-        menu = gson.fromJson(string, DishMenu.class).getMenu();
     }
+
 
 }
