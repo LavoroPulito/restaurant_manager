@@ -4,12 +4,6 @@ public class Main {
 		System.out.print("Ciao");
 		MainMenu m= new MainMenu();
 		m.setVisible(true);
-		/*
-		Scontrino scontrino = new Scontrino();
 
-		scontrino.preConto(1);
-		scontrino.getScontrino(60);
-
-		 */
 	}
 }

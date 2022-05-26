@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.time.LocalDate;
@@ -7,156 +8,114 @@ import java.time.format.DateTimeFormatter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-public class Scontrino
 
-{
+public class Scontrino {
     OrderManager ordermanager = new OrderManager();
     int numerotavolo;
-    
-    
-    
+    private String titolo;
+
 
     private HashMap<Integer, ArrayList<Order>> register;
 
     //Data
     LocalDate data = LocalDate.now();
-    DateTimeFormatter x = DateTimeFormatter.ofPattern("dd MMMM yyyy, ");
+    DateTimeFormatter x = DateTimeFormatter.ofPattern("dd_MMMM_yyyy");
     // data.format(x);
 
     //Ora
     LocalTime ora = LocalTime.now();
-    DateTimeFormatter y = DateTimeFormatter.ofPattern("hh:mm");
+    DateTimeFormatter y = DateTimeFormatter.ofPattern("kk:mm");
     // ora.format(y);
 
 
-
-    public Scontrino()
-    {
+    public Scontrino() {
 
     }
 
-    public String getScontrino(double soldi)
-    {
+    public String getScontrino(double soldi) {
         String scontrino = "";
         int resto = 0;
 
-        if (register.containsKey(numerotavolo))
-        {
+        if (register.containsKey(numerotavolo)) {
             double costo = 0;
-            scontrino += "Scontrino tavolo "+ numerotavolo + "\n"+ 
-                            "giorno " + data.format(x) + " " + "ora" +" " + ora.format(y)+ "\n" ;
-            scontrino+= "---------------------------------------------\n";
+            scontrino += "Scontrino tavolo " + numerotavolo + "\n" +
+                    "giorno " + data.format(x) + " " + "ora" + " " + ora.format(y) + "\n";
+            scontrino += "---------------------------------------------\n";
 
 
-
-            for (Order ordine : register.get(numerotavolo))
-            {
+            for (Order ordine : register.get(numerotavolo)) {
                 scontrino += ordine.getDishName() + "\t " + ordine.getDishPrice() + "€ \n";
 
-                costo +=ordine.getDishPrice();
+                costo += ordine.getDishPrice();
 
             }
-            scontrino+= "---------------------------------------------\n";
-            scontrino += "totale complessivo: \t " + costo + "€"+ "\n" + "di cui iva \t" + costo/10 + "€"+ "\n";
-            scontrino += "totale pagato; \t " + soldi+ "€" + "\n";
-            if (soldi > costo)
-            {
+            scontrino += "---------------------------------------------\n";
+            scontrino += "totale complessivo: \t " + costo + "€" + "\n" + "di cui iva \t" + costo / 10 + "€" + "\n";
+            scontrino += "totale pagato; \t " + soldi + "€" + "\n";
+            if (soldi > costo) {
                 resto += soldi - costo;
             }
             scontrino += "resto: \t" + resto + "€";
         }
-        
+
         //creazione File
-        String titolo = "Scontrino Tav "+numerotavolo+", "+data.format(x)+ ","+ora.format(y);
+        titolo = "receiptTab" + numerotavolo + "_" + data.format(x) + "_" + ora.format(y);
         String path = "Scontrini";
         File Dir = new File(path);
 
-        if (Dir.exists())
-        {
-            try{
-                FileWriter writer = new FileWriter(path + "//"+" titolo"+".txt");
-                writer.write(scontrino);
-                writer.close();
-            } catch(IOException e ){
-                e.printStackTrace();
-            }
-        }
-        else 
-        {           
+        if (!Dir.exists()) {
             Dir.mkdir();
-            try{
-                FileWriter writer = new FileWriter(path + "//"+" titolo"+".txt");
-                writer.write(scontrino);
-                writer.close();
-            } catch(IOException e ){
-                e.printStackTrace();
-            }
-
-        }        
-        
-
-        
+        }
+        try {
+            FileWriter writer = new FileWriter(path + "//" + titolo+ ".txt");
+            writer.write(scontrino);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         System.out.println(scontrino);
         return scontrino;
 
     }
 
-    
 
-
-    public String preConto(int numerotavolo)
-
-      {
+    public String preConto(int numerotavolo) {
         this.numerotavolo = numerotavolo;
 
         ordermanager.load();
 
-          register=ordermanager.getRegister();
+        register = ordermanager.getRegister();
 
-          
-          
-           String preconto = "";
-          
-        if (register.containsKey(numerotavolo))
-        {
+
+        String preconto = "";
+
+        if (register.containsKey(numerotavolo)) {
             double costo = 0;
-            preconto += "Importo da pagare del tavolo "+ numerotavolo + "\n"+ 
-                            "giorno " + data.format(x) + " " + "ora" +" " + ora.format(y)+ "\n" ;
-            preconto+= "---------------------------------------------\n";
+            preconto += "Importo da pagare del tavolo " + numerotavolo + "\n" +
+                    "giorno " + data.format(x) + " " + "ora" + " " + ora.format(y) + "\n";
+            preconto += "---------------------------------------------\n";
 
 
-
-            for (Order ordine : register.get(numerotavolo))
-            {
+            for (Order ordine : register.get(numerotavolo)) {
 
                 preconto += ordine.getDishName() + "\t " + ordine.getDishPrice() + "€ \n";
 
-                costo +=ordine.getDishPrice();
+                costo += ordine.getDishPrice();
 
                 preconto += "";
             }
-            preconto+= "---------------------------------------------\n";
-            preconto += "totale da pagare: \t" + costo + "€" ;
-        }
-        else
-        {
+            preconto += "---------------------------------------------\n";
+            preconto += "totale da pagare: \t" + costo + "€";
+        } else {
 
         }
         System.out.println(preconto);
         return preconto;
-        }
-
-    //add(ArrayList<Order> orders); SE VA IN ERRORE VA COMMENTATO dio porco
+    }
 
 
 }
 
 
 
-
-/*
-prendo dalla lista con un for, prendo il nome dello piatto, e prendo il costo
-a capo,
-
-*/
