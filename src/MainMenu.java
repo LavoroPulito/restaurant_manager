@@ -1,12 +1,18 @@
-import javax.swing.JFrame;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.LayoutStyle;
+import javax.swing.WindowConstants;
 
 @SuppressWarnings("serial")
-public class MainMenu extends JFrame implements ActionListener{
-
+public class MainMenu extends JFrame implements ActionListener {
 
 	private JButton btnWaiter;
 	private JButton btnChef;
@@ -16,11 +22,9 @@ public class MainMenu extends JFrame implements ActionListener{
 	private JPanel jPanel1;
 	private JSeparator jSeparator2;
 
-
 	public MainMenu() {
 		initComponents();
 	}
-
 
 	private void initComponents() {
 
@@ -45,17 +49,16 @@ public class MainMenu extends JFrame implements ActionListener{
 		btnWaiter.setForeground(new java.awt.Color(0, 0, 153));
 		btnWaiter.setText("Cameriere");
 		btnWaiter.setToolTipText("Clicca qui per prendere gli ordini e controllare lo stato");
-		btnWaiter.addActionListener(this); 
+		btnWaiter.addActionListener(this);
 
 		btnChef.setBackground(new java.awt.Color(0, 0, 0));
 		btnChef.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-		btnChef.setForeground(new java.awt.Color(255, 255, 255));
+		btnChef.setForeground(Color.BLUE);
 		btnChef.setText("Chef");
 		btnChef.setToolTipText("Clicca qui per creare e modificare il Menu");
 		btnChef.setMargin(new java.awt.Insets(2, 12, 2, 14));
 		btnChef.setName("btnChef"); // NOI18N
 		btnChef.addActionListener(this);
-
 
 		btnCuoco.setBackground(new java.awt.Color(255, 255, 255));
 		btnCuoco.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
@@ -64,9 +67,8 @@ public class MainMenu extends JFrame implements ActionListener{
 		btnCuoco.setToolTipText("Clicca qui per controllare gli ordini da preparare");
 		btnCuoco.addActionListener(this);
 
-		btnCash.setBackground(new Color(0, 0, 153));
 		btnCash.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-		btnCash.setForeground(new java.awt.Color(255, 255, 255));
+		btnCash.setForeground(new java.awt.Color(0, 0, 153));
 		btnCash.setText("Cassa");
 		btnCash.setToolTipText("Clicca qui per generare gli scontrini");
 		btnCash.setMargin(new java.awt.Insets(2, 12, 2, 14));
@@ -74,33 +76,31 @@ public class MainMenu extends JFrame implements ActionListener{
 
 		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(
-				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel1Layout.createSequentialGroup()
-						.addContainerGap()
-						.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-								.addGroup(jPanel1Layout.createSequentialGroup()
-										.addComponent(jSeparator2)
-										.addContainerGap())
-								.addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-										.addGap(0, 126, Short.MAX_VALUE)
-										.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-												.addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-														.addComponent(jLabel2)
-														.addGap(126, 126, 126))
-												.addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-														.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-																.addComponent(btnChef, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-																.addComponent(btnCuoco, GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-																.addComponent(btnWaiter, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-																.addComponent(btnCash, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-														.addGap(117, 117, 117))))))
-				);
-		jPanel1Layout.setVerticalGroup(
-				jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel1Layout.createSequentialGroup()
-						.addGap(6, 6, 6)
-						.addComponent(jLabel2)
+		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addGroup(jPanel1Layout
+						.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addGroup(jPanel1Layout.createSequentialGroup().addComponent(jSeparator2).addContainerGap())
+						.addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+								.addGap(0, 126, Short.MAX_VALUE)
+								.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+										.addGroup(GroupLayout.Alignment.TRAILING,
+												jPanel1Layout.createSequentialGroup().addComponent(jLabel2).addGap(126,
+														126, 126))
+										.addGroup(GroupLayout.Alignment.TRAILING,
+												jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
+														.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+														.addComponent(btnChef, GroupLayout.DEFAULT_SIZE,
+																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+														.addComponent(btnCuoco, GroupLayout.DEFAULT_SIZE, 197,
+																Short.MAX_VALUE)
+														.addComponent(btnWaiter, GroupLayout.Alignment.LEADING,
+																GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
+																Short.MAX_VALUE)
+														.addComponent(btnCash, GroupLayout.DEFAULT_SIZE,
+																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+														.addGap(117, 117, 117)))))));
+		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addGroup(jPanel1Layout.createSequentialGroup().addGap(6, 6, 6).addComponent(jLabel2)
 						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
 						.addComponent(jSeparator2, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
 						.addGap(18, 18, 18)
@@ -111,8 +111,7 @@ public class MainMenu extends JFrame implements ActionListener{
 						.addComponent(btnCuoco, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
 						.addGap(18, 18, 18)
 						.addComponent(btnCash, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(53, Short.MAX_VALUE))
-				);
+						.addContainerGap(53, Short.MAX_VALUE)));
 
 		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 		jPanel1.getAccessibleContext().setAccessibleName("");
@@ -123,26 +122,25 @@ public class MainMenu extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if(e.getSource().equals(btnWaiter)) {
-			WaiterFrame a=new WaiterFrame();
+		if (e.getSource().equals(btnWaiter)) {
+			WaiterFrame a = new WaiterFrame();
 			a.setVisible(true);
 		}
 
-		if(e.getSource().equals(btnChef)) {
+		if (e.getSource().equals(btnChef)) {
 
-				ChefFrame a =new ChefFrame();
-				a.setVisible(true);
-				a.pack();
-		}
-		
-
-		if(e.getSource().equals(btnCuoco)) {
-
-				CookFrame a =new CookFrame();
-				a.setVisible(true);
+			ChefFrame a = new ChefFrame();
+			a.setVisible(true);
+			a.pack();
 		}
 
-		if(e.getSource().equals(btnCash)) {
+		if (e.getSource().equals(btnCuoco)) {
+
+			CookFrame a = new CookFrame();
+			a.setVisible(true);
+		}
+
+		if (e.getSource().equals(btnCash)) {
 			CashFrame a = new CashFrame();
 			a.setVisible(true);
 
@@ -150,5 +148,3 @@ public class MainMenu extends JFrame implements ActionListener{
 
 	}
 }
-
-
