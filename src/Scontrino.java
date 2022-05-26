@@ -1,10 +1,12 @@
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 public class Scontrino
 
 {
@@ -63,6 +65,33 @@ public class Scontrino
             }
             scontrino += "resto: \t" + resto + "€";
         }
+        
+        //creazione File
+        String titolo = "Scontrino Tav "+numerotavolo+", "+data.format(x)+ ","+ora.format(y);
+        String path = "Scontrini";
+        File Dir = new File(path);
+
+        if (Dir.exists())
+        {
+            try{
+                FileWriter writer = new FileWriter(path + "//"+" titolo"+".txt");
+                writer.write(scontrino);
+            } catch(IOException e ){
+                e.printStackTrace();
+            }
+        }
+        else 
+        {
+            
+            Dir.mkdir();
+            try{
+                FileWriter writer = new FileWriter(path + "//"+" titolo"+".txt");
+                writer.write(scontrino);
+            } catch(IOException e ){
+                e.printStackTrace();
+            }
+
+        }        
         
 
         
