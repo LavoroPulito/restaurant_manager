@@ -21,7 +21,7 @@
   - [ ] main menu `Nicco`
   - [ ] cassa `Nicco`
   - [ ] chef `Armando`
-  - [ ] cuoco  `Fradap`
+  - [X] cuoco  `Fradap`
   - [ ] cameriere:
     - [ ] Panel: menu a lista di bottoni `Fradap` 
     - [ ] Panel: anteprima ordini `Armando`
