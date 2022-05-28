@@ -12,6 +12,7 @@ import java.io.IOException;
 public class Scontrino {
     OrderManager ordermanager = new OrderManager();
     int numerotavolo;
+    int spaceint = 35;
     private String titolo;
 
 
@@ -94,18 +95,33 @@ public class Scontrino {
             double costo = 0;
             preconto += "Importo da pagare del tavolo " + numerotavolo + "\n" +
                     "giorno " + data.format(x) + " " + "ora" + " " + ora.format(y) + "\n";
+            preconto += "\nOrdini"+"                              "+"Iva\t\t Prezzo\n";
+             
             preconto += "---------------------------------------------\n";
 
 
             for (Order ordine : register.get(numerotavolo)) {
 
-                preconto += ordine.getDishName() + "\t " + ordine.getDishPrice() + "€ \n";
+                String layout = "";
+                String space = "";
+                layout += ordine.getDishName(); 
+                int difference = spaceint - layout.length();
+                for (int o = 0;o <=difference; o++ )
+                {
+                    space+= " ";
+                }
+
+                preconto += ordine.getDishName() + space +(ordine.getDishPrice())/10+"€\t "+ ordine.getDishPrice() + "€ \n";
 
                 costo += ordine.getDishPrice();
 
                 preconto += "";
+                layout ="";
+                space = "";
+
+
             }
-            preconto += "---------------------------------------------\n";
+            preconto += "-------------------------------------------------------\n";
             preconto += "totale da pagare: \t" + costo + "€";
         } else {
 
