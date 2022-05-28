@@ -1,0 +1,14 @@
+Scontrino tavolo 1
+giorno 28_maggio_2022 ora 12:59
+
+Ordini                              Iva		 Prezzo
+---------------------------------------------
+pasta con tonno                     0.8€	 8.0€ 
+pasta al pesto                      1.0€	 10.0€ 
+sorbetto al limone                  0.9€	 9.0€ 
+calamari                            2.34€	 23.4€ 
+-------------------------------------------------------
+totale complessivo: 	 50.4€
+di cui iva 	5.04€
+totale pagato; 	 100.0€
+resto: 	49€
