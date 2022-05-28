@@ -5,18 +5,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /*
-Questa classe si occupa della gestione degli ordini
-inserisce un ArrayList
+
+This class deals with order management
+Inserts an ArrayList
  */
 public class OrderManager {
 
-    private HashMap<Integer, ArrayList<Order>> register;    //tavolo:[ordini del tavolo], tavolo1:[ordini del tavolo1]
+    private HashMap<Integer, ArrayList<Order>> register;    //table:[table's orders], table1:[table1's orders]
 
     public OrderManager() {
         register = new HashMap<Integer, ArrayList<Order>>();
     }
 
-    public void add(ArrayList<Order> orders) { //se è una nuova ordinazione le ordinazioni vengono inserite sennò concatenate
+    public void add(ArrayList<Order> orders) {  //if it is a new order, the orders are inserted otherwise concatenated 
         int tav = orders.get(0).getTable();
         if (register.containsKey(tav)) {
             register.get(tav).addAll(orders);

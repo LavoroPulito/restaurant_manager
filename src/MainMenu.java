@@ -47,15 +47,15 @@ public class MainMenu extends JFrame implements ActionListener {
 		btnWaiter.setBackground(new java.awt.Color(255, 255, 255));
 		btnWaiter.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 		btnWaiter.setForeground(new java.awt.Color(0, 0, 153));
-		btnWaiter.setText("Cameriere");
-		btnWaiter.setToolTipText("Clicca qui per prendere gli ordini e controllare lo stato");
+		btnWaiter.setText("Waiter");
+		btnWaiter.setToolTipText("Click here for take orders and check orders state");
 		btnWaiter.addActionListener(this);
 
 		btnChef.setBackground(new java.awt.Color(0, 0, 0));
 		btnChef.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
 		btnChef.setForeground(Color.BLUE);
 		btnChef.setText("Chef");
-		btnChef.setToolTipText("Clicca qui per creare e modificare il Menu");
+		btnChef.setToolTipText("Click here for create and modify the Menu");
 		btnChef.setMargin(new java.awt.Insets(2, 12, 2, 14));
 		btnChef.setName("btnChef"); // NOI18N
 		btnChef.addActionListener(this);
@@ -63,14 +63,14 @@ public class MainMenu extends JFrame implements ActionListener {
 		btnCuoco.setBackground(new java.awt.Color(255, 255, 255));
 		btnCuoco.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 		btnCuoco.setForeground(new java.awt.Color(0, 0, 153));
-		btnCuoco.setText("Cuoco");
-		btnCuoco.setToolTipText("Clicca qui per controllare gli ordini da preparare");
+		btnCuoco.setText("Cook");
+		btnCuoco.setToolTipText("Click here for check orders to prepare");
 		btnCuoco.addActionListener(this);
 
 		btnCash.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
 		btnCash.setForeground(new java.awt.Color(0, 0, 153));
 		btnCash.setText("Cassa");
-		btnCash.setToolTipText("Clicca qui per generare gli scontrini");
+		btnCash.setToolTipText("Click here for generate receipts");
 		btnCash.setMargin(new java.awt.Insets(2, 12, 2, 14));
 		btnCash.addActionListener(this);
 

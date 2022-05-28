@@ -18,9 +18,9 @@ public class DishMenu {
 
     public void add(Dish dish) {
         String key = dish.getCategory();
-        if (menu.containsKey(key)) { //se la categoria esiste già aggiunge il dish alla lista
+        if (menu.containsKey(key)) {    
             menu.get(key).add(dish);
-        } else { // altrimenti crea una nuova lista con dentro il dish e la inserisce nella nuova categoria
+        } else { 
             ArrayList<Dish> lis = new ArrayList<>();
             lis.add(dish);
             menu.put(key, lis);

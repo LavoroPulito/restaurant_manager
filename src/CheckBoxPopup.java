@@ -2,18 +2,14 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.Border;
 
 public class CheckBoxPopup extends JFrame implements ActionListener {
   ArrayList<JCheckBox> cb;
   ArrayList<Integer> indexes;
   int table;
+  JButton confirm;
 
   public CheckBoxPopup(int table){
       cb=new ArrayList<JCheckBox>();
@@ -23,11 +19,11 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
     }
 
   public void initComponents(){
-    setTitle("Ordinazioni tavolo "+table);
+    setTitle("Orders table "+table);
     
 
-    JPanel panel = new JPanel(new GridLayout(0, 1));
-    Border border = BorderFactory.createTitledBorder("Pizza Toppings");
+    JPanel panel = new JPanel(new GridLayout(0, 2));
+    Border border = BorderFactory.createTitledBorder("Cook Pippo Pizza");
     panel.setBorder(border);
 
     OrderManager om = new OrderManager();
@@ -36,20 +32,30 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
 
 
     for(int i=0; i<orders.size();i++){
-      //System.out.println(o.getState().length());
-        if(orders.get(i).getState().equals("in preparazione")){
+        if(orders.get(i).getState().equals("preparation")){
           JCheckBox temp = new JCheckBox(orders.get(i).getDishName());
           cb.add(temp);
           indexes.add(i);
           panel.add(temp);
+
+          JButton notes = new JButton("View Notes");
+          notes.addActionListener(this);
+          notes.setName(orders.get(i).getNote());
+          
+          if(orders.get(i).getNote().equals("")){
+            notes.setVisible(false);
+          }
+
+          panel.add(notes);
         }
     }
 
-    JButton button = new JButton("Conferma");
-    button.addActionListener(this);
+    confirm = new JButton("Confirm");
+    confirm.addActionListener(this);
+    confirm.setName("confirm");
     Container contentPane = this.getContentPane();
     contentPane.add(panel, BorderLayout.CENTER);
-    contentPane.add(button, BorderLayout.SOUTH);
+    contentPane.add(confirm, BorderLayout.SOUTH);
     this.setSize(300, 200);
     this.setVisible(true);
 
@@ -58,17 +64,26 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
   @Override
   public void actionPerformed(ActionEvent e) {
     
-    if (e.getSource().getClass().getName() =="javax.swing.JButton" ){
-      OrderManager om = new OrderManager();
-      om.load();
-      for (int i=0; i<cb.size();i++){
-        if(cb.get(i).isSelected()){
-          changeState(indexes.get(i), table, om);
+    if(e.getSource().equals(confirm)) {
+        OrderManager om = new OrderManager();
+        om.load();
+        for (int i=0; i<cb.size();i++){
+          if(cb.get(i).isSelected()){
+            changeState(indexes.get(i), table, om);
+          }
         }
+        this.dispose();
       }
-      this.dispose();
+      else{
+        JButton a=(JButton)e.getSource();
+        JFrame noteFrame = new JFrame("Notes");
+        noteFrame.add(new JTextArea(a.getName()));
+        noteFrame.setVisible(true);
+        noteFrame.setSize(300, 200);
+        //noteFrame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+      }
     }
-  }
+  
 
   public void changeState(int indexOrder, int table, OrderManager om){
 
