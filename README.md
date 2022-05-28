@@ -6,7 +6,7 @@
 - [x] su `scontrino` creare titolo adatto per i file scontrini (il file ha sempre lo stesso titolo quindi si sovrascrivono)
 - [ ] su `chefFrame` va aggiunto un segnale per capire che sto aggiungendo un nuovo piatto
 - [ ] su `chefFrame` va sistemato l'ancoraggio di contol tipsPanel in controlPanel perche si 
-      deforma quando viene cambianta la size della finestra 
+      deforma quando viene cambiata la size della finestra 
 - [ ] tutto il codice deve essere in inglese
 ###lista eccezioni da condsiderare
 - [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` 
@@ -22,10 +22,12 @@
   - [ ] cassa `Nicco`
   - [ ] chef `Armando`
   - [X] cuoco  `Fradap`
+    - [ ] Aggiustamento grafica 
   - [ ] cameriere:
     - [ ] Panel: menu a lista di bottoni `Fradap` 
     - [ ] Panel: anteprima ordini `Armando`
     - [ ] Panel: bottoni(caricamento/uscita) `Armando`
     - [ ] Panel: ordini da consegnare `Fradap` 
+    
 
 
