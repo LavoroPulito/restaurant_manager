@@ -9,9 +9,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Scontrino {
+public class Bill {
     OrderManager ordermanager = new OrderManager();
-    int numerotavolo;
+    int tableInt;
     int spaceint = 35;
     int iva = 10;
     //iva del 10% nei ristoranti 
@@ -25,59 +25,59 @@ public class Scontrino {
     DateTimeFormatter x = DateTimeFormatter.ofPattern("dd_MMMM_yyyy");
     // data.format(x);
 
-    //Ora
-    LocalTime ora = LocalTime.now();
+    //hour
+    LocalTime hour = LocalTime.now();
     DateTimeFormatter y = DateTimeFormatter.ofPattern("kk:mm");
-    // ora.format(y);
+    // hour.format(y);
 
 
-    public Scontrino() {
+    public Bill() {
 
     }
 
-    public String getScontrino(double soldi) {
-        String scontrino = "";
-        int resto = 0;
+    public String getBill(double money) {
+        String bill = "";
+        int change = 0;
 
-        if (register.containsKey(numerotavolo)) {
+        if (register.containsKey(tableInt)) {
             double costo = 0;
-            scontrino += "Scontrino tavolo " + numerotavolo + "\n" +
-                    "giorno " + data.format(x) + " " + "ora" + " " + ora.format(y) + "\n";
+            bill += "scontrino tavolo " + tableInt + "\n" +
+                    "giorno " + data.format(x) + " " + "ora" + " " + hour.format(y) + "\n";
 
-            scontrino += "\nOrdini"+"                              "+"Iva\t\t Prezzo\n";
+            bill += "\nOrdini"+"                              "+"Iva\t\t Prezzo\n";
 
-            scontrino += "---------------------------------------------\n";
+            bill += "---------------------------------------------\n";
 
 
-            for (Order ordine : register.get(numerotavolo)) {
+            for (Order order : register.get(tableInt)) {
 
                 String layout = "";
                 String space = "";
-                layout += ordine.getDishName(); 
+                layout += order.getDishName(); 
                 int difference = spaceint - layout.length();
                 for (int o = 0;o <=difference; o++ )
                 {
                     space+= " ";
                 }
-                scontrino += ordine.getDishName() + space +(ordine.getDishPrice())/10+"€\t "+ ordine.getDishPrice() + "€ \n";
-                costo += ordine.getDishPrice();
+                bill += order.getDishName() + space +(order.getDishPrice())/10+"€\t "+ order.getDishPrice() + "€ \n";
+                costo += order.getDishPrice();
 
 
-                scontrino += "";
+                bill += "";
                 layout ="";
                 space = "";
             }
-            scontrino += "-------------------------------------------------------\n";
-            scontrino += "totale complessivo: \t " + costo + "€" + "\n" + "di cui iva \t" + costo / iva + "€" + "\n";
-            scontrino += "totale pagato; \t " + soldi + "€" + "\n";
-            if (soldi > costo) {
-                resto += soldi - costo;
+            bill += "-------------------------------------------------------\n";
+            bill += "totale complessivo: \t " + costo + "€" + "\n" + "di cui iva \t" + costo / iva + "€" + "\n";
+            bill += "totale pagato; \t " + money + "€" + "\n";
+            if (money > costo) {
+                change += money - costo;
             }
-            scontrino += "resto: \t" + resto + "€";
+            bill += "change: \t" + change + "€";
         }
 
         //creazione File
-        titolo = "receiptTab" + numerotavolo + "_" + data.format(x) + "_" + ora.format(y);
+        titolo = "receiptTab" + tableInt + "_" + data.format(x) + "_" + hour.format(y);
         String path = "Scontrini";
         File Dir = new File(path);
 
@@ -86,20 +86,20 @@ public class Scontrino {
         }
         try {
             FileWriter writer = new FileWriter(path + "//" + titolo+ ".txt");
-            writer.write(scontrino);
+            writer.write(bill);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        System.out.println(scontrino);
-        return scontrino;
+        System.out.println(bill);
+        return bill;
 
     }
 
 
-    public String preConto(int numerotavolo) {
-        this.numerotavolo = numerotavolo;
+    public String preConto(int tableInt) {
+        this.tableInt = tableInt;
 
         ordermanager.load();
 
@@ -108,27 +108,27 @@ public class Scontrino {
 
         String preconto = "";
 
-        if (register.containsKey(numerotavolo)) {
+        if (register.containsKey(tableInt)) {
             double costo = 0;
-            preconto += "Importo da pagare del tavolo " + numerotavolo + "\n" +
-                    "giorno " + data.format(x) + " " + "ora" + " " + ora.format(y) + "\n";
+            preconto += "Importo da pagare del tavolo " + tableInt + "\n" +
+                    "giorno " + data.format(x) + " " + "ora" + " " + hour.format(y) + "\n";
             preconto += "\nOrdini"+"                              "+"Iva\t\t Prezzo\n";
              
             preconto += "---------------------------------------------\n";
 
 
-            for (Order ordine : register.get(numerotavolo)) {
+            for (Order order : register.get(tableInt)) {
 
                 String layout = "";
                 String space = "";
-                layout += ordine.getDishName(); 
+                layout += order.getDishName(); 
                 int difference = spaceint - layout.length();
                 for (int o = 0;o <=difference; o++ )
                 {
                     space+= " ";
                 }
-                preconto += ordine.getDishName() + space +(ordine.getDishPrice())/10+"€\t "+ ordine.getDishPrice() + "€ \n";
-                costo += ordine.getDishPrice();
+                preconto += order.getDishName() + space +(order.getDishPrice())/10+"€\t "+ order.getDishPrice() + "€ \n";
+                costo += order.getDishPrice();
 
                 preconto += "";
                 layout ="";
