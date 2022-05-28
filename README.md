@@ -1,13 +1,13 @@
 # restaurant_manager
 ##To Do List:
 - [ ] tenere aggiornata la uml
-- [ ] sistemare la classe `main`
+- [x] sistemare la classe `main`
 - [ ] su `chefFrame` finire tasto menù principale 
 - [x] su `scontrino` creare titolo adatto per i file scontrini (il file ha sempre lo stesso titolo quindi si sovrascrivono)
 - [ ] su `chefFrame` va aggiunto un segnale per capire che sto aggiungendo un nuovo piatto
 - [ ] su `chefFrame` va sistemato l'ancoraggio di contol tipsPanel in controlPanel perche si 
-      deforma quando viene cambianta la size della finestra 
-- [ ] tutto il codice deve essere in inglese
+      deforma quando viene cambiata la size della finestra 
+- [x] tutto il codice deve essere in inglese
 ###lista eccezioni da condsiderare
 - [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` 
 - [x] creazione dei file di testo se non trovati
@@ -21,11 +21,13 @@
   - [ ] main menu `Nicco`
   - [ ] cassa `Nicco`
   - [ ] chef `Armando`
-  - [ ] cuoco  `Fradap`
+  - [X] cuoco  `Fradap`
+    - [ ] Aggiustamento grafica 
   - [ ] cameriere:
     - [ ] Panel: menu a lista di bottoni `Fradap` 
     - [ ] Panel: anteprima ordini `Armando`
     - [ ] Panel: bottoni(caricamento/uscita) `Armando`
     - [ ] Panel: ordini da consegnare `Fradap` 
+    
 
 
