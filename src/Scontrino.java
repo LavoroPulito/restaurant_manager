@@ -13,6 +13,8 @@ public class Scontrino {
     OrderManager ordermanager = new OrderManager();
     int numerotavolo;
     int spaceint = 35;
+    int iva = 10;
+    //iva del 10% nei ristoranti 
     private String titolo;
 
 
@@ -41,17 +43,32 @@ public class Scontrino {
             double costo = 0;
             scontrino += "Scontrino tavolo " + numerotavolo + "\n" +
                     "giorno " + data.format(x) + " " + "ora" + " " + ora.format(y) + "\n";
+
+            scontrino += "\nOrdini"+"                              "+"Iva\t\t Prezzo\n";
+
             scontrino += "---------------------------------------------\n";
 
 
             for (Order ordine : register.get(numerotavolo)) {
-                scontrino += ordine.getDishName() + "\t " + ordine.getDishPrice() + "€ \n";
 
+                String layout = "";
+                String space = "";
+                layout += ordine.getDishName(); 
+                int difference = spaceint - layout.length();
+                for (int o = 0;o <=difference; o++ )
+                {
+                    space+= " ";
+                }
+                scontrino += ordine.getDishName() + space +(ordine.getDishPrice())/10+"€\t "+ ordine.getDishPrice() + "€ \n";
                 costo += ordine.getDishPrice();
 
+
+                scontrino += "";
+                layout ="";
+                space = "";
             }
-            scontrino += "---------------------------------------------\n";
-            scontrino += "totale complessivo: \t " + costo + "€" + "\n" + "di cui iva \t" + costo / 10 + "€" + "\n";
+            scontrino += "-------------------------------------------------------\n";
+            scontrino += "totale complessivo: \t " + costo + "€" + "\n" + "di cui iva \t" + costo / iva + "€" + "\n";
             scontrino += "totale pagato; \t " + soldi + "€" + "\n";
             if (soldi > costo) {
                 resto += soldi - costo;
@@ -110,16 +127,12 @@ public class Scontrino {
                 {
                     space+= " ";
                 }
-
                 preconto += ordine.getDishName() + space +(ordine.getDishPrice())/10+"€\t "+ ordine.getDishPrice() + "€ \n";
-
                 costo += ordine.getDishPrice();
 
                 preconto += "";
                 layout ="";
                 space = "";
-
-
             }
             preconto += "-------------------------------------------------------\n";
             preconto += "totale da pagare: \t" + costo + "€";
