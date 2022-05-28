@@ -20,6 +20,7 @@ public class CashFrame extends JFrame {
 	public CashFrame() {
 		setTitle("cash desk");
 		getContentPane().setLayout(new GridLayout(1, 3, 0, 0));
+		Bill bill = new Bill();
 
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1);
