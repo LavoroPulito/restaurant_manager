@@ -134,7 +134,7 @@ public class Receipt {
                 space = "";
             }
             precount += "-------------------------------------------------------\n";
-            precount += "totale da pagare: \t" + cost + "€";
+            precount += "total to pay: \t" + cost + "€";
         } else {
 
         }
