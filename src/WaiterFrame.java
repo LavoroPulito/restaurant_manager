@@ -38,18 +38,18 @@ public class WaiterFrame extends JFrame {
 		panel_3.add(panel_4);
 
 		txtSelezionaIlTavolo = new JTextField();
-		txtSelezionaIlTavolo.setText("Seleziona il tavolo");
+		txtSelezionaIlTavolo.setText("Select a table");
 		panel_4.add(txtSelezionaIlTavolo);
 		txtSelezionaIlTavolo.setColumns(10);
 
-		JButton btnNewButton = new JButton("inoltra ordini");
+		JButton btnNewButton = new JButton("place orders");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		panel_4.add(btnNewButton);
 
-		JButton btnNewButton_1 = new JButton("Back to main menù");
+		JButton btnNewButton_1 = new JButton("Back to main menu");
 		btnNewButton_1.setBackground(Color.RED);
 		btnNewButton_1.setOpaque(true);
 		btnNewButton_1.addActionListener(new ActionListener() {

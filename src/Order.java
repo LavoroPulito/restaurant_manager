@@ -4,7 +4,7 @@ public class Order {
     private int state;
     private int table;
     private String note;
-    private final String[] states = {"in preparazione","pronto","consegnato"};
+    private final String[] states = {"preparation","ready","delivered"};
     
     public Order(Dish dish, int table, String note){
         this.dishName = dish.getName();

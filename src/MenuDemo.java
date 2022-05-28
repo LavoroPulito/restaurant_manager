@@ -8,12 +8,12 @@ public class MenuDemo {
         /*
         //creo un menù e aggiungo dei piatti
         DishMenu carta = new DishMenu();
-        carta.add(new Dish("pasta con tonno", 8.0, "pasta con tonno","Primo"));
-        carta.add(new Dish("pasta al pesto", 10.0, "pasta con basilico e parmigiano", "Primo"));
+        carta.add(new Dish("pasta con tonno", 8.0, "pasta con tonno","First"));
+        carta.add(new Dish("pasta al pesto", 10.0, "pasta con basilico e parmigiano", "First"));
         carta.add(new Dish("sorbetto al limone", 9.0, "tipo gelato", "Dolce"));
         carta.add(new Dish("calamari", 23.4, "calamari fritti","Secondo"));
         carta.add(new Dish("patate", 13, "patate lesse","Secondo"));
-        carta.add(new Dish("pasta al sugo", 10, "pasta col pomodoro","Primo"));
+        carta.add(new Dish("pasta al sugo", 10, "pasta col pomodoro","First"));
         carta.add(new Dish("tiramisù", 15, "mascarpone e caffè","Dolce"));
 
         //stampo il menù in un dizionario ordinato per portate
@@ -68,13 +68,13 @@ public class MenuDemo {
         carta.load();
         System.out.println(carta.getMenu());
 
-        carta.add(new Dish("pasta con tonno", 8.0, "pasta con tonno","Primo"));
-        carta.add(new Dish("pasta al pesto", 10.0, "pasta con basilico e parmigiano", "Primo"));
-        carta.add(new Dish("sorbetto al limone", 9.0, "tipo gelato", "Dolce"));
-        carta.add(new Dish("calamari", 23.4, "calamari fritti","Secondo"));
-        carta.add(new Dish("patate", 13, "patate lesse","Secondo"));
-        carta.add(new Dish("pasta al sugo", 10, "pasta col pomodoro","Primo"));
-        carta.add(new Dish("tiramisù", 15, "mascarpone e caffè","Dolce"));
+        carta.add(new Dish("pasta con tonno", 8.0, "pasta con tonno","First"));
+        carta.add(new Dish("pasta al pesto", 10.0, "pasta con basilico e parmigiano", "First"));
+        carta.add(new Dish("sorbetto al limone", 9.0, "tipo gelato", "Dessert"));
+        carta.add(new Dish("calamari", 23.4, "calamari fritti","Second"));
+        carta.add(new Dish("patate", 13, "patate lesse","Second"));
+        carta.add(new Dish("pasta al sugo", 10, "pasta col pomodoro","First"));
+        carta.add(new Dish("tiramisù", 15, "mascarpone e caffè","Dessert"));
 
         System.out.println(carta.getMenu());
         carta.save();

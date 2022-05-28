@@ -65,7 +65,6 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
   public void actionPerformed(ActionEvent e) {
     
     if(e.getSource().equals(confirm)) {
-      JButton a=(JButton) e.getSource();
         OrderManager om = new OrderManager();
         om.load();
         for (int i=0; i<cb.size();i++){

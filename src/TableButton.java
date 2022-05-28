@@ -6,7 +6,7 @@ public class TableButton extends JButton {
 	
 	public TableButton (int table) {
 		this.table=table;
-		super.setText("Tavolo "+table);
+		super.setText("Table "+table);
 		super.setFont(new java.awt.Font("Verdana", 1, 10));
 		super.setForeground(new java.awt.Color(255, 255, 255));
 
