@@ -1,4 +1,3 @@
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,17 +11,20 @@ import java.io.IOException;
 public class Receipt {
     OrderManager ordermanager = new OrderManager();
     int tablenumber;
+    int spaceint = 35;
+    int iva = 10;
+    //iva del 10% 
     private String title;
 
 
     private HashMap<Integer, ArrayList<Order>> register;
 
-    //date
-    LocalDate date = LocalDate.now();
+    //Data
+    LocalDate data = LocalDate.now();
     DateTimeFormatter x = DateTimeFormatter.ofPattern("dd_MMMM_yyyy");
-    // date.format(x);
+    // data.format(x);
 
-    //time
+    //Ora
     LocalTime time = LocalTime.now();
     DateTimeFormatter y = DateTimeFormatter.ofPattern("kk:mm");
     // time.format(y);
@@ -38,19 +40,34 @@ public class Receipt {
 
         if (register.containsKey(tablenumber)) {
             double cost = 0;
-            receipt += "receipt table " + tablenumber + "\n" +
-                    "date " + date.format(x) + " " + "time" + " " + time.format(y) + "\n";
+            receipt += "Receipt table " + tablenumber + "\n" +
+                    "day " + data.format(x) + " " + "time" + " " + time.format(y) + "\n";
+
+            receipt += "\nOrders"+"                              "+"Vat\t\t Price\n";
+
             receipt += "---------------------------------------------\n";
 
 
-            for (Order order : register.get(tablenumber)) {
-                receipt += order.getDishName() + "\t " + order.getDishPrice() + "€ \n";
+            for (Order ordine : register.get(tablenumber)) {
 
-                cost += order.getDishPrice();
+                String layout = "";
+                String space = "";
+                layout += ordine.getDishName(); 
+                int difference = spaceint - layout.length();
+                for (int o = 0;o <=difference; o++ )
+                {
+                    space+= " ";
+                }
+                receipt += ordine.getDishName() + space +(ordine.getDishPrice())/10+"€\t "+ ordine.getDishPrice() + "€ \n";
+                cost += ordine.getDishPrice();
 
+
+                receipt += "";
+                layout ="";
+                space = "";
             }
-            receipt += "---------------------------------------------\n";
-            receipt += "complessive total: \t " + cost + "€" + "\n" + "of which VAT \t" + cost / 10 + "€" + "\n";
+            receipt += "-------------------------------------------------------\n";
+            receipt += "complessive total: \t " + cost + "€" + "\n" + "of which VAT \t" + cost / iva + "€" + "\n";
             receipt += "total paid; \t " + money + "€" + "\n";
             if (money > cost) {
                 rest += money - cost;
@@ -59,7 +76,7 @@ public class Receipt {
         }
 
         //creazione File
-        title = "receiptTab" + tablenumber + "_" + date.format(x) + "_" + time.format(y);
+        title = "receiptTab" + tablenumber + "_" + data.format(x) + "_" + time.format(y);
         String path = "Receipts";
         File Dir = new File(path);
 
@@ -92,21 +109,32 @@ public class Receipt {
 
         if (register.containsKey(tablenumber)) {
             double cost = 0;
-            precount += "Amount to be paid for the table " + tablenumber + "\n" +
-                    "day " + date.format(x) + " " + "time" + " " + time.format(y) + "\n";
+            precount += "Table's amount to pay " + tablenumber + "\n" +
+                    "day " + data.format(x) + " " + "time" + " " + time.format(y) + "\n";
+            precount += "\nOrders"+"                              "+"Vat\t\t Price\n";
+             
             precount += "---------------------------------------------\n";
 
 
-            for (Order order : register.get(tablenumber)) {
+            for (Order ordine : register.get(tablenumber)) {
 
-                precount += order.getDishName() + "\t " + order.getDishPrice() + "€ \n";
-
-                cost += order.getDishPrice();
+                String layout = "";
+                String space = "";
+                layout += ordine.getDishName(); 
+                int difference = spaceint - layout.length();
+                for (int o = 0;o <=difference; o++ )
+                {
+                    space+= " ";
+                }
+                precount += ordine.getDishName() + space +(ordine.getDishPrice())/10+"€\t "+ ordine.getDishPrice() + "€ \n";
+                cost += ordine.getDishPrice();
 
                 precount += "";
+                layout ="";
+                space = "";
             }
-            precount += "---------------------------------------------\n";
-            precount += "total to pay: \t" + cost + "€";
+            precount += "-------------------------------------------------------\n";
+            precount += "totale da pagare: \t" + cost + "€";
         } else {
 
         }
