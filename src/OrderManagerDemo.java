@@ -19,15 +19,14 @@ public class OrderManagerDemo {
         //aggungo al registro gli ordini
         ArrayList<Order> orders = new ArrayList<Order>();
         ArrayList<Order> orders1 = new ArrayList<Order>();
-
-        orders.add(new Order(dish1, 1, " "));
-        orders.add(new Order(dish2, 1, " "));
-        orders.add(new Order(dish3, 1, " "));
-        orders.add(new Order(dish4, 1, " "));
-        orders1.add(new Order(dish5, 2, " "));        
-        orders1.add(new Order(dish6, 2, " "));
-        orders1.add(new Order(dish6, 2, " "));
-        orders1.add(new Order(dish7, 2, " "));
+        orders.add(new Order(dish1, 1, ""));
+        orders.add(new Order(dish2, 1, ""));
+        orders.add(new Order(dish3, 1, ""));
+        orders.add(new Order(dish4, 1, ""));
+        orders1.add(new Order(dish5, 2, ""));        
+        orders1.add(new Order(dish6, 2, ""));
+        orders1.add(new Order(dish6, 2, ""));
+        orders1.add(new Order(dish7, 2, ""));
 
         orderRegister.add(orders);
         orderRegister.add(orders1);
