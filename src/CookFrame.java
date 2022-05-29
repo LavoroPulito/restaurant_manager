@@ -1,6 +1,9 @@
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.plaf.DimensionUIResource;
+
+import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 public class CookFrame extends JFrame {
 
     private TablesPanel pt;
@@ -9,20 +12,28 @@ public class CookFrame extends JFrame {
         this.initComponents();
     }
 
-//TODO: Manca relativo popup di checkbox e aggiustamento stile
+//TODO: Manca aggiustamento stile
     private void initComponents(){
-         
+        GridBagLayout lt = new GridBagLayout();
+        super.setSize(700,400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pt =new TablesPanelColored();
         pt.addActionListener(new Listener());
         
-		pt.getAccessibleContext().setAccessibleName("");
+        JPanel pt1 = new JPanel();
+        Dimension size = pt.getSize();
+        pt1.setSize(700-(int)size.getWidth(), 400-(int)size.getHeight());
+        pt1.add(pt);
         super.add(pt);
+        super.add(pt1);
 		super.setResizable(true);
-		super.pack();
+		
+        setContentPane(pt);
+        pack();
+        
     }
 
-    private void clear(){
+    private void clear(){ 
         this.getContentPane().remove(pt);
     }
 
