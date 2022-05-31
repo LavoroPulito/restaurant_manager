@@ -1,0 +1,11 @@
+Receipt table 1
+day 31_maggio_2022 time 20:27
+
+Orders                              Vat		 Price
+---------------------------------------------
+pasta con tonno                     0.8€	 8.0€ 
+-------------------------------------------------------
+complessive total: 	 8.0€
+of which VAT 	0.8€
+total paid; 	 60.0€
+rest: 	52€

@@ -12,6 +12,13 @@ public class Dish {
     private boolean available;
 
 
+    public Dish(String name, double price, String description, String category,boolean available) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.description = description;
+        this.available = available;
+    }
     public Dish(String name, double price, String description, String category) {
         this.name = name;
         this.category = category;
