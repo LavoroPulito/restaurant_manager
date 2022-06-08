@@ -42,8 +42,27 @@ public class OrderManagerDemo {
         //carico il json dentro l'oggetto
         orderRegister.load();
 
+        Order order1 = new Order(dish7, 2, "");
+        Order order2 = new Order(dish3, 2, "");
+        Order order3 = new Order(dish2, 2, "");
 
-        
+        //creo una nuova anteprima degli ordini
+        OrderPreviews previews = new OrderPreviews();
+        previews.addNew(order1,2);
+        previews.addNew(order2,5);
+        previews.addNew(order3,4);
+
+        System.out.println("###### prove previews ##########################");
+
+        previews.more(order3);
+        System.out.println(previews.getQuantityOrder().get(order3));
+        previews.less(order1);
+        //previews.less(order1);
+        System.out.println(previews.toArraylist());
+        System.out.println("###### prove previews ##########################");
+
+
+
 
         //salvo il file usando il metodo
         orderRegister.save();

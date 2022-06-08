@@ -126,7 +126,10 @@ public class ChefFrame extends JFrame {
 					Dish selected = (Dish) list.getSelectedValue();
 					if (!add_new_dish.isSelected()) {
 						menu.removeDish(selected);
-					}
+					}else {
+                    if(menu.getDish(txtNameDish.getText())!=null){
+                        return;
+                    }}
 					menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
 							txtDescription.getText(), txtCateg.getText(), availableCkBx.isSelected()));
 				}
@@ -144,7 +147,7 @@ public class ChefFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (list.getSelectedValue() != null) {
 					menu.removeDish((Dish) list.getSelectedValue());
-
+					list.clearSelection();
 				}
 			}
 		});
