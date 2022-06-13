@@ -7,7 +7,7 @@
 - [x] su `chefFrame` va aggiunto un segnale per capire che sto aggiungendo un nuovo piatto
 - [x] su `chefFrame` va sistemato l'ancoraggio di contol tipsPanel in controlPanel perche si 
       deforma quando viene cambiata la size della finestra 
-- [ ] su `chefFrame` non devono poter essere aggiunti piatti uguali
+- [x] su `chefFrame` non devono poter essere aggiunti piatti uguali
 - [x] tutto il codice deve essere in inglese
 
 ###lista eccezioni da condsiderare
@@ -25,7 +25,7 @@
 ###divisioni interfacce grafiche:
   - [ ] main menu `Nicco`
   - [ ] cassa `Nicco`
-  - [ ] chef `Armando`
+  - [x] chef `Armando`
   - [X] cuoco  `Fradap`
     - [ ] Aggiustamento grafica 
   - [ ] cameriere:

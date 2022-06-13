@@ -21,7 +21,7 @@ public class WaiterFrame extends JFrame {
 	DishMenu menu = new DishMenu();
 	private JTextField txtSelezionaIlTavolo;
 	public JFrame frame;
-	private JTextField textField;
+	private JTextField quantityField;
 
 	public WaiterFrame() {
 
@@ -31,33 +31,33 @@ public class WaiterFrame extends JFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
-		JPanel panel_1 = new JPanel();
-		panel.add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+		JPanel menùPanel = new JPanel();
+		panel.add(menùPanel);
+		menùPanel.setLayout(new BorderLayout(0, 0));
 
-		JList list = new JList();
-		panel_1.add(list, BorderLayout.CENTER);
+		JList listMenu = new JList();
+		menùPanel.add(listMenu, BorderLayout.CENTER);
 
-		JPanel panel_2 = new JPanel();
-		panel.add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+		JPanel previewPanel = new JPanel();
+		panel.add(previewPanel);
+		previewPanel.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_6 = new JPanel();
-		panel_2.add(panel_6, BorderLayout.SOUTH);
-		panel_6.setLayout(new GridLayout(1, 3, 0, 0));
+		JPanel quantityPanel = new JPanel();
+		previewPanel.add(quantityPanel, BorderLayout.SOUTH);
+		quantityPanel.setLayout(new GridLayout(1, 3, 0, 0));
 
-		JButton btnNewButton_2 = new JButton("New button");
-		panel_6.add(btnNewButton_2);
+		JButton lessButton = new JButton("-");
+		quantityPanel.add(lessButton);
 
-		textField = new JTextField();
-		panel_6.add(textField);
-		textField.setColumns(10);
+		quantityField = new JTextField();
+		quantityPanel.add(quantityField);
+		quantityField.setColumns(10);
 
-		JButton btnNewButton_3 = new JButton("New button");
-		panel_6.add(btnNewButton_3);
+		JButton moreButton = new JButton("+");
+		quantityPanel.add(moreButton);
 
-		JList list_1 = new JList();
-		panel_2.add(list_1, BorderLayout.CENTER);
+		JList listPreview = new JList();
+		previewPanel.add(listPreview, BorderLayout.CENTER);
 
 		JPanel panel_3 = new JPanel();
 		panel.add(panel_3);
