@@ -1,6 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -9,7 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
-
 public class CashFrame extends JFrame {
 	private JTextField txtInserireI;
 
@@ -44,6 +45,7 @@ public class CashFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("print receipt");
 		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_1, -53, SpringLayout.EAST, panel);
 		panel.add(btnNewButton_1);
+		//btnNewButton_1.addActionListener(this);
 
 		JButton btnNewButton_2 = new JButton("Back to main menù");
 		sl_panel.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -10, SpringLayout.SOUTH, panel);
@@ -64,5 +66,15 @@ public class CashFrame extends JFrame {
 		setMinimumSize(dimension);
 		setLocationRelativeTo(null);
 		setVisible(true);
+
+		/*@Override
+
+		public void actionPerformed(ActionEvent e )
+		{
+			if (e.getSource().equals(btnNewButton_1 ))
+			{
+				Bill bill = new Bill();
+			}
+		}*/
 	}
 }
