@@ -122,9 +122,9 @@ public class ChefFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (list.getSelectedValue() != null) {
-					Dish selected = (Dish) list.getSelectedValue();
-					if (!add_new_dish.isSelected()) {
+				if (list.getSelectedValue() != null) { // if a value has been selected
+					Dish selected = (Dish) list.getSelectedValue(); //take selected object
+					if (!add_new_dish.isSelected()) { // the selected dish is removed from the menu to be
 						menu.removeDish(selected);
 					}else {
                     if(menu.getDish(txtNameDish.getText())!=null){

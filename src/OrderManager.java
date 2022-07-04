@@ -12,7 +12,6 @@ Inserts an ArrayList
 public class OrderManager {
 
     private HashMap<Integer, ArrayList<Order>> register;    //table:[table's orders], table1:[table1's orders]
-
     public OrderManager() {
         register = new HashMap<Integer, ArrayList<Order>>();
     }
@@ -34,6 +33,20 @@ public class OrderManager {
         }
         return new ArrayList<Integer>(register.keySet());
     }
+    public ArrayList<String> getOrdersToDeliver(){
+        ArrayList<String> toDeliver = new ArrayList<>();
+        for (Integer k:
+             getTableList()) {
+            for (Order o:
+                 register.get(k)) {
+                if ("ready".equals(o.getState())){
+                    toDeliver.add(o.getDishName()+"to table "+o.getTable());
+                }
+            }
+        }
+        return toDeliver;
+    }
+
 
     public HashMap<Integer, ArrayList<Order>> getRegister() {
         return register;

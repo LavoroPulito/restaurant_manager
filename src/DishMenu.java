@@ -35,7 +35,7 @@ public class DishMenu {
             return false;
         }
         if (menu.get(e.getCategory()).isEmpty()) {
-            menu.remove(e.getCategory());// DA TESTARE
+            menu.remove(e.getCategory());
         }
         return t;
     }
