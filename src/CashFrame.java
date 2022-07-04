@@ -45,6 +45,15 @@ public class CashFrame extends JFrame {
 		JButton btnNewButton_1 = new JButton("print receipt");
 		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_1, -53, SpringLayout.EAST, panel);
 		panel.add(btnNewButton_1);
+		btnNewButton_1.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				Bill bill = new Bill();
+
+			}
+			
+		});
 		//btnNewButton_1.addActionListener(this);
 
 		JButton btnNewButton_2 = new JButton("Back to main menù");
@@ -67,14 +76,6 @@ public class CashFrame extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 
-		/*@Override
-
-		public void actionPerformed(ActionEvent e )
-		{
-			if (e.getSource().equals(btnNewButton_1 ))
-			{
-				Bill bill = new Bill();
-			}
-		}*/
+		
 	}
 }
