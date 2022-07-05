@@ -51,6 +51,7 @@ public class CashFrame extends JFrame {
 		panel.add(btnNewButton_2);
 
 		txtInserireI = new JTextField();
+		txtInserireI.addMouseListener(new TextFieldListener());
 
 		//textArea.append();
 		sl_panel.putConstraint(SpringLayout.WEST, txtInserireI, 10, SpringLayout.WEST, panel);

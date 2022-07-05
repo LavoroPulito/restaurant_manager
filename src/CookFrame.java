@@ -16,7 +16,7 @@ public class CookFrame extends JFrame {
     private void initComponents(){
         GridBagLayout lt = new GridBagLayout();
         super.setSize(700,400);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        
         pt =new TablesPanelColored();
         pt.addActionListener(new Listener());
         
