@@ -18,7 +18,6 @@ public class CashFrame extends JFrame {
 	final int HEIGHT = 400;
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
 	Bill bill = new Bill();
-	double amount = 0;
 	int table;
 
 	public CashFrame() {
@@ -59,21 +58,36 @@ public class CashFrame extends JFrame {
 		panel_1.add(list, BorderLayout.CENTER);
 
 		
-
 		JPanel panel = new JPanel();
 		getContentPane().add(panel);
 		SpringLayout sl_panel = new SpringLayout();
 		panel.setLayout(sl_panel);
 
 		JButton btnNewButton_1 = new JButton("print receipt");
+		
+		
+		
+		txtInserireI = new JTextField();
+		sl_panel.putConstraint(SpringLayout.WEST, txtInserireI, 10, SpringLayout.WEST, panel);
+		sl_panel.putConstraint(SpringLayout.EAST, txtInserireI, -10, SpringLayout.EAST, panel);
+		sl_panel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 6, SpringLayout.SOUTH, txtInserireI);
+		sl_panel.putConstraint(SpringLayout.SOUTH, txtInserireI, -333, SpringLayout.SOUTH, panel);
+		txtInserireI.setText("enter amount received");
+		panel.add(txtInserireI);
+		String amountString = txtInserireI.getText();	
+		///////////////////	ERRORE QUANDO SI VUOLE STAMPARE LO SCOTNRINO //////////////////////
+		
+		
+		
 		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_1, -53, SpringLayout.EAST, panel);
 		panel.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				
-				
+				double amount = Double.parseDouble(amountString);
+				bill.getBill(amount);
+				System.out.println("Ariciao");
 			}
 			
 		});
@@ -90,19 +104,6 @@ public class CashFrame extends JFrame {
 				setVisible(false); 
 			}
 		});
-
-		txtInserireI = new JTextField();
-
-		//textArea.append();
-		sl_panel.putConstraint(SpringLayout.WEST, txtInserireI, 10, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, txtInserireI, -10, SpringLayout.EAST, panel);
-		sl_panel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 6, SpringLayout.SOUTH, txtInserireI);
-		sl_panel.putConstraint(SpringLayout.SOUTH, txtInserireI, -333, SpringLayout.SOUTH, panel);
-		txtInserireI.setText("enter amount received");
-		panel.add(txtInserireI);
-		String amountString = txtInserireI.getText();		
-				//converting the JTextField text in double value
-		 
 
 		setMinimumSize(dimension);
 		setLocationRelativeTo(null);
