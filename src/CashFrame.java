@@ -65,7 +65,7 @@ public class CashFrame extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				setVisible(false);
+				setVisible(false); 
 			}
 		});
 
@@ -78,9 +78,9 @@ public class CashFrame extends JFrame {
 		sl_panel.putConstraint(SpringLayout.SOUTH, txtInserireI, -333, SpringLayout.SOUTH, panel);
 		txtInserireI.setText("enter amount received");
 		panel.add(txtInserireI);
-		String amountString = txtInserireI.getText();
-		this.amount = Double.parseDouble(amountString);
-		txtInserireI.setColumns(10);
+		String amountString = txtInserireI.getText();		
+		this.amount = Double.parseDouble(amountString);		//converting the JTextField text in double value
+		txtInserireI.setColumns(10); 
 
 		setMinimumSize(dimension);
 		setLocationRelativeTo(null);
