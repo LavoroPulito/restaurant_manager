@@ -110,6 +110,7 @@ public class WaiterFrame extends JFrame {
         scrollPane.setViewportView(chckbxNewCheckBox);
         setMinimumSize(dimension);
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
     }

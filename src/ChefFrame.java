@@ -176,7 +176,9 @@ public class ChefFrame extends JFrame {
 
 		setPreferredSize(dimension);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+
 
 	}
 

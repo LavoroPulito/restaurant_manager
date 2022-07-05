@@ -17,12 +17,13 @@ public class CashFrame extends JFrame {
 	final int WIDTH = 700;
 	final int HEIGHT = 400;
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
+	Bill bill = new Bill();
+	double amount;
 
 	public CashFrame() {
 		setTitle("cash desk");
 		getContentPane().setLayout(new GridLayout(1, 3, 0, 0));
-		Bill bill = new Bill();
-
+		
 		JPanel panel_1 = new JPanel();
 		getContentPane().add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
@@ -49,7 +50,7 @@ public class CashFrame extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				Bill bill = new Bill();
+				
 
 			}
 			
@@ -60,6 +61,13 @@ public class CashFrame extends JFrame {
 		sl_panel.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -10, SpringLayout.SOUTH, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_2, -26, SpringLayout.EAST, panel);
 		panel.add(btnNewButton_2);
+		btnNewButton_2.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				setVisible(false);
+			}
+		});
 
 		txtInserireI = new JTextField();
 
@@ -70,10 +78,13 @@ public class CashFrame extends JFrame {
 		sl_panel.putConstraint(SpringLayout.SOUTH, txtInserireI, -333, SpringLayout.SOUTH, panel);
 		txtInserireI.setText("enter amount received");
 		panel.add(txtInserireI);
+		String amountString = txtInserireI.getText();
+		this.amount = Double.parseDouble(amountString);
 		txtInserireI.setColumns(10);
 
 		setMinimumSize(dimension);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 
 		
