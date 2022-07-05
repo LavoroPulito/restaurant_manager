@@ -19,6 +19,7 @@ public class CashFrame extends JFrame {
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
 	Bill bill = new Bill();
 	double amount;
+	int table;
 
 	public CashFrame() {
 		setTitle("cash desk");
@@ -28,7 +29,13 @@ public class CashFrame extends JFrame {
 		getContentPane().add(panel_1);
 		panel_1.setLayout(new BorderLayout(0, 0));
 
-		JList list = new JList();
+		OrderManager om = new OrderManager();
+		om.load();
+		JList list = new JList(om.getRegister().keySet().toArray());
+		list.getSelectionModel().addListSelectionListener(e ->{
+			this.table = ((list.getSelectedIndex())+1);
+
+		});
 		panel_1.add(list, BorderLayout.CENTER);
 
 		JPanel panel_2 = new JPanel();
@@ -36,6 +43,7 @@ public class CashFrame extends JFrame {
 		panel_2.setLayout(new BorderLayout(0, 0));
 
 		JTextArea textArea = new JTextArea();
+		textArea.append(bill.preConto(1));// da cambiare
 		panel_2.add(textArea);
 
 		JPanel panel = new JPanel();
@@ -51,7 +59,7 @@ public class CashFrame extends JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				
-
+				///
 			}
 			
 		});
@@ -78,8 +86,8 @@ public class CashFrame extends JFrame {
 		sl_panel.putConstraint(SpringLayout.SOUTH, txtInserireI, -333, SpringLayout.SOUTH, panel);
 		txtInserireI.setText("enter amount received");
 		panel.add(txtInserireI);
-		String amountString = txtInserireI.getText();		
-		this.amount = Double.parseDouble(amountString);		//converting the JTextField text in double value
+		//String amountString = txtInserireI.getText();		
+		//this.amount = Double.parseDouble(amountString);		//converting the JTextField text in double value
 		txtInserireI.setColumns(10); 
 
 		setMinimumSize(dimension);
