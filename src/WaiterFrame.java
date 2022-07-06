@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -106,15 +107,26 @@ public class WaiterFrame extends JFrame implements ActionListener{
 
 		JScrollPane scrollPane = new JScrollPane();
 		checkBoxPanel.add(scrollPane, BorderLayout.CENTER);
+        JPanel pContainer = new JPanel();
+        scrollPane.setAlignmentX(LEFT_ALIGNMENT);
+        pContainer.setLayout(new BoxLayout(pContainer, BoxLayout.PAGE_AXIS));
+        scrollPane.setViewportView(pContainer);
 		OrderManager orderManager = new OrderManager();
 		orderManager.load();
+        int index=0;
 		for (Order order:
 			 orderManager.getOrdersToDeliver()) {
-
+                String nome=order.getDishName();
+                int tavolo = order.getTable();
+                JCheckBox cb= new JCheckBox(""+tavolo+"- "+nome);
+                
+                pContainer.add(cb);
+                
+                //scrollPane.setViewportView(chckbxNewCheckBox);
 
 		}
-		JCheckBox chckbxNewCheckBox = new JCheckBox("New check box");
-		scrollPane.setViewportView(chckbxNewCheckBox);
+		
+		
 		setMinimumSize(dimension);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
