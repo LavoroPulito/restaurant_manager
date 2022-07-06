@@ -19,6 +19,7 @@ public class CashFrame extends JFrame {
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
 	Bill bill = new Bill();
 	int table;
+	
 
 	public CashFrame() {
 		setTitle("cash desk");
@@ -71,16 +72,14 @@ public class CashFrame extends JFrame {
 		txtInserireI.addMouseListener(new TextFieldListener());
 
 		//textArea.append();
+		;
 		sl_panel.putConstraint(SpringLayout.WEST, txtInserireI, 10, SpringLayout.WEST, panel);
 		sl_panel.putConstraint(SpringLayout.EAST, txtInserireI, -10, SpringLayout.EAST, panel);
 		sl_panel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 6, SpringLayout.SOUTH, txtInserireI);
 		sl_panel.putConstraint(SpringLayout.SOUTH, txtInserireI, -333, SpringLayout.SOUTH, panel);
 		txtInserireI.setText("enter amount received");
 		panel.add(txtInserireI);
-		String amountString = txtInserireI.getText();	
-		///////////////////	ERRORE QUANDO SI VUOLE STAMPARE LO SCOTNRINO //////////////////////
-		
-		
+			
 		
 		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_1, -53, SpringLayout.EAST, panel);
 		panel.add(btnNewButton_1);
@@ -88,7 +87,8 @@ public class CashFrame extends JFrame {
 		{
 			public void actionPerformed(ActionEvent e)
 			{
-				double amount = Double.parseDouble(amountString);
+				String AmountS = txtInserireI.getText();
+				double amount = Double.parseDouble(AmountS);
 				bill.getBill(amount);
 				System.out.println("Ariciao");
 			}
