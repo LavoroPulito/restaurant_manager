@@ -36,7 +36,10 @@ public class WaiterFrame extends JFrame implements ActionListener{
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
 		JPanel menùPanel = new JPanel();
-		panel.add(menùPanel);
+        JScrollPane spMenu = new JScrollPane();
+		panel.add(spMenu);
+        spMenu.setRowHeaderView(spMenu.getVerticalScrollBar());
+        spMenu.setViewportView(menùPanel);
 		menùPanel.setLayout(new BorderLayout(0, 0));
 		menu.load();
 		JList listMenu = new JList(menu.toArrayList().toArray());
