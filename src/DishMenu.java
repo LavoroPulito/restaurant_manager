@@ -28,9 +28,14 @@ public class DishMenu {
     }
 
     public boolean removeDish(Dish e) {
-        boolean t = menu.get(e.getCategory()).remove(e);
+        boolean t;
+        try {
+            t = menu.get(e.getCategory()).remove(e);
+        }catch (Exception ex){
+            return false;
+        }
         if (menu.get(e.getCategory()).isEmpty()) {
-            menu.remove(e.getCategory());// DA TESTARE
+            menu.remove(e.getCategory());
         }
         return t;
     }

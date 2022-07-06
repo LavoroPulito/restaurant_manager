@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -14,16 +16,18 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.SpringLayout;
 
 public class ChefFrame extends JFrame {
-	private boolean inCreation = false;
+
 	private JTextField txtDescription;
 	private JTextField txtNameDish;
 	private JTextField txtPrice;
 	private JTextField txtCateg;
 	private JTextArea textArea = new JTextArea();
 	private JCheckBox availableCkBx = new JCheckBox("available");
+	private JToggleButton add_new_dish = new JToggleButton("Add new dish: OFF");
 	final int WIDTH = 700;
 	final int HEIGHT = 400;
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
@@ -53,7 +57,7 @@ public class ChefFrame extends JFrame {
 		JList list = new JList(menu.toArrayList().toArray());
 		list.getSelectionModel().addListSelectionListener(e -> {
 
-			inCreation = false;
+			add_new_dish.setSelected(false);
 			Dish dish = (Dish) list.getSelectedValue();
 			if (dish != null) {
 				txtNameDish.setText(dish.getName());
@@ -106,18 +110,9 @@ public class ChefFrame extends JFrame {
 		JPanel controlPanel = new JPanel();
 		settingsPanel.add(controlPanel);
 		initInput();
-		SpringLayout sl_controlPanel = new SpringLayout();
-		sl_controlPanel.putConstraint(SpringLayout.NORTH, textArea, 98, SpringLayout.NORTH, controlPanel);
-		sl_controlPanel.putConstraint(SpringLayout.WEST, textArea, 0, SpringLayout.WEST, controlPanel);
-		sl_controlPanel.putConstraint(SpringLayout.SOUTH, textArea, 176, SpringLayout.NORTH, controlPanel);
-		sl_controlPanel.putConstraint(SpringLayout.EAST, textArea, 543, SpringLayout.WEST, controlPanel);
-		controlPanel.setLayout(sl_controlPanel);
+		controlPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
 		JPanel buttonPanel = new JPanel();
-		sl_controlPanel.putConstraint(SpringLayout.NORTH, buttonPanel, 0, SpringLayout.NORTH, controlPanel);
-		sl_controlPanel.putConstraint(SpringLayout.WEST, buttonPanel, 0, SpringLayout.WEST, controlPanel);
-		sl_controlPanel.putConstraint(SpringLayout.SOUTH, buttonPanel, -84, SpringLayout.SOUTH, controlPanel);
-		sl_controlPanel.putConstraint(SpringLayout.EAST, buttonPanel, 543, SpringLayout.WEST, controlPanel);
 		controlPanel.add(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(2, 2, 0, 0));
 
@@ -126,20 +121,19 @@ public class ChefFrame extends JFrame {
 		save_menu.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (inCreation) { // se ho premuto Add dish
-					menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
-							txtDescription.getText(), txtCateg.getText()));
-					inCreation = false;
-				} else {
-					if (list.getSelectedValue() != null) {
-						Dish selected = (Dish) list.getSelectedValue();
 
-						if (menu.removeDish(selected)) {
-							menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
-									txtDescription.getText(), txtCateg.getText()));
-						}
-					}
+				if (list.getSelectedValue() != null) { // if a value has been selected
+					Dish selected = (Dish) list.getSelectedValue(); //take selected object
+					if (!add_new_dish.isSelected()) { // the selected dish is removed from the menu to be
+						menu.removeDish(selected);
+					}else {
+                    if(menu.getDish(txtNameDish.getText())!=null){
+                        return;
+                    }}
+					menu.add(new Dish(txtNameDish.getText(), Double.parseDouble(txtPrice.getText()),
+							txtDescription.getText(), txtCateg.getText(), availableCkBx.isSelected()));
 				}
+				add_new_dish.setSelected(false);
 				menu.save();
 				menu.load();
 				list.setListData(menu.toArrayList().toArray());
@@ -153,20 +147,23 @@ public class ChefFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (list.getSelectedValue() != null) {
 					menu.removeDish((Dish) list.getSelectedValue());
-
+					list.clearSelection();
 				}
 			}
 		});
 
-		JButton add_new_dish = new JButton("Add new dish");
-		buttonPanel.add(add_new_dish);
-		add_new_dish.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				list.clearSelection();
-				initInput();
-				inCreation = true;
+		add_new_dish.addItemListener(new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				if (add_new_dish.isSelected()) {
+					add_new_dish.setText("add new dish: ON");
+				} else {
+					add_new_dish.setText("add new dish: OFF");
+				}
 			}
 		});
+		add_new_dish.setToolTipText("turn it on to add new dishes, turn it off to view or edit other dishes");
+		buttonPanel.add(add_new_dish);
 
 		JButton mainMenu = new JButton("Back to main menù");
 		buttonPanel.add(mainMenu);
@@ -174,13 +171,14 @@ public class ChefFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-
-
+		textArea.setWrapStyleWord(true);
 		controlPanel.add(textArea);
 
-		setMinimumSize(dimension);
+		setPreferredSize(dimension);
 		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+
 
 	}
 
@@ -194,5 +192,4 @@ public class ChefFrame extends JFrame {
 				+ "use the keys to modify the menu.\n" + "remember to save or your changes will be lost");
 
 	}
-
 }
