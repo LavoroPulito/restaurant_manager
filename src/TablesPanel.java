@@ -11,7 +11,7 @@ public class TablesPanel extends JPanel implements ActionListener{
         OrderManager om = new OrderManager();
         om.load();
         tn=om.getTableList();
-
+        setLayout(new GridBagLayout());
         ArrayList<TableButton>buttons= new ArrayList<TableButton>();
         for (int t:tn){
             TableButton temp = new TableButton(t);
@@ -22,10 +22,10 @@ public class TablesPanel extends JPanel implements ActionListener{
             add(temp);
         }
         int rows=(int)tn.size()/5 +1;
-        GridLayout layout =new GridLayout(rows,5);
+       /*  GridLayout layout =new GridLayout(rows,5);
         layout.setHgap(30);
         layout.setVgap(30);
-        setLayout(layout);
+        setLayout(layout);*/
         //setPreferredSize(new Dimension(500,600));
         setAutoscrolls(true);
         tb=buttons;

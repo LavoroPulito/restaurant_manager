@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.*;
 public class CookFrame extends JFrame {
 
-    private TablesPanel pt;
+    private TablesPanelColored pt;
 
     public CookFrame(){
         this.initComponents();
@@ -15,7 +15,7 @@ public class CookFrame extends JFrame {
 //TODO: Manca aggiustamento stile
     private void initComponents(){
         GridBagLayout lt = new GridBagLayout();
-        super.setSize(700,400);
+        setSize(700,400);
         
         pt =new TablesPanelColored();
         pt.addActionListener(new Listener());
@@ -24,12 +24,11 @@ public class CookFrame extends JFrame {
         Dimension size = pt.getSize();
         pt1.setSize(700-(int)size.getWidth(), 400-(int)size.getHeight());
         pt1.add(pt);
-        super.add(pt);
-        super.add(pt1);
-		super.setResizable(true);
+        add(pt1);
+		setResizable(true);
 		
         setContentPane(pt);
-        pack();
+        
         
     }
 
