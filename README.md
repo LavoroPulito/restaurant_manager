@@ -9,10 +9,13 @@
       deforma quando viene cambiata la size della finestra 
 - [x] su `chefFrame` non devono poter essere aggiunti piatti uguali
 - [x] tutto il codice deve essere in inglese
+- [ ] in `WaiterFrame` devo riconoscere gli ordini dalla stringa
+- [ ] in `WaiterFrame` devo far si che per prima cosa si scriva il numero del tavolo
 
 ###lista eccezioni da condsiderare
-- [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` 
+- [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` e in `WaiterFrame`
 - [x] creazione dei file di testo se non trovati
+- [ ] usare jOptionPane nella gestione delle eccezioni 
 
 ###bug da risolvere:
 - [ ] su mac i bottoni colorati si vedono comunque bianchi quindi forse 

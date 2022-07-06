@@ -7,14 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class WaiterFrame extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
@@ -22,7 +15,8 @@ public class WaiterFrame extends JFrame implements ActionListener{
 	final int HEIGHT = 400;
 	private boolean openNew = false;
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
-	DishMenu menu = new DishMenu();
+	private DishMenu menu;
+	private OrderPreviews orderPreviews;
 	private JTextField txtSelezionaIlTavolo;
 	public JFrame frame;
 	private JTextField quantityField;
@@ -35,24 +29,23 @@ public class WaiterFrame extends JFrame implements ActionListener{
 		getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
+		menu = new DishMenu();
+		menu.load();
+		orderPreviews = new OrderPreviews();
+
+		txtSelezionaIlTavolo = new JTextField();
+		txtSelezionaIlTavolo.setText("Select a table");
+		txtSelezionaIlTavolo.setColumns(10);
+
 		JPanel menùPanel = new JPanel();
         JScrollPane spMenu = new JScrollPane();
 		panel.add(spMenu);
         spMenu.setRowHeaderView(spMenu.getVerticalScrollBar());
         spMenu.setViewportView(menùPanel);
 		menùPanel.setLayout(new BorderLayout(0, 0));
-		menu.load();
+
 		JList listMenu = new JList(menu.toArrayList().toArray());
 
-		listMenu.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				if (listMenu.getSelectedValue() != null) {
-					DishPreviewFrame previewFrame = new DishPreviewFrame((Dish) listMenu.getSelectedValue());
-					
-				}
-			}
-		});
 		menùPanel.add(listMenu, BorderLayout.CENTER);
 
 		JPanel previewPanel = new JPanel();
@@ -73,7 +66,7 @@ public class WaiterFrame extends JFrame implements ActionListener{
 		JButton moreButton = new JButton("+");
 		quantityPanel.add(moreButton);
 
-		JList listPreview = new JList();
+		JList listPreview = new JList(orderPreviews.toStringsArray());
 		previewPanel.add(listPreview, BorderLayout.CENTER);
 
 		JPanel rightPanel = new JPanel();
@@ -83,10 +76,6 @@ public class WaiterFrame extends JFrame implements ActionListener{
 		JPanel buttonPanel = new JPanel();
 		rightPanel.add(buttonPanel);
 
-		txtSelezionaIlTavolo = new JTextField();
-		txtSelezionaIlTavolo.setText("Select a table");
-		buttonPanel.add(txtSelezionaIlTavolo);
-		txtSelezionaIlTavolo.setColumns(10);
 
 		JButton btnNewButton = new JButton("place orders");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -103,7 +92,7 @@ public class WaiterFrame extends JFrame implements ActionListener{
 			}
 		});
 		buttonPanel.add(btnNewButton_1);
-
+		buttonPanel.add(txtSelezionaIlTavolo);
 		JPanel checkBoxPanel = new JPanel();
 		rightPanel.add(checkBoxPanel);
 		checkBoxPanel.setLayout(new BorderLayout(0, 0));
@@ -128,7 +117,27 @@ public class WaiterFrame extends JFrame implements ActionListener{
                 //scrollPane.setViewportView(chckbxNewCheckBox);
 
 		}
-		
+		listMenu.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				if (listMenu.getSelectedValue() != null) {
+					Dish dish = (Dish) listMenu.getSelectedValue();
+					String note = JOptionPane.showInputDialog(WaiterFrame.this,
+							dish.getName()+'\n'+
+									"category: "+dish.getCategory()+'\n'+
+									"description: "+dish.getDescription()+'\n'+
+									"price: "+dish.getPrice()+"€\n"+
+									"note: ");
+
+					orderPreviews.addNew(new Order(dish,Integer.parseInt(txtSelezionaIlTavolo.getText()),note),1);
+					listPreview.setListData(orderPreviews.toStringsArray());
+
+					//CRITICITà il numero del tavolo deve essere sempre scirtto prima di selezionare l'ordine
+					//il field del tavolo deve accettare solo int
+					//ancora non so riconoscere l'ordinazione dalla lista di array
+				}
+			}
+		});
 		
 		setMinimumSize(dimension);
 		setLocationRelativeTo(null);
