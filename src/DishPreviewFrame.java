@@ -61,12 +61,8 @@ public class DishPreviewFrame extends JFrame {
 		txtAddNotes.setColumns(10);
 
 		JButton addButton = new JButton("add to order");
-		addButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		addButton.addActionListener(new WaiterFrame());
 
-			}
-		});
 		panel.add(addButton);
 
 

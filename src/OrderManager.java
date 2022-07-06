@@ -33,14 +33,14 @@ public class OrderManager {
         }
         return new ArrayList<Integer>(register.keySet());
     }
-    public ArrayList<String> getOrdersToDeliver(){
-        ArrayList<String> toDeliver = new ArrayList<>();
+    public ArrayList<Order> getOrdersToDeliver(){
+        ArrayList<Order> toDeliver = new ArrayList<>();
         for (Integer k:
              getTableList()) {
             for (Order o:
                  register.get(k)) {
                 if ("ready".equals(o.getState())){
-                    toDeliver.add(o.getDishName()+"to table "+o.getTable());
+                    toDeliver.add(o);
                 }
             }
         }
