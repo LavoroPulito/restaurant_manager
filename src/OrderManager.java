@@ -33,6 +33,23 @@ public class OrderManager {
         }
         return new ArrayList<Integer>(register.keySet());
     }
+    
+    public ArrayList<Integer>getTableList(String state){
+        if (register == null) {
+            return null;
+        }
+        ArrayList<Integer> tb=new ArrayList<Integer>();
+
+        for (int i: register.keySet()){
+            for(Order ord: register.get(i)){
+                if (ord.getState()==state){
+                    tb.add(i);
+                    break;
+                }
+            }
+        }
+        return tb;
+    }
     public ArrayList<Order> getOrdersToDeliver(){
         ArrayList<Order> toDeliver = new ArrayList<>();
         for (Integer k:

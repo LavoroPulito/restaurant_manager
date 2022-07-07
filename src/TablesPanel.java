@@ -10,7 +10,12 @@ public class TablesPanel extends JPanel implements ActionListener{
         
         OrderManager om = new OrderManager();
         om.load();
-        tn=om.getTableList();
+        tn=om.getTableList("preparation");
+        if (tn.size()==0){
+            JLabel l=new JLabel("Non ci sono ordinazioni da preparare al momento");
+            l.setSize(new Dimension(200,100));
+            add(l);
+        }
         setLayout(new GridBagLayout());
         ArrayList<TableButton>buttons= new ArrayList<TableButton>();
         for (int t:tn){
