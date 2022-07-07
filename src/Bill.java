@@ -118,9 +118,7 @@ public class Bill {
 
             for (Order order : register.get(tableInt)) {
 
-                String layout = "";
                 String space = "";
-                layout += order.getDishName(); 
                 String orderString1 = String.valueOf(order.getDishPrice()/10);
                 String orderString2 = String.valueOf(order.getDishPrice());
                 int os1 = orderString1.length() +2;
