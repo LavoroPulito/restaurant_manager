@@ -133,7 +133,6 @@ public class Bill {
                 costo += order.getDishPrice();
 
                 preconto += "";
-                layout ="";
                 space = "";
             }
             preconto += "-------------------------------------------------------\n";
