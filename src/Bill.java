@@ -111,7 +111,7 @@ public class Bill {
             double costo = 0;
             preconto += "Importo da pagare del tavolo " + tableInt + "\n" +
                     "giorno " + data.format(x) + " " + "ora" + " " + hour.format(y) + "\n";
-            preconto += "\nOrdini"+"                              "+"Iva\t\t Prezzo\n";
+            preconto += "\nOrdini"+"                              "+"Iva\t Prezzo\n";
              
             preconto += "---------------------------------------------\n";
 
@@ -121,12 +121,17 @@ public class Bill {
                 String layout = "";
                 String space = "";
                 layout += order.getDishName(); 
-                int difference = spaceint - layout.length();
+                String orderString1 = String.valueOf(order.getDishPrice()/10);
+                String orderString2 = String.valueOf(order.getDishPrice());
+                int os1 = orderString1.length() +2;
+                int os2 = orderString2.length() +2;
+                int difference = spaceint - os1+os2;
                 for (int o = 0;o <=difference; o++ )
                 {
                     space+= " ";
                 }
-                preconto += order.getDishName() + space +(order.getDishPrice())/10+"€\t "+ order.getDishPrice() + "€ \n";
+                //preconto += order.getDishName() + space +(order.getDishPrice())/10+"€\t "+ order.getDishPrice() + "€ \n";
+                preconto += order.getDishName() + "\n"+ space+"   " +(order.getDishPrice())/10+"€\t "+ order.getDishPrice() + "€ \n";
                 costo += order.getDishPrice();
 
                 preconto += "";
