@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Order {
     private String dishName;
     private double dishPrice;
@@ -55,5 +57,18 @@ public class Order {
                 ", table=" + table +
                 ", note='" + note + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return state == order.state && table == order.table && Objects.equals(dishName, order.dishName) && Objects.equals(note, order.note);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(dishName, state, table, note);
     }
 }

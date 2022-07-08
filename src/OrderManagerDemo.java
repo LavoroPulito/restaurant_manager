@@ -47,18 +47,18 @@ public class OrderManagerDemo {
         Order order3 = new Order(dish2, 2, "");
 
         //creo una nuova anteprima degli ordini
-        OrderPreviews previews = new OrderPreviews();
-        previews.addNew(order1,2);
-        previews.addNew(order2,5);
-        previews.addNew(order3,4);
+        PreviewsRegister previewsRegister = new PreviewsRegister();
 
-        System.out.println("###### prove previews ##########################");
+        previewsRegister.addOrder(new OrderPreview(dish1, 2,""));
+        previewsRegister.addOrder(new OrderPreview(dish1, 2,""));
+        previewsRegister.addOrder(new OrderPreview(dish2, 2,""));
+        previewsRegister.addOrder(new OrderPreview(dish2, 2,""));
+        previewsRegister.addOrder(new OrderPreview(dish2, 2,""));
+        previewsRegister.addOrder(new OrderPreview(dish3, 2,""));
+        System.out.println(previewsRegister.getPreviews());
+        previewsRegister.decrement(new OrderPreview(dish3, 2,""));
+        System.out.println(previewsRegister.getPreviews());
 
-        previews.more(order3);
-        System.out.println(previews.getQuantityOrder().get(order3));
-        previews.less(order1);
-        //previews.less(order1);
-        System.out.println(previews.toArraylist());
         System.out.println("###### prove previews ##########################");
 
 

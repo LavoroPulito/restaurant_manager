@@ -16,7 +16,7 @@ public class WaiterFrame extends JFrame implements ActionListener{
 	private boolean openNew = false;
 	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
 	private DishMenu menu;
-	private OrderPreviews orderPreviews;
+	private PreviewsRegister previewsRegister;
 	private JTextField txtSelezionaIlTavolo;
 	public JFrame frame;
 	private JTextField quantityField;
@@ -31,7 +31,7 @@ public class WaiterFrame extends JFrame implements ActionListener{
 
 		menu = new DishMenu();
 		menu.load();
-		orderPreviews = new OrderPreviews();
+		previewsRegister = new PreviewsRegister();
 
 		txtSelezionaIlTavolo = new JTextField();
 		txtSelezionaIlTavolo.setText("Select a table");
@@ -66,7 +66,7 @@ public class WaiterFrame extends JFrame implements ActionListener{
 		JButton moreButton = new JButton("+");
 		quantityPanel.add(moreButton);
 
-		JList listPreview = new JList(orderPreviews.toStringsArray());
+		JList listPreview = new JList(previewsRegister.getPreviews().toArray());
 		previewPanel.add(listPreview, BorderLayout.CENTER);
 
 		JPanel rightPanel = new JPanel();
@@ -129,8 +129,8 @@ public class WaiterFrame extends JFrame implements ActionListener{
 									"price: "+dish.getPrice()+"€\n"+
 									"note: ");
 
-					orderPreviews.addNew(new Order(dish,Integer.parseInt(txtSelezionaIlTavolo.getText()),note),1);
-					listPreview.setListData(orderPreviews.toStringsArray());
+					previewsRegister.addOrder(new OrderPreview(dish, Integer.parseInt(txtSelezionaIlTavolo.getText()), note));
+					listPreview.setListData(previewsRegister.getPreviews().toArray());
 
 					//CRITICITà il numero del tavolo deve essere sempre scirtto prima di selezionare l'ordine
 					//il field del tavolo deve accettare solo int
