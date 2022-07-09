@@ -6,11 +6,19 @@ public class Order {
     private int state;
     private int table;
     private String note;
-    private final String[] states = {"preparation","ready","delivered"};
-    
-    public Order(Dish dish, int table, String note){
+    private static String[] states = {"preparation", "ready", "delivered"};
+
+    public Order(Dish dish, int table, String note) {
         this.dishName = dish.getName();
         this.dishPrice = dish.getPrice();
+        this.table = table;
+        this.note = note;
+        state = 0;
+    }
+
+    public Order(String dishName, double dishPrice, int table, String note) {
+        this.dishName = dishName;
+        this.dishPrice = dishPrice;
         this.table = table;
         this.note = note;
         state = 0;
@@ -27,13 +35,14 @@ public class Order {
     public void setState(int state) {
         this.state = state;
     }
+
     //imposta automaticamente il prossimo stato, dopo l'ultimo stato ricomincia da capo
-    public void setNextState(){
-        int nextState= state+1;
-        if (nextState<states.length){
-            setState(state+1);
-        }else{
-            state=0;
+    public void setNextState() {
+        int nextState = state + 1;
+        if (nextState < states.length) {
+            setState(state + 1);
+        } else {
+            state = 0;
         }
 
     }
@@ -54,8 +63,9 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "dishName='" + dishName + '\'' +
-                ", table=" + table +
+                ", table='" + table + '\'' +
                 ", note='" + note + '\'' +
+                ", status= '" + states[state] + '\'' +
                 '}';
     }
 

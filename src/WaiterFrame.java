@@ -28,6 +28,7 @@ public class WaiterFrame extends JFrame {
     final Dimension dimension = new Dimension(WIDTH, HEIGHT);
     private DishMenu menu;
     private PreviewsRegister previewsRegister;
+    private OrderManager orderManager;
     private JTextField tableField;
     public JFrame frame;
     private JTextField quantityField;
@@ -42,6 +43,10 @@ public class WaiterFrame extends JFrame {
 
         menu = new DishMenu();
         menu.load();
+
+        orderManager = new OrderManager();
+        orderManager.load();
+
         previewsRegister = new PreviewsRegister();
 
         tableField = new JTextField();
@@ -101,7 +106,10 @@ public class WaiterFrame extends JFrame {
         JButton placeButton = new JButton("place orders");
         placeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+                orderManager.add(previewsRegister.toOrders());
+                orderManager.save();
+                previewsRegister.clear();
+                listPreview.setListData(previewsRegister.getPreviews().toArray());
             }
         });
         buttonPanel.add(placeButton);

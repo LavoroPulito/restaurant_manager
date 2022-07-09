@@ -15,12 +15,12 @@ public class OrderPreview extends Order {
     public void increment(){
         this.quantity+=1;
     }
-    /*
+
     public Order toOrder(){
-        return new Order(super());
+        return new Order(super.getDishName(),super.getDishPrice(),super.getTable(),super.getNote());
     }
-    
-     */
+
+
 
     public void decrement(){
         this.quantity-=1;

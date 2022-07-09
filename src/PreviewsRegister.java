@@ -28,6 +28,10 @@ public class PreviewsRegister {
         }
     }
 
+    public void clear(){
+        previews.clear();
+    }
+
     public ArrayList<OrderPreview> getPreviews() {
         return previews;
     }
@@ -36,7 +40,7 @@ public class PreviewsRegister {
         for (OrderPreview p:
         previews){
             for (int i = 0; i<p.getQuantity();i++){
-                orders.add((Order) p);
+                orders.add(p.toOrder());
             }
         }
         return orders;
