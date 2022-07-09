@@ -1,28 +1,20 @@
 # restaurant_manager
 ##To Do List:
 - [ ] tenere aggiornata la uml
-- [x] sistemare la classe `main`
 - [ ] su `chefFrame` finire tasto menù principale 
-- [x] su `scontrino` creare titolo adatto per i file scontrini (il file ha sempre lo stesso titolo quindi si sovrascrivono)
-- [x] su `chefFrame` va aggiunto un segnale per capire che sto aggiungendo un nuovo piatto
-- [x] su `chefFrame` va sistemato l'ancoraggio di contol tipsPanel in controlPanel perche si 
-      deforma quando viene cambiata la size della finestra 
-- [x] su `chefFrame` non devono poter essere aggiunti piatti uguali
-- [x] tutto il codice deve essere in inglese
-- [ ] in `WaiterFrame` devo riconoscere gli ordini dalla stringa
-- [ ] in `WaiterFrame` devo far si che per prima cosa si scriva il numero del tavolo
+- [ ] ricontrollare tutti i possibili errori di `chefFrame`
+- [ ] su `WaiterFrame` i tasti "+" e "-" vanno finiti
+- [ ] su `WaiterFrame` il tasto "back to main menu va finito"(?) 
+-
 
 ###lista eccezioni da condsiderare
 - [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` e in `WaiterFrame`
-- [x] creazione dei file di testo se non trovati
 - [ ] usare jOptionPane nella gestione delle eccezioni 
 
 ###bug da risolvere:
 - [ ] su mac i bottoni colorati si vedono comunque bianchi quindi forse 
       per i bottoni colorati è meglio passare alle icone
-- [x] `chefFrame` non aggiunge piatti se sono stati selezionati altri piatti prima
 - [ ] text area panel va sistemato nella gestione del testo( non va a capo)
-- [x] `chefFrame` invece di rimuovere i piatti li rimuove e li riaggiunge
 
 
 ###divisioni interfacce grafiche:
