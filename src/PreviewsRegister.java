@@ -8,12 +8,13 @@ public class PreviewsRegister {
 
     public void increment(OrderPreview orderPreview){
         int i= previews.indexOf(orderPreview);
-        previews.get(i).setQuantity(orderPreview.getQuantity()+1);
+        previews.get(i).increment();
+
     }
 
     public void decrement(OrderPreview orderPreview){
         int i= previews.indexOf(orderPreview);
-        previews.get(i).setQuantity(orderPreview.getQuantity()-1);
+        previews.get(i).decrement();
         if(previews.get(i).getQuantity()==0){
             previews.remove(i);
         }
@@ -29,5 +30,15 @@ public class PreviewsRegister {
 
     public ArrayList<OrderPreview> getPreviews() {
         return previews;
+    }
+    public ArrayList<Order> toOrders(){
+        ArrayList<Order> orders = new ArrayList<>();
+        for (OrderPreview p:
+        previews){
+            for (int i = 0; i<p.getQuantity();i++){
+                orders.add((Order) p);
+            }
+        }
+        return orders;
     }
 }

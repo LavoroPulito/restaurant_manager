@@ -1,0 +1,14 @@
+scontrino tavolo 2
+giorno 09_luglio_2022 ora 16:40
+
+Ordini                              Iva		 Prezzo
+---------------------------------------------
+patate                              1.3€	 13.0€ 
+pasta al sugo                       1.0€	 10.0€ 
+pasta al sugo                       1.0€	 10.0€ 
+tiramisù                            1.5€	 15.0€ 
+-------------------------------------------------------
+totale complessivo: 	 48.0€
+di cui iva 	4.8€
+totale pagato; 	 50.0€
+change: 	2€

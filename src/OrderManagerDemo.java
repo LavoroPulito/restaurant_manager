@@ -33,19 +33,19 @@ public class OrderManagerDemo {
 
         //salvo il json come file
         
-        orderRegister.save();
+        //orderRegister.save();
 
         //creo la stringa json e la stampo
         String jsonOrderRegister = orderRegister.toString();
         System.out.println(jsonOrderRegister);
 
         //carico il json dentro l'oggetto
-        orderRegister.load();
+        //orderRegister.load();
 
         Order order1 = new Order(dish7, 2, "");
         Order order2 = new Order(dish3, 2, "");
         Order order3 = new Order(dish2, 2, "");
-
+        OrderManager orderManager = new OrderManager();
         //creo una nuova anteprima degli ordini
         PreviewsRegister previewsRegister = new PreviewsRegister();
 
@@ -58,7 +58,12 @@ public class OrderManagerDemo {
         System.out.println(previewsRegister.getPreviews());
         previewsRegister.decrement(new OrderPreview(dish3, 2,""));
         System.out.println(previewsRegister.getPreviews());
-
+        System.out.println(previewsRegister.toOrders());
+        System.out.println("prima");
+        System.out.println(orderManager.getRegister());
+        System.out.println("Aggiungo i preordini");
+        orderManager.add(previewsRegister.toOrders());
+        System.out.println(orderManager.getRegister());
         System.out.println("###### prove previews ##########################");
 
 
