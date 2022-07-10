@@ -3,12 +3,13 @@
 - [ ] tenere aggiornata la uml
 - [ ] su `chefFrame` finire tasto menù principale 
 - [ ] ricontrollare tutti i possibili errori di `chefFrame`
-- [ ] su `WaiterFrame` i tasti "+" e "-" vanno finiti
-- [ ] su `WaiterFrame` il tasto "back to main menu va finito"(?) 
+- [x] su `WaiterFrame` i tasti "+" e "-" vanno finiti
+- [x] su `WaiterFrame` il tasto "back to main menu va finito"(?) 
 -
 
 ###lista eccezioni da condsiderare
 - [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` e in `WaiterFrame`
+- [ ] capire se conviene fare una classe con metodi statici da usare tipo numberOnly in `WaiterFrame`
 - [ ] usare jOptionPane nella gestione delle eccezioni 
 
 ###bug da risolvere:
@@ -23,7 +24,7 @@
   - [x] chef `Armando`
   - [X] cuoco  `Fradap`
     - [ ] Aggiustamento grafica 
-  - [ ] cameriere:
+  - [x] cameriere:
     - [ ] Panel: menu a lista di bottoni `Fradap` 
     - [ ] Panel: anteprima ordini `Armando`
     - [ ] Panel: bottoni(caricamento/uscita) `Armando`

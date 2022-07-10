@@ -23,7 +23,7 @@ public class WaiterFrame extends JFrame {
     private DishMenu menu;
     private PreviewsRegister previewsRegister;
     private OrderManager orderManager;
-    private JTextField tableField;
+    private NumberField numberField;
     public JFrame frame;
 
 
@@ -43,8 +43,8 @@ public class WaiterFrame extends JFrame {
 
         previewsRegister = new PreviewsRegister();
 
-        tableField = new JTextField();
-        tableField.setColumns(10);
+        numberField = new NumberField();
+
 
         JPanel menùPanel = new JPanel();
         JScrollPane spMenu = new JScrollPane();
@@ -83,15 +83,14 @@ public class WaiterFrame extends JFrame {
 
         JLabel tableLabel = new JLabel("table:");
         buttonPanel.add(tableLabel);
-        buttonPanel.add(tableField);
+        buttonPanel.add(numberField);
 
         JButton placeButton = new JButton("place orders");
         buttonPanel.add(placeButton);
 
-        JButton menuButton = new JButton("Back to main menu");
-        menuButton.setBackground(Color.RED);
-        menuButton.setOpaque(true);
+        BackMenuButton menuButton = new BackMenuButton(WaiterFrame.this);
         buttonPanel.add(menuButton);
+
         JPanel checkBoxPanel = new JPanel();
         rightPanel.add(checkBoxPanel);
         checkBoxPanel.setLayout(new BorderLayout(0, 0));
@@ -115,37 +114,26 @@ public class WaiterFrame extends JFrame {
 
         }
 
-        tableField.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                numberOnly(e);
-            }
-        });
-        menuButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                MainMenu f = new MainMenu();
-                f.setVisible(true);
-                dispose();
-            }
-        });
+
         subButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(listPreview.getSelectedValue()!= null){
+                if (listPreview.getSelectedValue() != null) {
                     OrderPreview selectedValue = (OrderPreview) listPreview.getSelectedValue();
                     previewsRegister.decrement(selectedValue);
                     listPreview.setListData(previewsRegister.getPreviews().toArray());
-                    listPreview.setSelectedValue(selectedValue,true);
+                    listPreview.setSelectedValue(selectedValue, true);
                 }
             }
         });
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(listPreview.getSelectedValue()!= null){
+                if (listPreview.getSelectedValue() != null) {
                     OrderPreview selectedValue = (OrderPreview) listPreview.getSelectedValue();
                     previewsRegister.increment(selectedValue);
                     listPreview.setListData(previewsRegister.getPreviews().toArray());
-                    listPreview.setSelectedValue(selectedValue,true);
+                    listPreview.setSelectedValue(selectedValue, true);
                 }
             }
         });
@@ -162,7 +150,7 @@ public class WaiterFrame extends JFrame {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (listMenu.getSelectedValue() != null) {
-                    if (tableField.getText().equals("")) {
+                    if (numberField.getText().equals("")) {
                         JOptionPane.showMessageDialog(WaiterFrame.this, "WARNING: Please select a table before adding orders", "warning", JOptionPane.ERROR_MESSAGE);
                     } else {
                         Dish dish = (Dish) listMenu.getSelectedValue();
@@ -170,7 +158,7 @@ public class WaiterFrame extends JFrame {
                                 dish.getName() + '\n' + "category: " + dish.getCategory() + '\n' + "description: "
                                         + dish.getDescription() + '\n' + "price: " + dish.getPrice() + "€\n" + "note: ");
                         if (note != null) {
-                            previewsRegister.addOrder(new OrderPreview(dish, Integer.parseInt(tableField.getText()), note));
+                            previewsRegister.addOrder(new OrderPreview(dish, numberField.getInt(), note));
                             listPreview.setListData(previewsRegister.getPreviews().toArray());
                         }
 
@@ -185,12 +173,6 @@ public class WaiterFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-    }
-    public void numberOnly(KeyEvent e) {
-        char c = e.getKeyChar();
-        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && c != KeyEvent.VK_PERIOD) {
-            e.consume(); // if it's not a number, ignore the event
-        }
     }
 
 }

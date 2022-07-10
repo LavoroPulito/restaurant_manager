@@ -9,110 +9,88 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+
 public class CashFrame extends JFrame {
-	private JTextField txtInserireI;
+    private NumberField amountField;
+    private final int WIDTH = 700;
+    private final int HEIGHT = 400;
+    private final Dimension dimension = new Dimension(WIDTH, HEIGHT);
+    private Bill bill = new Bill();
+    private int table;
 
-	final int WIDTH = 700;
-	final int HEIGHT = 400;
-	final Dimension dimension = new Dimension(WIDTH, HEIGHT);
-	Bill bill = new Bill();
-	int table;
-	
+    public CashFrame() {
+        setTitle("cash desk");
+        getContentPane().setLayout(new GridLayout(1, 3, 0, 0));
 
-	public CashFrame() {
-		setTitle("cash desk");
-		getContentPane().setLayout(new GridLayout(1, 3, 0, 0));
+        JPanel textPanel = new JPanel();
+        getContentPane().add(textPanel);
+        textPanel.setLayout(new BorderLayout(0, 0));
 
-		JPanel panel_2 = new JPanel();
-		getContentPane().add(panel_2);
-		panel_2.setLayout(new BorderLayout(0, 0));
+        JTextArea textArea = new JTextArea();
+        textPanel.add(textArea);
 
-		JTextArea textArea = new JTextArea();
-		panel_2.add(textArea);
-		
-		
-		JPanel panel_1 = new JPanel();
-		getContentPane().add(panel_1);
-		panel_1.setLayout(new BorderLayout(0, 0));
+        JPanel tablesPanel = new JPanel();
+        getContentPane().add(tablesPanel);
+        tablesPanel.setLayout(new BorderLayout(0, 0));
 
-		OrderManager om = new OrderManager();
-		om.load();
-		JList list = new JList(om.getRegister().keySet().toArray());
-		list.getSelectionModel().addListSelectionListener(e ->{
-		int i = (list.getSelectedIndex())+1;
-        String left;
-        String s = Integer.toString(i);
-        if (s.length() <2 ){ 
-             left = s.substring(0,1);
-        }else{
-            int f = s.length() -1;
-            left = s.substring(0,f);
-        }
-		this.table = Integer.parseInt(left);
-		textArea.setText(" ");
-		textArea.append(bill.preConto(table));
-		
-			
-		});
-		panel_1.add(list, BorderLayout.CENTER);
+        OrderManager om = new OrderManager();
+        om.load();
+        JList list = new JList(om.getRegister().keySet().toArray());
+        list.getSelectionModel().addListSelectionListener(e -> {
+            int i = (list.getSelectedIndex()) + 1;
+            String left;
+            String s = Integer.toString(i);
+            if (s.length() < 2) {
+                left = s.substring(0, 1);
+            } else {
+                int f = s.length() - 1;
+                left = s.substring(0, f);
+            }
+            this.table = Integer.parseInt(left);
+            textArea.setText(" ");
+            textArea.append(bill.preConto(table));
 
-		
-		JPanel panel = new JPanel();
-		getContentPane().add(panel);
-		SpringLayout sl_panel = new SpringLayout();
-		panel.setLayout(sl_panel);
+        });
+        tablesPanel.add(list, BorderLayout.CENTER);
 
-		JButton btnNewButton_1 = new JButton("print receipt");
-		
-		
-		
-		txtInserireI = new JTextField();
-		txtInserireI.addMouseListener(new TextFieldListener());
+        JPanel buttonPanel = new JPanel();
+        SpringLayout sl_buttonPanel = new SpringLayout();
+        buttonPanel.setLayout(sl_buttonPanel);
+        getContentPane().add(buttonPanel);
 
-		//textArea.append();
-		;
-		sl_panel.putConstraint(SpringLayout.WEST, txtInserireI, 10, SpringLayout.WEST, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, txtInserireI, -10, SpringLayout.EAST, panel);
-		sl_panel.putConstraint(SpringLayout.NORTH, btnNewButton_1, 6, SpringLayout.SOUTH, txtInserireI);
-		sl_panel.putConstraint(SpringLayout.SOUTH, txtInserireI, -333, SpringLayout.SOUTH, panel);
-		txtInserireI.setText("enter amount received");
-		panel.add(txtInserireI);
-			
-		
-		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_1, -53, SpringLayout.EAST, panel);
-		panel.add(btnNewButton_1);
-		btnNewButton_1.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				String AmountS = txtInserireI.getText();
-				double amount = Double.parseDouble(AmountS);
-				bill.getBill(amount);
-				System.out.println("Ariciao");
-			}
-			
-		});
-		//btnNewButton_1.addActionListener(this);
+        JButton reciptButton = new JButton("print receipt");
+        sl_buttonPanel.putConstraint(SpringLayout.WEST, reciptButton, 10, SpringLayout.WEST, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.EAST, reciptButton, -10, SpringLayout.EAST, buttonPanel);
 
-		JButton btnNewButton_2 = new JButton("Back to main menù");
-		sl_panel.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -10, SpringLayout.SOUTH, panel);
-		sl_panel.putConstraint(SpringLayout.EAST, btnNewButton_2, -26, SpringLayout.EAST, panel);
-		panel.add(btnNewButton_2);
-		btnNewButton_2.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				setVisible(false); 
-			}
-		});
+        amountField = new NumberField();
+        sl_buttonPanel.putConstraint(SpringLayout.NORTH, reciptButton, 6, SpringLayout.SOUTH, amountField);
+        sl_buttonPanel.putConstraint(SpringLayout.WEST, amountField, 0, SpringLayout.WEST, reciptButton);
+        sl_buttonPanel.putConstraint(SpringLayout.EAST, amountField, 0, SpringLayout.EAST, reciptButton);
+        sl_buttonPanel.putConstraint(SpringLayout.NORTH, amountField, 0, SpringLayout.NORTH, buttonPanel);
+        amountField.setText("enter amount received");
+        buttonPanel.add(amountField);
+        // textArea.append();
+        ;
 
-		setMinimumSize(dimension);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+        buttonPanel.add(reciptButton);
 
-		
-	}
+
+        BackMenuButton menuButton = new BackMenuButton(CashFrame.this);
+        sl_buttonPanel.putConstraint(SpringLayout.WEST, menuButton, 0, SpringLayout.WEST, amountField);
+        sl_buttonPanel.putConstraint(SpringLayout.SOUTH, menuButton, -10, SpringLayout.SOUTH, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.EAST, menuButton, 0, SpringLayout.EAST, amountField);
+        buttonPanel.add(menuButton);
+        reciptButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                bill.getBill(amountField.getDouble());
+            }
+
+        });
+        setMinimumSize(dimension);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+    }
 }
