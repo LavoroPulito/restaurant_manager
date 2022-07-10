@@ -2,12 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -24,14 +19,13 @@ public class WaiterFrame extends JFrame {
     private static final long serialVersionUID = 1L;
     final int WIDTH = 700;
     final int HEIGHT = 400;
-    private boolean openNew = false;
     final Dimension dimension = new Dimension(WIDTH, HEIGHT);
     private DishMenu menu;
     private PreviewsRegister previewsRegister;
     private OrderManager orderManager;
     private JTextField tableField;
     public JFrame frame;
-    private JTextField quantityField;
+
 
     public WaiterFrame() {
 
@@ -50,14 +44,6 @@ public class WaiterFrame extends JFrame {
         previewsRegister = new PreviewsRegister();
 
         tableField = new JTextField();
-        tableField.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && c != KeyEvent.VK_PERIOD) {
-                    e.consume(); // if it's not a number, ignore the event
-                }
-            }
-        });
         tableField.setColumns(10);
 
         JPanel menùPanel = new JPanel();
@@ -79,15 +65,11 @@ public class WaiterFrame extends JFrame {
         previewPanel.add(quantityPanel, BorderLayout.SOUTH);
         quantityPanel.setLayout(new GridLayout(1, 3, 0, 0));
 
-        JButton lessButton = new JButton("-");
-        quantityPanel.add(lessButton);
+        JButton subButton = new JButton("-");
+        quantityPanel.add(subButton);
 
-        quantityField = new JTextField();
-        quantityPanel.add(quantityField);
-        quantityField.setColumns(10);
-
-        JButton moreButton = new JButton("+");
-        quantityPanel.add(moreButton);
+        JButton addButton = new JButton("+");
+        quantityPanel.add(addButton);
 
         JList listPreview = new JList(previewsRegister.getPreviews().toArray());
         previewPanel.add(listPreview, BorderLayout.CENTER);
@@ -104,23 +86,11 @@ public class WaiterFrame extends JFrame {
         buttonPanel.add(tableField);
 
         JButton placeButton = new JButton("place orders");
-        placeButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                orderManager.add(previewsRegister.toOrders());
-                orderManager.save();
-                previewsRegister.clear();
-                listPreview.setListData(previewsRegister.getPreviews().toArray());
-            }
-        });
         buttonPanel.add(placeButton);
 
         JButton menuButton = new JButton("Back to main menu");
         menuButton.setBackground(Color.RED);
         menuButton.setOpaque(true);
-        menuButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
         buttonPanel.add(menuButton);
         JPanel checkBoxPanel = new JPanel();
         rightPanel.add(checkBoxPanel);
@@ -134,7 +104,6 @@ public class WaiterFrame extends JFrame {
         scrollPane.setViewportView(pContainer);
         OrderManager orderManager = new OrderManager();
         orderManager.load();
-        int index = 0;
         for (Order order : orderManager.getOrdersToDeliver()) {
             String nome = order.getDishName();
             int tavolo = order.getTable();
@@ -145,6 +114,50 @@ public class WaiterFrame extends JFrame {
             // scrollPane.setViewportView(chckbxNewCheckBox);
 
         }
+
+        tableField.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                numberOnly(e);
+            }
+        });
+        menuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                MainMenu f = new MainMenu();
+                f.setVisible(true);
+                dispose();
+            }
+        });
+        subButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(listPreview.getSelectedValue()!= null){
+                    OrderPreview selectedValue = (OrderPreview) listPreview.getSelectedValue();
+                    previewsRegister.decrement(selectedValue);
+                    listPreview.setListData(previewsRegister.getPreviews().toArray());
+                    listPreview.setSelectedValue(selectedValue,true);
+                }
+            }
+        });
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(listPreview.getSelectedValue()!= null){
+                    OrderPreview selectedValue = (OrderPreview) listPreview.getSelectedValue();
+                    previewsRegister.increment(selectedValue);
+                    listPreview.setListData(previewsRegister.getPreviews().toArray());
+                    listPreview.setSelectedValue(selectedValue,true);
+                }
+            }
+        });
+
+        placeButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                orderManager.add(previewsRegister.toOrders());
+                orderManager.save();
+                previewsRegister.clear();
+                listPreview.setListData(previewsRegister.getPreviews().toArray());
+            }
+        });
         listMenu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -172,6 +185,12 @@ public class WaiterFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
+    }
+    public void numberOnly(KeyEvent e) {
+        char c = e.getKeyChar();
+        if (((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE) && c != KeyEvent.VK_PERIOD) {
+            e.consume(); // if it's not a number, ignore the event
+        }
     }
 
 }

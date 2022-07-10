@@ -125,6 +125,7 @@ public class MainMenu extends JFrame implements ActionListener {
 		if (e.getSource().equals(btnWaiter)) {
 			WaiterFrame a = new WaiterFrame();
 			a.setVisible(true);
+
 		}
 
 		if (e.getSource().equals(btnChef)) {
@@ -145,6 +146,7 @@ public class MainMenu extends JFrame implements ActionListener {
 			a.setVisible(true);
 
 		}
+		dispose();
 
 	}
 }
