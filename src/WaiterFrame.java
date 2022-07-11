@@ -103,6 +103,7 @@ public class WaiterFrame extends JFrame {
         scrollPane.setViewportView(pContainer);
         OrderManager orderManager = new OrderManager();
         orderManager.load();
+
         for (Order order : orderManager.getOrdersToDeliver()) {
             String nome = order.getDishName();
             int tavolo = order.getTable();
@@ -140,10 +141,12 @@ public class WaiterFrame extends JFrame {
 
         placeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                orderManager.add(previewsRegister.toOrders());
-                orderManager.save();
-                previewsRegister.clear();
-                listPreview.setListData(previewsRegister.getPreviews().toArray());
+                if (!previewsRegister.getPreviews().isEmpty()) {
+                    orderManager.add(previewsRegister.toOrders());
+                    orderManager.save();
+                    previewsRegister.clear();
+                    listPreview.setListData(previewsRegister.getPreviews().toArray());
+                }
             }
         });
         listMenu.addMouseListener(new MouseAdapter() {
