@@ -14,20 +14,24 @@ public class CookFrame extends JFrame {
 
 //TODO: Manca aggiustamento stile
     private void initComponents(){
-        GridBagLayout lt = new GridBagLayout();
-        setSize(700,400);
+        
+        
         
         pt =new TablesPanelColored();
         pt.addActionListener(new Listener());
         
         JPanel pt1 = new JPanel();
-        Dimension size = pt.getSize();
-        pt1.setSize(700-(int)size.getWidth(), 400-(int)size.getHeight());
-        pt1.add(pt);
+
+        
+        
         add(pt1);
 		setResizable(true);
-		
+        int buttons=pt.getNButtons();
+        int col=buttons/4;
+        int rows=buttons/col;
+		setSize(col*100,rows*50+80);
         setContentPane(pt);
+        add(new BackMenuButton(this),BorderLayout.SOUTH);
         
         
     }
