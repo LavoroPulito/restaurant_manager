@@ -38,7 +38,6 @@ public class CookFrame extends JFrame {
 		setSize(col*100,rows*50+80);
         setContentPane(pt);
         add(new BackMenuButton(this),BorderLayout.SOUTH);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
     }
@@ -55,6 +54,7 @@ private class Listener implements ActionListener, WindowListener{
           int table = ((TableButton) e.getSource()).getTable();
             CheckBoxPopup a= new CheckBoxPopup(table);
             a.addWindowListener(this);
+            dispose();
         }
          
      }

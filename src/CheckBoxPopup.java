@@ -73,6 +73,7 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
           }
         }
         this.dispose();
+        new CookFrame().setVisible(true);
       }
       else{
         JButton a=(JButton)e.getSource();
