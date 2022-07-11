@@ -19,10 +19,7 @@ public class PreviewsRegister {
             previews.remove(i);
         }
     }
-    public void setQuantity(OrderPreview orderPreview, int q){
-        int i= previews.indexOf(orderPreview);
-        previews.get(i).setQuantity(q);
-    }
+
     public void addOrder(OrderPreview orderPreview){
         if (previews.contains(orderPreview)){
             increment(orderPreview);

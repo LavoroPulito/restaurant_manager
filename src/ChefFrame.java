@@ -34,6 +34,17 @@ public class ChefFrame extends JFrame {
 
     public ChefFrame() {
         super("Chef");
+        init();
+
+
+        setMinimumSize(dimension);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+
+
+    }
+    public void init(){
         JPanel panel = new JPanel();
         getContentPane().add(panel, BorderLayout.CENTER);
         SpringLayout sl_panel = new SpringLayout();
@@ -55,18 +66,6 @@ public class ChefFrame extends JFrame {
         DishMenu menu = new DishMenu();
         menu.load();
         JList list = new JList(menu.toArrayList().toArray());
-        list.getSelectionModel().addListSelectionListener(e -> {
-
-            add_new_dish.setSelected(false);
-            Dish dish = (Dish) list.getSelectedValue();
-            if (dish != null) {
-                txtNameDish.setText(dish.getName());
-                price.setText("" + dish.getPrice());
-                txtCateg.setText(dish.getCategory());
-                availableCkBx.setSelected(dish.isAvailable());
-                txtDescription.setText(dish.getDescription());
-            }
-        });
 
         menuPanel.add(list, BorderLayout.CENTER);
         sl_panel.putConstraint(SpringLayout.NORTH, settingsPanel, 10, SpringLayout.NORTH, panel);
@@ -101,13 +100,20 @@ public class ChefFrame extends JFrame {
 
         JPanel controlPanel = new JPanel();
         settingsPanel.add(controlPanel);
-        initInput();
+        resetInput();
         controlPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
         JPanel buttonPanel = new JPanel();
         controlPanel.add(buttonPanel);
         buttonPanel.setLayout(new GridLayout(2, 2, 0, 0));
+        add_new_dish.setToolTipText("turn it on to add new dishes, turn it off to view or edit other dishes");
+        buttonPanel.add(add_new_dish);
 
+        BackMenuButton menuButton = new BackMenuButton(ChefFrame.this);
+        buttonPanel.add(menuButton);
+
+        textArea.setWrapStyleWord(true);
+        controlPanel.add(textArea);
         JButton save_menu = new JButton("Save menù");
         buttonPanel.add(save_menu);
         save_menu.addActionListener(new ActionListener() {
@@ -155,24 +161,22 @@ public class ChefFrame extends JFrame {
                 }
             }
         });
-        add_new_dish.setToolTipText("turn it on to add new dishes, turn it off to view or edit other dishes");
-        buttonPanel.add(add_new_dish);
 
-        BackMenuButton menuButton = new BackMenuButton(ChefFrame.this);
-        buttonPanel.add(menuButton);
+        list.getSelectionModel().addListSelectionListener(e -> {
 
-        textArea.setWrapStyleWord(true);
-        controlPanel.add(textArea);
-
-        setMinimumSize(dimension);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-
+            add_new_dish.setSelected(false);
+            Dish dish = (Dish) list.getSelectedValue();
+            if (dish != null) {
+                txtNameDish.setText(dish.getName());
+                price.setText("" + dish.getPrice());
+                txtCateg.setText(dish.getCategory());
+                availableCkBx.setSelected(dish.isAvailable());
+                txtDescription.setText(dish.getDescription());
+            }
+        });
 
     }
-
-    public void initInput() {
+    public void resetInput() {
         txtNameDish.setText("Name");
         price.setText("Price");
         txtCateg.setText("category");
