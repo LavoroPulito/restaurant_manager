@@ -27,7 +27,13 @@ public class CookFrame extends JFrame {
         add(pt1);
 		setResizable(true);
         int buttons=pt.getNButtons();
+        if (buttons==0){
+            setSize(300,200);
+        }
         int col=buttons/4;
+        if (col==0){
+            col=1;
+        }
         int rows=buttons/col;
 		setSize(col*100,rows*50+80);
         setContentPane(pt);
