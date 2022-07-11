@@ -37,6 +37,7 @@ public class CashFrame extends JFrame {
         OrderManager om = new OrderManager();
         om.load();
         JList list = new JList(om.getRegister().keySet().toArray());
+
         list.getSelectionModel().addListSelectionListener(e -> {
             int i = (list.getSelectedIndex()) + 1;
             String left;
