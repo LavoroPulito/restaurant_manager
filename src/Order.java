@@ -61,12 +61,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "dishName='" + dishName + '\'' +
-                ", table='" + table + '\'' +
-                ", note='" + note + '\'' +
-                ", status= '" + states[state] + '\'' +
-                '}';
+        return table+", "+dishName+": "+note;
     }
 
     @Override

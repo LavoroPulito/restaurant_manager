@@ -26,6 +26,17 @@ public class OrderManager {
 
         }
     }
+    public void add(Order order){
+        if (register.containsKey(order.getTable())){
+            register.get(order.getTable()).add(order);
+        }else{
+            ArrayList<Order> orders = new ArrayList<>();
+            orders.add(order);
+            register.put(order.getTable(),orders);
+        }
+    }
+
+
 
     public ArrayList<Integer> getTableList() {
         if (register == null) {
@@ -64,6 +75,11 @@ public class OrderManager {
         return toDeliver;
     }
 
+    public void setNextState(Order order){
+        register.get(order.getTable()).remove(order);
+        order.setNextState();
+        add(order);
+    }
 
     public HashMap<Integer, ArrayList<Order>> getRegister() {
         return register;

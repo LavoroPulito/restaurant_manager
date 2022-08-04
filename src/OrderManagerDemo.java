@@ -33,7 +33,7 @@ public class OrderManagerDemo {
 
         //salvo il json come file
         
-        //orderRegister.save();
+        orderRegister.save();
 
         //creo la stringa json e la stampo
         String jsonOrderRegister = orderRegister.toString();

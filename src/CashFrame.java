@@ -10,16 +10,21 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class CashFrame extends JFrame {
     private NumberField amountField;
     private final int WIDTH = 700;
     private final int HEIGHT = 400;
     private final Dimension dimension = new Dimension(WIDTH, HEIGHT);
-    private Bill bill = new Bill();
+    private OrderManager orderManager;
     private int table;
+    private Receipt receipt;
 
     public CashFrame() {
+        orderManager = new OrderManager();
+        orderManager.load();
         setTitle("cash desk");
         getContentPane().setLayout(new GridLayout(1, 3, 0, 0));
 
@@ -34,24 +39,14 @@ public class CashFrame extends JFrame {
         getContentPane().add(tablesPanel);
         tablesPanel.setLayout(new BorderLayout(0, 0));
 
-        OrderManager om = new OrderManager();
-        om.load();
-        JList list = new JList(om.getRegister().keySet().toArray());
 
+        JList list = new JList(orderManager.getRegister().keySet().toArray());
         list.getSelectionModel().addListSelectionListener(e -> {
-            int i = (list.getSelectedIndex()) + 1;
-            String left;
-            String s = Integer.toString(i);
-            if (s.length() < 2) {
-                left = s.substring(0, 1);
-            } else {
-                int f = s.length() - 1;
-                left = s.substring(0, f);
-            }
-            this.table = Integer.parseInt(left);
-            textArea.setText(" ");
-            textArea.append(bill.preConto(table));
-
+            receipt = new Receipt();
+            int table = (int) list.getSelectedValue();
+            receipt.addOrders(orderManager.getRegister().get(table));
+            receipt.writeRecipt();
+            textArea.setText(receipt.getReciptText());
         });
         tablesPanel.add(list, BorderLayout.CENTER);
 
@@ -71,7 +66,6 @@ public class CashFrame extends JFrame {
         sl_buttonPanel.putConstraint(SpringLayout.NORTH, amountField, 0, SpringLayout.NORTH, buttonPanel);
         amountField.setText("enter amount received");
         buttonPanel.add(amountField);
-        // textArea.append();
         ;
 
         buttonPanel.add(reciptButton);
@@ -84,7 +78,15 @@ public class CashFrame extends JFrame {
         buttonPanel.add(menuButton);
         reciptButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                bill.getBill(amountField.getDouble());
+                if (!list.isSelectionEmpty()){
+                    receipt.enterAmount(amountField.getDouble());
+                    receipt.writeEndRecipit();
+                    textArea.setText(receipt.getReciptText());
+                    //TODO salvare lo scontrino,
+                    // svuotare il tavolo,
+                    // aggiornare la lista
+
+                }
             }
 
         });
