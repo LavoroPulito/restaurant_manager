@@ -5,7 +5,8 @@
 - [ ] ricontrollare tutti i possibili errori di `chefFrame`
 - [x] su `WaiterFrame` i tasti "+" e "-" vanno finiti
 - [x] su `WaiterFrame` il tasto "back to main menu va finito"(?) 
--
+- [ ] su `CashFrame` aggiungere pulsante per cambiare l'intestazione dello scontrino
+
 
 ###lista eccezioni da condsiderare
 - [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` e in `WaiterFrame`
