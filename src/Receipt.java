@@ -7,6 +7,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 // TODO aggiustare la grafica che così fa proprio cacare
 
@@ -46,7 +47,11 @@ public class Receipt {
         try {
             File file = new File(titlePath);
             FileWriter fw = new FileWriter(file);
-            fw.write(title);
+            String[] lines = title.split("/n");
+            for (String line: lines){
+                System.out.println(line);
+                fw.write(line+'\n');
+            }
             fw.flush();
             fw.close();
         } catch (IOException e) {
@@ -63,7 +68,7 @@ public class Receipt {
             title = "";
             Scanner in = new Scanner(file);
             while (in.hasNextLine()) {
-                title += in.nextLine();
+                title += in.nextLine()+'\n';
 
             }
 

@@ -112,7 +112,7 @@ public class CashFrame extends JFrame {
 		titleButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String newTitle = JOptionPane.showInputDialog(CashFrame.this, "insert new title:");
+				String newTitle = JOptionPane.showInputDialog(CashFrame.this, "insert new title:\n add '/n' to start a new line");
 				if(newTitle != null){
 					receipt.setTitle(newTitle);
 					textArea.setText(receipt.getReciptText());
