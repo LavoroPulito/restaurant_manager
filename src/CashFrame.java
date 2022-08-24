@@ -4,8 +4,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -87,7 +85,7 @@ public class CashFrame extends JFrame {
 								JOptionPane.ERROR_MESSAGE);
 					} else {
 						receipt.enterAmount(amountField.getDouble());
-						receipt.writeEndRecipit();
+						receipt.writeEndReceipt();
 						textArea.setText(receipt.getReciptText());
 						receipt.save();
 						orderManager.cleanTable((int) list.getSelectedValue());

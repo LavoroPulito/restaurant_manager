@@ -13,7 +13,8 @@ public class ReceiptTest {
         receipt.writeRecipt();
         System.out.println(receipt.getReciptText());
         receipt.enterAmount(100);
-        receipt.writeEndRecipit();
+        receipt.getTotal();
+        receipt.writeEndReceipt();
         System.out.println(receipt.getReciptText());
 
 
