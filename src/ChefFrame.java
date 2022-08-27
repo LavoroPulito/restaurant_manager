@@ -21,12 +21,13 @@ import javax.swing.SpringLayout;
 
 public class ChefFrame extends JFrame {
 
+    private DishMenu menu;
     private JTextField txtDescription;
     private JTextField txtNameDish;
     private NumberField price;
     private JTextField txtCateg;
     private JTextArea textArea = new JTextArea();
-    private JCheckBox availableCkBx = new JCheckBox("available");
+    private JCheckBox availableCkBx;
     private JToggleButton add_new_dish = new JToggleButton("Add new dish: OFF");
     final int WIDTH = 700;
     final int HEIGHT = 400;
@@ -36,7 +37,6 @@ public class ChefFrame extends JFrame {
         super("Chef");
         init();
 
-
         setMinimumSize(dimension);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,59 +44,66 @@ public class ChefFrame extends JFrame {
 
 
     }
-    public void init(){
-        JPanel panel = new JPanel();
-        getContentPane().add(panel, BorderLayout.CENTER);
+
+    public void init() {
+
+        // Main panel
+        JPanel background = new JPanel();
+        getContentPane().add(background, BorderLayout.CENTER);
         SpringLayout sl_panel = new SpringLayout();
-        panel.setLayout(sl_panel);
-        price = new NumberField();
+        background.setLayout(sl_panel);
+
+        // menu' panel on the left
         JPanel menuPanel = new JPanel();
-        sl_panel.putConstraint(SpringLayout.NORTH, menuPanel, 10, SpringLayout.NORTH, panel);
-        sl_panel.putConstraint(SpringLayout.WEST, menuPanel, 10, SpringLayout.WEST, panel);
-        sl_panel.putConstraint(SpringLayout.SOUTH, menuPanel, -10, SpringLayout.SOUTH, panel);
-        panel.add(menuPanel);
-
-        JPanel settingsPanel = new JPanel();
-        sl_panel.putConstraint(SpringLayout.EAST, menuPanel, -4, SpringLayout.WEST, settingsPanel);
-        sl_panel.putConstraint(SpringLayout.WEST, settingsPanel, 147, SpringLayout.WEST, panel);
-        sl_panel.putConstraint(SpringLayout.SOUTH, settingsPanel, 0, SpringLayout.SOUTH, menuPanel);
-        sl_panel.putConstraint(SpringLayout.EAST, settingsPanel, -10, SpringLayout.EAST, panel);
         menuPanel.setLayout(new BorderLayout(0, 0));
+        background.add(menuPanel);
 
-        DishMenu menu = new DishMenu();
-        menu.load();
-        JList list = new JList(menu.toArrayList().toArray());
-
-        menuPanel.add(list, BorderLayout.CENTER);
-        sl_panel.putConstraint(SpringLayout.NORTH, settingsPanel, 10, SpringLayout.NORTH, panel);
-        panel.add(settingsPanel);
+        // settings panel with field for change attributes and button to manage the menù
+        JPanel settingsPanel = new JPanel();
         settingsPanel.setLayout(new GridLayout(2, 1, 0, 0));
+        background.add(settingsPanel);
+
+        sl_panel.putConstraint(SpringLayout.NORTH, menuPanel, 10, SpringLayout.NORTH, background);
+        sl_panel.putConstraint(SpringLayout.WEST, menuPanel, 10, SpringLayout.WEST, background);
+        sl_panel.putConstraint(SpringLayout.SOUTH, menuPanel, -10, SpringLayout.SOUTH, background);
+        sl_panel.putConstraint(SpringLayout.EAST, menuPanel, -4, SpringLayout.WEST, settingsPanel);
+        sl_panel.putConstraint(SpringLayout.WEST, settingsPanel, 147, SpringLayout.WEST, background);
+        sl_panel.putConstraint(SpringLayout.EAST, settingsPanel, -10, SpringLayout.EAST, background);
+        sl_panel.putConstraint(SpringLayout.NORTH, settingsPanel, 10, SpringLayout.NORTH, background);
+        sl_panel.putConstraint(SpringLayout.SOUTH, settingsPanel, 0, SpringLayout.SOUTH, menuPanel);
+
+        menu = new DishMenu();
+        menu.load();
+
+        JList list = new JList(menu.toArrayList().toArray());
+        menuPanel.add(list, BorderLayout.CENTER);
 
         JPanel attributesPanel = new JPanel();
-        settingsPanel.add(attributesPanel);
         attributesPanel.setLayout(new BoxLayout(attributesPanel, BoxLayout.X_AXIS));
+        settingsPanel.add(attributesPanel);
 
         JPanel sideFieldPanel = new JPanel();
-        attributesPanel.add(sideFieldPanel);
         sideFieldPanel.setLayout(new GridLayout(0, 1, 0, 0));
+        attributesPanel.add(sideFieldPanel);
 
         txtNameDish = new JTextField();
-        sideFieldPanel.add(txtNameDish);
         txtNameDish.setColumns(10);
+        sideFieldPanel.add(txtNameDish);
 
-
+        price = new NumberField();
         sideFieldPanel.add(price);
 
-
         txtCateg = new JTextField();
-        sideFieldPanel.add(txtCateg);
         txtCateg.setColumns(10);
+        sideFieldPanel.add(txtCateg);
 
+        availableCkBx = new JCheckBox("available");
         sideFieldPanel.add(availableCkBx);
 
         txtDescription = new JTextField();
-        attributesPanel.add(txtDescription);
         txtDescription.setColumns(10);
+        attributesPanel.add(txtDescription);
+
 
         JPanel controlPanel = new JPanel();
         settingsPanel.add(controlPanel);
@@ -174,7 +181,6 @@ public class ChefFrame extends JFrame {
                 txtDescription.setText(dish.getDescription());
             }
         });
-
 
 
     }
