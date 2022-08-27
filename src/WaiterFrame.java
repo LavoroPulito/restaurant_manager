@@ -24,7 +24,7 @@ public class WaiterFrame extends JFrame {
 	private PreviewsRegister previewsRegister;
 	private OrderManager orderManager;
 	private NumberField numberField;
-	public JFrame frame;
+
 
 	public WaiterFrame() {
 
@@ -147,12 +147,15 @@ public class WaiterFrame extends JFrame {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				if (listMenu.getSelectedValue() != null) {
+					Dish dish = (Dish) listMenu.getSelectedValue();
 					if (numberField.getText().equals("")) {
 						JOptionPane.showMessageDialog(WaiterFrame.this,
 								"WARNING: Please select a table before adding orders", "warning",
-								JOptionPane.ERROR_MESSAGE);
+								JOptionPane.WARNING_MESSAGE);
+					} else if(!dish.isAvailable()){
+						JOptionPane.showMessageDialog(WaiterFrame.this, "This dish is not available", "not available",JOptionPane.WARNING_MESSAGE );
 					} else {
-						Dish dish = (Dish) listMenu.getSelectedValue();
+
 						String note = JOptionPane.showInputDialog(WaiterFrame.this,
 								dish.getName() + '\n' + "category: " + dish.getCategory() + '\n' + "description: "
 										+ dish.getDescription() + '\n' + "price: " + dish.getPrice() + "€\n"
