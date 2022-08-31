@@ -3,6 +3,14 @@ import com.google.gson.Gson;
 import java.util.*;
 import java.io.*;
 
+/**
+ * This class creates and manages an ArrayList of dish for create a menu'
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ *
+ */
 public class DishMenu {
 
     private HashMap<String, ArrayList<Dish>> menu;

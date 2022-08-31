@@ -32,7 +32,7 @@ public class CashFrame extends JFrame {
 		textPanel.setLayout(new BorderLayout(0, 0));
 
 		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("Arial", Font.PLAIN, 13));
+		textArea.setFont(new Font("Andale Mono", Font.PLAIN, 12));
 		textPanel.add(textArea);
 
 		JButton titleButton = new JButton("change title");
@@ -110,8 +110,9 @@ public class CashFrame extends JFrame {
 		titleButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				String newTitle = JOptionPane.showInputDialog(CashFrame.this, "insert new title:\n add '/n' to start a new line");
-				if(newTitle != null){
+				String newTitle = JOptionPane.showInputDialog(CashFrame.this,
+						"insert new title:\n add '/n' to start a new line");
+				if (newTitle != null) {
 					receipt.setTitle(newTitle);
 					textArea.setText(receipt.getReciptText());
 				}

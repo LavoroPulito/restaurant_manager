@@ -58,7 +58,7 @@ public class Receipt {
     /**
      * length of each line, i.e. the width of the receipt text
      */
-    private static int stringLenght = 40;
+    private static int stringLenght = 32;
 
     /**
      * title of the receipt containing the merchant's data
