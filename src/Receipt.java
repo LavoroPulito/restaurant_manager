@@ -53,8 +53,8 @@ public class Receipt {
     /**
      * the predefinite string to use in casse the title file doesn't exist
      */
-    private final String predefiniteTitle =  "             Pippo Pizza              ";
-
+    private final String predefiniteTitle =  "          Pippo Pizza           ";
+    //                                      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  x32 space
     /**
      * length of each line, i.e. the width of the receipt text
      */
