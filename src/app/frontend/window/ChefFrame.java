@@ -1,17 +1,16 @@
+package app.frontend.window;
+
+import app.frontend.components.BackMenuButton;
+import app.frontend.components.NumberField;
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -19,7 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 import javax.swing.SpringLayout;
 
-public class ChefFrame extends JFrame {
+import app.backend.DishMenu;
+import app.backend.Dish;
+
+public class ChefFrame extends StandardFrame {
 
     private DishMenu menu;
     private JTextField txtDescription;
@@ -29,25 +31,17 @@ public class ChefFrame extends JFrame {
     private JTextArea textArea = new JTextArea();
     private JCheckBox availableCkBx;
     private JToggleButton add_new_dish = new JToggleButton("Add new dish: OFF");
-    final int WIDTH = 700;
-    final int HEIGHT = 400;
-    final Dimension dimension = new Dimension(WIDTH, HEIGHT);
+    private JList list;
 
     public ChefFrame() {
         super("Chef");
         init();
 
-        setMinimumSize(dimension);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-
-
     }
 
     public void init() {
 
-        // Main panel
+        // app.backend.Main panel
         JPanel background = new JPanel();
         getContentPane().add(background, BorderLayout.CENTER);
         SpringLayout sl_panel = new SpringLayout();
@@ -75,7 +69,7 @@ public class ChefFrame extends JFrame {
         menu = new DishMenu();
         menu.load();
 
-        JList list = new JList(menu.toArrayList().toArray());
+        list = new JList(menu.toArrayList().toArray());
         menuPanel.add(list, BorderLayout.CENTER);
 
         JPanel attributesPanel = new JPanel();
@@ -127,18 +121,15 @@ public class ChefFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if (list.getSelectedValue() != null) { // if a value has been selected
-                    Dish selected = (Dish) list.getSelectedValue(); //take selected object
-                    if (!add_new_dish.isSelected()) { // the selected dish is removed from the menu to be
-                        menu.removeDish(selected);
-                    } else {
-                        if (menu.getDish(txtNameDish.getText()) != null) {
-                            return;
-                        }
+                if (price.isDouble()) { // if price.getText has no alphabetic characters
+                    if (!add_new_dish.isSelected()) { // if we are not adding a new dish
+                        menu.removeDish((Dish) list.getSelectedValue());
+                        System.out.println("rimosso");
                     }
                     menu.add(new Dish(txtNameDish.getText(), price.getDouble(),
                             txtDescription.getText(), txtCateg.getText(), availableCkBx.isSelected()));
                 }
+
                 add_new_dish.setSelected(false);
                 menu.save();
                 menu.load();
@@ -153,7 +144,7 @@ public class ChefFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (list.getSelectedValue() != null) {
                     menu.removeDish((Dish) list.getSelectedValue());
-                    list.clearSelection();
+                    resetInput();
                 }
             }
         });
@@ -163,6 +154,8 @@ public class ChefFrame extends JFrame {
             public void itemStateChanged(ItemEvent e) {
                 if (add_new_dish.isSelected()) {
                     add_new_dish.setText("add new dish: ON");
+                    resetInput();
+                    textArea.setText("fill in the fields to create a new dish." + "\nclick on save menu to save the changes");
                 } else {
                     add_new_dish.setText("add new dish: OFF");
                 }
@@ -186,6 +179,7 @@ public class ChefFrame extends JFrame {
     }
 
     public void resetInput() {
+        list.clearSelection();
         txtNameDish.setText("Name");
         price.setText("Price");
         txtCateg.setText("category");

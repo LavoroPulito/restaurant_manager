@@ -1,20 +1,23 @@
-
+package app.tests;
 /*
-classe demo per testare la classe MenuDish e la classe Dish
+classe demo per testare la classe MenuDish e la classe app.backend.Dish
  */
+
+import app.backend.Dish;
+import app.backend.DishMenu;
 
 public class MenuDemo {
     public static void main(String[] args) {
         /*
         //creo un menù e aggiungo dei piatti
-        DishMenu carta = new DishMenu();
-        carta.add(new Dish("pasta con tonno", 8.0, "pasta con tonno","First"));
-        carta.add(new Dish("pasta al pesto", 10.0, "pasta con basilico e parmigiano", "First"));
-        carta.add(new Dish("sorbetto al limone", 9.0, "tipo gelato", "Dolce"));
-        carta.add(new Dish("calamari", 23.4, "calamari fritti","Secondo"));
-        carta.add(new Dish("patate", 13, "patate lesse","Secondo"));
-        carta.add(new Dish("pasta al sugo", 10, "pasta col pomodoro","First"));
-        carta.add(new Dish("tiramisù", 15, "mascarpone e caffè","Dolce"));
+        app.backend.DishMenu carta = new app.backend.DishMenu();
+        carta.add(new app.backend.Dish("pasta con tonno", 8.0, "pasta con tonno","First"));
+        carta.add(new app.backend.Dish("pasta al pesto", 10.0, "pasta con basilico e parmigiano", "First"));
+        carta.add(new app.backend.Dish("sorbetto al limone", 9.0, "tipo gelato", "Dolce"));
+        carta.add(new app.backend.Dish("calamari", 23.4, "calamari fritti","Secondo"));
+        carta.add(new app.backend.Dish("patate", 13, "patate lesse","Secondo"));
+        carta.add(new app.backend.Dish("pasta al sugo", 10, "pasta col pomodoro","First"));
+        carta.add(new app.backend.Dish("tiramisù", 15, "mascarpone e caffè","Dolce"));
 
         //stampo il menù in un dizionario ordinato per portate
         System.out.println("dizionario per portate:");
@@ -48,9 +51,9 @@ public class MenuDemo {
         carta.load();
         System.out.println("pure qua");
         //recupero un piatto tramite getDish passando una stringa e lo stampo
-        Dish next_del = carta.getDish("patate", "Secondo");
+        app.backend.Dish next_del = carta.getDish("patate", "Secondo");
         System.out.println(next_del);
-        Dish getDish = carta.getDish("patate");
+        app.backend.Dish getDish = carta.getDish("patate");
         System.out.println(getDish);
         //elimino il piatto recuperato
         carta.removeDish(next_del );
@@ -60,7 +63,7 @@ public class MenuDemo {
         System.out.println(carta.getMenu().toString());
 
 
-        DishMenu dm = new DishMenu();
+        app.backend.DishMenu dm = new app.backend.DishMenu();
         dm.load();
         System.out.println(dm.getMenu());
         */

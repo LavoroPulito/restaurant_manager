@@ -1,3 +1,4 @@
+package app.backend;
 
 /**
  * This class creates and manages a dish

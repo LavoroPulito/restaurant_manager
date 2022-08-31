@@ -1,3 +1,5 @@
+package app.backend;
+
 import com.google.gson.Gson;
 import org.jetbrains.annotations.NotNull;
 import java.util.*;

@@ -1,7 +1,10 @@
+package app.frontend.components;
+
 import java.util.ArrayList;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import app.backend.OrderManager;
 
 public class TablesPanel extends JPanel implements ActionListener{
     ArrayList<TableButton> tb;
@@ -34,7 +37,7 @@ public class TablesPanel extends JPanel implements ActionListener{
     public int getNButtons(){
         return tn.size();
     }
-    public void addActionListener(ActionListener act){ //da passare un oggetto di una classe con metodo actionListener (Vedi CookFrame)
+    public void addActionListener(ActionListener act){ //da passare un oggetto di una classe con metodo actionListener (Vedi app.frontend.window.CookFrame)
         for(TableButton t: tb) {
             t.addActionListener(act);
         }

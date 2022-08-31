@@ -1,3 +1,5 @@
+package app.backend;
+
 import java.util.Objects;
 
 public class Order {

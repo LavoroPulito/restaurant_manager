@@ -1,3 +1,7 @@
+package app.frontend.components;
+
+import app.frontend.window.MainMenu;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

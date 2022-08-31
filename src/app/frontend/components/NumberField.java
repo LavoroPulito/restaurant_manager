@@ -1,3 +1,5 @@
+package app.frontend.components;
+
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -19,7 +21,14 @@ public class NumberField extends JTextField {
     public int getInt(){
         return Integer.parseInt(getText());
     }
-
+    public boolean isDouble(){
+        try {
+            Double.parseDouble(getText());
+            return true;
+        }catch (NumberFormatException e){
+            return false;
+        }
+    }
     public double getDouble(){
         return Double.parseDouble(getText());
     }

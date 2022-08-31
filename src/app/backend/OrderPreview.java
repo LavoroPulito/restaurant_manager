@@ -1,3 +1,4 @@
+package app.backend;
 
 public class OrderPreview extends Order {
 

@@ -1,21 +1,24 @@
-import javax.swing.JFrame;
+package app.frontend.window;
+
+import app.frontend.components.BackMenuButton;
+import app.frontend.components.TableButton;
+import app.frontend.components.TablesPanelColored;
+
 import javax.swing.JPanel;
-import javax.swing.plaf.DimensionUIResource;
 
 import java.awt.*;
 import java.awt.event.*;
 
-public class CookFrame extends JFrame {
+public class CookFrame extends StandardFrame {
 
     private TablesPanelColored pt;
 
     public CookFrame() {
+        super("Cook");
         this.initComponents();
     }
 
-    //TODO: Manca aggiustamento stile
     private void initComponents() {
-
 
         pt = new TablesPanelColored();
         pt.addActionListener(new Listener());
@@ -24,7 +27,7 @@ public class CookFrame extends JFrame {
 
 
         add(pt1);
-        setResizable(true);
+
         int buttons = pt.getNButtons();
         if (buttons == 0) {
             setSize(300, 200);
@@ -49,7 +52,7 @@ public class CookFrame extends JFrame {
     private class Listener implements ActionListener, WindowListener {
 
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource().getClass().getName().equals("TableButton")) {
+            if (e.getSource().getClass().getName().equals("app.frontend.components.TableButton")) {
                 int table = ((TableButton) e.getSource()).getTable();
                 CheckBoxPopup a = new CheckBoxPopup(table);
                 a.addWindowListener(this);

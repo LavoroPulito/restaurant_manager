@@ -1,3 +1,5 @@
+package app.backend;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -197,7 +199,7 @@ public class Receipt {
     }
 
     /**
-     * write the end of Receipt with the amount, the change and the date
+     * write the end of app.backend.Receipt with the amount, the change and the date
      */
     public void writeEndReceipt() {
         if (amount > 0) {

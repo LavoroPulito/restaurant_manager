@@ -1,3 +1,5 @@
+package app.frontend.components;
+
 import java.awt.Dimension;
 
 import javax.swing.*;

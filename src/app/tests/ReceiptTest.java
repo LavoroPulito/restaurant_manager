@@ -1,3 +1,8 @@
+package app.tests;
+
+import app.backend.OrderManager;
+import app.backend.Receipt;
+
 public class ReceiptTest {
     public static void main(String[] args) {
         /*

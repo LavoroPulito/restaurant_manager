@@ -1,4 +1,5 @@
-import java.awt.*;
+package app.frontend.components;
+
 import javax.swing.*;
 import java.awt.event.*;
 public class TextFieldListener implements MouseListener{

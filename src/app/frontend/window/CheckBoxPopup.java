@@ -1,9 +1,14 @@
+package app.frontend.window;
+
+
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
-
 import javax.swing.*;
 import javax.swing.border.Border;
+import app.backend.Order;
+import app.backend.OrderManager;
 
 public class CheckBoxPopup extends JFrame implements ActionListener {
   ArrayList<JCheckBox> cb;

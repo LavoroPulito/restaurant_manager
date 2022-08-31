@@ -1,3 +1,7 @@
+package app.tests;
+
+import app.backend.*;
+
 import java.util.ArrayList;
 
 public class OrderManagerDemo {

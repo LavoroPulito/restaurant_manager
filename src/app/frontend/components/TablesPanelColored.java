@@ -1,5 +1,10 @@
+package app.frontend.components;
+
 import java.awt.*;
-public class TablesPanelColored extends TablesPanel { 
+import app.backend.OrderManager;
+import app.backend.Order;
+
+public class TablesPanelColored extends TablesPanel {
         public TablesPanelColored(){
         super();
         OrderManager om = new OrderManager();

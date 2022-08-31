@@ -1,18 +1,18 @@
+package app.frontend.window;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.LayoutStyle;
-import javax.swing.WindowConstants;
 
 @SuppressWarnings("serial")
-public class MainMenu extends JFrame implements ActionListener {
+public class MainMenu extends StandardFrame implements ActionListener {
 
 	private JButton btnWaiter;
 	private JButton btnChef;
@@ -23,7 +23,7 @@ public class MainMenu extends JFrame implements ActionListener {
 	private JSeparator jSeparator2;
 
 	public MainMenu() {
-		initComponents();
+		super("Restaurant Manager");initComponents();
 	}
 
 	private void initComponents() {
@@ -36,7 +36,7 @@ public class MainMenu extends JFrame implements ActionListener {
 		btnCuoco = new JButton();
 		btnCash = new JButton();
 
-		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
 
 		jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -115,7 +115,7 @@ public class MainMenu extends JFrame implements ActionListener {
 
 		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 		jPanel1.getAccessibleContext().setAccessibleName("");
-		setResizable(false);
+
 		pack();
 	}
 

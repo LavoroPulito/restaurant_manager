@@ -17,7 +17,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Main",
+					"name": "app.backend.Main",
 					"defaultDiagram": true,
 					"ownedViews": [
 						{
@@ -346,7 +346,7 @@
 											"top": 384,
 											"width": 259.06689453125,
 											"height": 13,
-											"text": "+creaOrdinazione(Dish, String, int): void",
+											"text": "+creaOrdinazione(app.backend.Dish, String, int): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2233,7 +2233,7 @@
 											"top": 631,
 											"width": 143,
 											"height": 13,
-											"text": "Dish"
+											"text": "app.backend.Dish"
 										},
 										{
 											"_type": "LabelView",
@@ -2551,7 +2551,7 @@
 											"top": 510,
 											"width": 142.6826171875,
 											"height": 13,
-											"text": "+piatti: ArrayList <Dish>",
+											"text": "+piatti: ArrayList <app.backend.Dish>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2637,7 +2637,7 @@
 											"top": 563,
 											"width": 142.6826171875,
 											"height": 13,
-											"text": "+getDish(String): Dish",
+											"text": "+getDish(String): app.backend.Dish",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2654,7 +2654,7 @@
 											"top": 578,
 											"width": 142.6826171875,
 											"height": 13,
-											"text": "+addDish(Dish): void",
+											"text": "+addDish(app.backend.Dish): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2671,7 +2671,7 @@
 											"top": 593,
 											"width": 142.6826171875,
 											"height": 13,
-											"text": "+removeDish(Dish): void",
+											"text": "+removeDish(app.backend.Dish): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3170,7 +3170,7 @@
 											"top": 510,
 											"width": 199.80517578125,
 											"height": 13,
-											"text": "+ordinazioni: ArrayList<Order>",
+											"text": "+ordinazioni: ArrayList<app.backend.Order>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3222,7 +3222,7 @@
 											"top": 535,
 											"width": 199.80517578125,
 											"height": 13,
-											"text": "+aggiungiOrdinazione(Order): void",
+											"text": "+aggiungiOrdinazione(app.backend.Order): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3256,7 +3256,7 @@
 											"top": 565,
 											"width": 199.80517578125,
 											"height": 13,
-											"text": "+getOrder(String): Order",
+											"text": "+getOrder(String): app.backend.Order",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3701,7 +3701,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGAyPMr2aQTDqY="
 									},
-									"name": "Dish",
+									"name": "app.backend.Dish",
 									"type": ""
 								},
 								{
@@ -4073,7 +4073,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Dish",
+					"name": "app.backend.Dish",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -4212,7 +4212,7 @@
 								"$ref": "AAAAAAGAyHa5P4PpJeQ="
 							},
 							"name": "piatti",
-							"type": "ArrayList <Dish>"
+							"type": "ArrayList <app.backend.Dish>"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -4307,7 +4307,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGAzWfAjQ0PJaQ="
 									},
-									"name": "Dish",
+									"name": "app.backend.Dish",
 									"type": ""
 								},
 								{
@@ -4335,7 +4335,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGAzWgAzg6C4MI="
 									},
-									"name": "Dish",
+									"name": "app.backend.Dish",
 									"type": ""
 								},
 								{
@@ -4534,7 +4534,7 @@
 								"$ref": "AAAAAAGAyMV69JbhCVw="
 							},
 							"name": "ordinazioni",
-							"type": "ArrayList<Order>"
+							"type": "ArrayList<app.backend.Order>"
 						}
 					],
 					"operations": [
@@ -4571,7 +4571,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGAy9hgfUsRFso="
 									},
-									"name": "Order"
+									"name": "app.backend.Order"
 								},
 								{
 									"_type": "UMLParameter",
@@ -4634,7 +4634,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGA0ob3+H18KkE="
 									},
-									"type": "Order",
+									"type": "app.backend.Order",
 									"direction": "return"
 								}
 							]
