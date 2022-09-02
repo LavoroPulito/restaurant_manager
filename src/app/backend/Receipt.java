@@ -55,12 +55,12 @@ public class Receipt {
     /**
      * the predefinite string to use in casse the title file doesn't exist
      */
-    private final String predefiniteTitle =  "          Pippo Pizza           ";
+    private final String PREDEFINITE_TITLE =  "          Pippo Pizza           ";
     //                                      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  x32 space
     /**
      * length of each line, i.e. the width of the receipt text
      */
-    private static int stringLenght = 32;
+    private int STRING_LENGHT = 32;
 
     /**
      * title of the receipt containing the merchant's data
