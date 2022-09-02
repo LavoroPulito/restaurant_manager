@@ -2,21 +2,14 @@ package app.frontend.window;
 
 import app.frontend.components.BackMenuButton;
 import app.frontend.components.NumberField;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.JToggleButton;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 
 import app.backend.DishMenu;
 import app.backend.Dish;
@@ -28,9 +21,9 @@ public class ChefFrame extends StandardFrame {
     private JTextField txtNameDish;
     private NumberField price;
     private JTextField txtCateg;
-    private JTextArea textArea = new JTextArea();
+    private JTextArea textArea;
     private JCheckBox availableCkBx;
-    private JToggleButton add_new_dish = new JToggleButton("Add new dish: OFF");
+    private JToggleButton add_new_dish;
     private JList list;
 
     public ChefFrame() {
@@ -41,16 +34,21 @@ public class ChefFrame extends StandardFrame {
 
     public void init() {
 
-        // app.backend.Main panel
+        // Main panel
         JPanel background = new JPanel();
         getContentPane().add(background, BorderLayout.CENTER);
         SpringLayout sl_panel = new SpringLayout();
         background.setLayout(sl_panel);
 
+
         // menu' panel on the left
         JPanel menuPanel = new JPanel();
         menuPanel.setLayout(new BorderLayout(0, 0));
-        background.add(menuPanel);
+        JScrollPane scrollPane = new JScrollPane();
+        background.add(scrollPane);
+        scrollPane.setRowHeaderView(scrollPane.getVerticalScrollBar());
+        scrollPane.setViewportView(menuPanel);
+
 
         // settings panel with field for change attributes and button to manage the menù
         JPanel settingsPanel = new JPanel();
@@ -66,19 +64,32 @@ public class ChefFrame extends StandardFrame {
         sl_panel.putConstraint(SpringLayout.NORTH, settingsPanel, 10, SpringLayout.NORTH, background);
         sl_panel.putConstraint(SpringLayout.SOUTH, settingsPanel, 0, SpringLayout.SOUTH, menuPanel);
 
-        menu = new DishMenu();
-        menu.load();
-
-        list = new JList(menu.toArrayList().toArray());
-        menuPanel.add(list, BorderLayout.CENTER);
-
         JPanel attributesPanel = new JPanel();
         attributesPanel.setLayout(new BoxLayout(attributesPanel, BoxLayout.X_AXIS));
         settingsPanel.add(attributesPanel);
 
+        JPanel controlPanel = new JPanel();
+        controlPanel.setLayout(new GridLayout(0, 1, 0, 0));
+        settingsPanel.add(controlPanel);
+
+
+
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(2, 2, 0, 0));
+        controlPanel.add(buttonPanel);
+
         JPanel sideFieldPanel = new JPanel();
         sideFieldPanel.setLayout(new GridLayout(0, 1, 0, 0));
         attributesPanel.add(sideFieldPanel);
+
+        menu = new DishMenu();
+        menu.load();
+
+        list = new JList(menu.toArrayList().toArray());
+        list.getSelectionModel().addListSelectionListener(e -> {
+            setTextAreas();
+        });
+        menuPanel.add(list, BorderLayout.CENTER);
 
         txtNameDish = new JTextField();
         txtNameDish.setColumns(10);
@@ -98,87 +109,42 @@ public class ChefFrame extends StandardFrame {
         txtDescription.setColumns(10);
         attributesPanel.add(txtDescription);
 
+        textArea = new JTextArea();
+        textArea.setWrapStyleWord(true);
+        controlPanel.add(textArea);
 
-        JPanel controlPanel = new JPanel();
-        settingsPanel.add(controlPanel);
-        resetInput();
-        controlPanel.setLayout(new GridLayout(0, 1, 0, 0));
 
-        JPanel buttonPanel = new JPanel();
-        controlPanel.add(buttonPanel);
-        buttonPanel.setLayout(new GridLayout(2, 2, 0, 0));
+
+        add_new_dish = new JToggleButton("Add new dish: OFF");
         add_new_dish.setToolTipText("turn it on to add new dishes, turn it off to view or edit other dishes");
+        add_new_dish.addItemListener(e -> {
+            manageAddButton();
+        });
         buttonPanel.add(add_new_dish);
 
         BackMenuButton menuButton = new BackMenuButton(ChefFrame.this);
         buttonPanel.add(menuButton);
 
-        textArea.setWrapStyleWord(true);
-        controlPanel.add(textArea);
         JButton save_menu = new JButton("Save menù");
+        save_menu.setToolTipText("click here to save your changes, \nif you close this screen without saving your changes they will be lost");
         buttonPanel.add(save_menu);
-        save_menu.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-                if (price.isDouble()) { // if price.getText has no alphabetic characters
-                    if (!add_new_dish.isSelected()) { // if we are not adding a new dish
-                        menu.removeDish((Dish) list.getSelectedValue());
-                        System.out.println("rimosso");
-                    }
-                    menu.add(new Dish(txtNameDish.getText(), price.getDouble(),
-                            txtDescription.getText(), txtCateg.getText(), availableCkBx.isSelected()));
-                }
-
-                add_new_dish.setSelected(false);
-                menu.save();
-                menu.load();
-                list.setListData(menu.toArrayList().toArray());
-            }
+        save_menu.addActionListener(e->{
+                saveProtocol();
         });
 
         JButton remove_dish = new JButton("Remove dish");
         buttonPanel.add(remove_dish);
-        remove_dish.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (list.getSelectedValue() != null) {
-                    menu.removeDish((Dish) list.getSelectedValue());
-                    resetInput();
-                }
-            }
+        remove_dish.setToolTipText("select a dish and click here to remove, then click save");
+        remove_dish.addActionListener(e -> {
+                removeProtocol();
+
         });
 
-        add_new_dish.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (add_new_dish.isSelected()) {
-                    add_new_dish.setText("add new dish: ON");
-                    resetInput();
-                    textArea.setText("fill in the fields to create a new dish." + "\nclick on save menu to save the changes");
-                } else {
-                    add_new_dish.setText("add new dish: OFF");
-                }
-            }
-        });
-
-        list.getSelectionModel().addListSelectionListener(e -> {
-
-            add_new_dish.setSelected(false);
-            Dish dish = (Dish) list.getSelectedValue();
-            if (dish != null) {
-                txtNameDish.setText(dish.getName());
-                price.setText("" + dish.getPrice());
-                txtCateg.setText(dish.getCategory());
-                availableCkBx.setSelected(dish.isAvailable());
-                txtDescription.setText(dish.getDescription());
-            }
-        });
-
+        resetInput();
 
     }
 
-    public void resetInput() {
+    private void resetInput() {
         list.clearSelection();
         txtNameDish.setText("Name");
         price.setText("Price");
@@ -186,7 +152,62 @@ public class ChefFrame extends StandardFrame {
         txtDescription.setText("Description");
         availableCkBx.setSelected(true);
         textArea.setText("select a dish to view its attributes or to modify it.\n"
-                + "use the keys to modify the menu.\n" + "remember to save or your changes will be lost");
+                + "use the button to modify the menu.\n" + "remember to save or your changes will be lost");
 
     }
+
+    private void setTextAreas() {
+        add_new_dish.setSelected(false);
+        textArea.setText("select a dish to view its attributes or to modify it.\n"
+                + "use the keys to modify the menu.\n" + "remember to save or your changes will be lost");
+        Dish dish = (Dish) list.getSelectedValue();
+        if (dish != null) {
+            txtNameDish.setText(dish.getName());
+            price.setText("" + dish.getPrice());
+            txtCateg.setText(dish.getCategory());
+            availableCkBx.setSelected(dish.isAvailable());
+            txtDescription.setText(dish.getDescription());
+        }
+    }
+
+    private void manageAddButton() {
+        if (add_new_dish.isSelected()) {
+            add_new_dish.setText("add new dish: ON");
+            resetInput();
+            textArea.setText("fill in the fields to create a new dish." + "\nclick on save menu to save the changes");
+        } else {
+            add_new_dish.setText("add new dish: OFF");
+            textArea.setText("select a dish to view its attributes or to modify it.\n"
+                    + "use the keys to modify the menu.\n" + "remember to save or your changes will be lost");
+
+        }
+    }
+
+    private void saveProtocol(){
+        if (price.isDouble()) { // if price.getText has no alphabetic characters
+            if (!add_new_dish.isSelected()) { // if we are not adding a new dish
+                menu.removeDish((Dish) list.getSelectedValue());
+
+            }
+            menu.add(new Dish(txtNameDish.getText(), price.getDouble(),
+                    txtDescription.getText(), txtCateg.getText(), availableCkBx.isSelected()));
+        }
+
+        add_new_dish.setSelected(false);
+        textArea.setText("select a dish to view its attributes or to modify it.\n"
+                + "use the keys to modify the menu.\n" + "remember to save or your changes will be lost");
+        menu.save();
+        menu.load();
+        list.setListData(menu.toArrayList().toArray());
+    }
+
+    private void removeProtocol(){
+        if (list.getSelectedValue() != null) {
+            menu.removeDish((Dish) list.getSelectedValue());
+            resetInput();
+        }
+    }
+
 }
+
+

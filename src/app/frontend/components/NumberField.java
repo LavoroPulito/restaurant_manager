@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * this class
+ * @e
+ */
 public class NumberField extends JTextField {
 
     public NumberField(){
