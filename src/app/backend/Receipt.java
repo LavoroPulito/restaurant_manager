@@ -141,7 +141,7 @@ public class Receipt {
             }
 
         } catch (IOException e) {
-            title = predefiniteTitle;
+            title = PREDEFINITE_TITLE;
         }
     }
 
@@ -192,7 +192,7 @@ public class Receipt {
         for (Order o : orders) {
             String price = "" + o.getDishPrice();
             String name = o.getDishName();
-            receiptText += name + " ".repeat(stringLenght - price.length() - name.length()) + price + '\n';
+            receiptText += name + " ".repeat(STRING_LENGHT - price.length() - name.length()) + price + '\n';
         }
         receiptText += "\nTOTALE: " + total + "€  di cui iva: " + total * IVA / 100 + "€";
 
