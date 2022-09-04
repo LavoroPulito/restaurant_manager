@@ -1,6 +1,6 @@
 package app.backend;
 
-import app.frontend.window.MainMenu;
+import app.frontend.windows.MainMenu;
 
 public class Main {
         //Open role selector menu

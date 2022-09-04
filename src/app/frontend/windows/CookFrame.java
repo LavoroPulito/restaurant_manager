@@ -1,6 +1,7 @@
-package app.frontend.window;
+package app.frontend.windows;
 
 import app.frontend.components.BackMenuButton;
+import app.frontend.components.CheckBoxPopup;
 import app.frontend.components.TableButton;
 import app.frontend.components.TablesPanelColored;
 

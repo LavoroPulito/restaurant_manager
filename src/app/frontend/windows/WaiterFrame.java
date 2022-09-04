@@ -1,4 +1,4 @@
-package app.frontend.window;
+package app.frontend.windows;
 
 import app.frontend.components.BackMenuButton;
 import app.frontend.components.NumberField;

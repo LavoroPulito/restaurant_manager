@@ -1,6 +1,5 @@
 package app.backend;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -109,7 +108,7 @@ public class Receipt {
      * write the new title in the file and reload it
      * @param title
      */
-    public void setTitle(@NotNull String title) {
+    public void setTitle(String title) {
         try {
             File file = new File(titlePath);
             FileWriter fw = new FileWriter(file);
@@ -139,7 +138,7 @@ public class Receipt {
                 title += in.nextLine()+'\n';
 
             }
-
+            in.close();
         } catch (IOException e) {
             title = PREDEFINITE_TITLE;
         }

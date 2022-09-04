@@ -1,4 +1,4 @@
-package app.frontend.window;
+package app.frontend.windows;
 
 import javax.swing.*;
 import java.awt.*;

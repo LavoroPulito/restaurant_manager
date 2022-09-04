@@ -1,4 +1,4 @@
-package app.frontend.window;
+package app.frontend.windows;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;

@@ -1,4 +1,4 @@
-package app.frontend.window;
+package app.frontend.components;
 
 
 
@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import app.backend.Order;
 import app.backend.OrderManager;
+import app.frontend.windows.CookFrame;
 
 public class CheckBoxPopup extends JFrame implements ActionListener {
   ArrayList<JCheckBox> cb;

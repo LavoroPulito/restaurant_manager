@@ -1,6 +1,6 @@
 package app.tests;
 
-import app.frontend.window.CookFrame;
+import app.frontend.windows.CookFrame;
 
 public class FrameTest {
 	public static void main(String[] args) {

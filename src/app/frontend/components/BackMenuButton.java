@@ -1,9 +1,10 @@
 package app.frontend.components;
 
-import app.frontend.window.MainMenu;
-import app.frontend.window.MainMenu2;
-
 import javax.swing.*;
+
+import app.frontend.windows.MainMenu;
+import app.frontend.windows.MainMenu2;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

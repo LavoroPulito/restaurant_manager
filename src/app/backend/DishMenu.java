@@ -1,7 +1,6 @@
 package app.backend;
 
 import com.google.gson.Gson;
-import org.jetbrains.annotations.NotNull;
 import java.util.*;
 import java.io.*;
 
@@ -33,7 +32,7 @@ public class DishMenu {
      *
      * @param dish
      */
-    public void add(@NotNull Dish dish) {
+    public void add(Dish dish) {
         String key = dish.getCategory();
         if (menu.containsKey(key)) {
             menu.get(key).add(dish);

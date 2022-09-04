@@ -5,6 +5,7 @@ classe demo per testare la classe MenuDish e la classe app.backend.Dish
 
 import app.backend.Dish;
 import app.backend.DishMenu;
+import app.frontend.windows.ChefFrame;
 
 public class MenuDemo {
     public static void main(String[] args) {
@@ -67,6 +68,7 @@ public class MenuDemo {
         dm.load();
         System.out.println(dm.getMenu());
         */
+        ChefFrame f = new ChefFrame();
         DishMenu carta = new DishMenu();
         carta.load();
         System.out.println(carta.getMenu());
