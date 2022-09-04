@@ -40,34 +40,31 @@ public class  MainMenu extends StandardFrame implements ActionListener {
 
 		jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 38)); // NOI18N
+		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 38)); 
 		jLabel2.setForeground(new java.awt.Color(0, 0, 204));
 		jLabel2.setText("PIPPO PIZZA");
 
-		btnWaiter.setBackground(new java.awt.Color(255, 255, 255));
-		btnWaiter.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+		btnWaiter.setFont(new java.awt.Font("Verdana", 1, 12)); 
 		btnWaiter.setForeground(new java.awt.Color(0, 0, 153));
 		btnWaiter.setText("Waiter");
 		btnWaiter.setToolTipText("Click here for take orders and check orders state");
 		btnWaiter.addActionListener(this);
 
-		btnChef.setBackground(new java.awt.Color(0, 0, 0));
-		btnChef.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
-		btnChef.setForeground(Color.BLUE);
+		btnChef.setFont(new java.awt.Font("Verdana", 1, 12)); 
+		btnChef.setForeground(new java.awt.Color(0, 0, 153));
 		btnChef.setText("Chef");
 		btnChef.setToolTipText("Click here for create and modify the Menu");
 		btnChef.setMargin(new java.awt.Insets(2, 12, 2, 14));
-		btnChef.setName("btnChef"); // NOI18N
+		btnChef.setName("btnChef"); 
 		btnChef.addActionListener(this);
 
-		btnCuoco.setBackground(new java.awt.Color(255, 255, 255));
-		btnCuoco.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+		btnCuoco.setFont(new java.awt.Font("Verdana", 1, 12)); 
 		btnCuoco.setForeground(new java.awt.Color(0, 0, 153));
 		btnCuoco.setText("Cook");
 		btnCuoco.setToolTipText("Click here for check orders to prepare");
 		btnCuoco.addActionListener(this);
 
-		btnCash.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+		btnCash.setFont(new java.awt.Font("Verdana", 1, 12)); 
 		btnCash.setForeground(new java.awt.Color(0, 0, 153));
 		btnCash.setText("Cassa");
 		btnCash.setToolTipText("Click here for generate receipts");
