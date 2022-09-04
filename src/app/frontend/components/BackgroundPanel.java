@@ -19,7 +19,7 @@ public class BackgroundPanel extends JPanel {
 
 	public BackgroundPanel() {
 		img = Toolkit.getDefaultToolkit()
-				.createImage("/Users/armandocoppola/Documents/restaurant_manager/src/sfondoMargherita.jpg");
+				.createImage("/Users/armandocoppola/Documents/restaurant_manager/src/sfondoMargheritaSfocata.jpg");
 		loadImage(img);
 	}
 

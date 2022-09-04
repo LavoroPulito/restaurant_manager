@@ -12,7 +12,7 @@ import javax.swing.JSeparator;
 import javax.swing.LayoutStyle;
 
 @SuppressWarnings("serial")
-public class MainMenu extends StandardFrame implements ActionListener {
+public class  MainMenu extends StandardFrame implements ActionListener {
 
 	private JButton btnWaiter;
 	private JButton btnChef;

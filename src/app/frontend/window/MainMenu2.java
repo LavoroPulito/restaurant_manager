@@ -3,6 +3,7 @@ package app.frontend.window;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,63 +14,105 @@ import javax.swing.SpringLayout;
 import app.frontend.components.BackgroundPanel;
 
 public class MainMenu2 extends StandardFrame {
-	private JLabel titleLabel;
+    private JLabel titleLabel;
+    private JButton chefButton;
+    private JButton cookButton;
+    private JButton cashButton;
+    private JButton waiterButton;
 
-	public MainMenu2() {
-		super("Main Menù");
-		getContentPane().setLayout(new BorderLayout(0, 0));
+    private int space = getContentPane().getWidth() / 25;
 
-		titleLabel = new JLabel("PIPPO PIZZA");
-		titleLabel.setFont(new Font("Maku", Font.BOLD | Font.ITALIC, 24));
-		titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-		BackgroundPanel backgroundPanel = new BackgroundPanel();
-		backgroundPanel.setLayout(new BoxLayout(backgroundPanel, BoxLayout.Y_AXIS));
+    public MainMenu2() {
+        super("Main Menù");
+        getContentPane().setLayout(new BorderLayout(0, 0));
 
-		getContentPane().add(backgroundPanel);
+        titleLabel = new JLabel("PIPPO PIZZA");
+        titleLabel.setFont(new Font("Maku", Font.BOLD | Font.ITALIC, space));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        BackgroundPanel backgroundPanel = new BackgroundPanel();
+        backgroundPanel.setLayout(new BoxLayout(backgroundPanel, BoxLayout.Y_AXIS));
 
-		JPanel topPanel = new JPanel();
-		topPanel.setOpaque(false);
-		backgroundPanel.add(topPanel);
-		System.out.println(titleLabel.getHeight());
-		SpringLayout sl_topPanel = new SpringLayout();
-		topPanel.setLayout(sl_topPanel);
+        getContentPane().add(backgroundPanel);
 
-		JButton chefButton = new JButton("Chef");
-		sl_topPanel.putConstraint(SpringLayout.WEST, chefButton, 10, SpringLayout.WEST, topPanel);
-		sl_topPanel.putConstraint(SpringLayout.SOUTH, chefButton, 165, SpringLayout.NORTH, topPanel);
-		sl_topPanel.putConstraint(SpringLayout.EAST, chefButton, 338, SpringLayout.WEST, topPanel);
+        JPanel topPanel = new JPanel();
+        topPanel.setOpaque(false);
+        backgroundPanel.add(topPanel);
+        System.out.println(titleLabel.getHeight());
+        SpringLayout sl_topPanel = new SpringLayout();
+        topPanel.setLayout(sl_topPanel);
 
-		topPanel.add(chefButton);
+        chefButton = new JButton("Chef");
+        chefButton.setToolTipText("Click here for create and modify the Menu");
+        chefButton.addActionListener(this::actionPerformed);
+        cookButton = new JButton("Cook");
+        chefButton.setToolTipText("Click here for check orders to prepare");
+        chefButton.addActionListener(this::actionPerformed);
 
-		JButton cookButton = new JButton("Cook");
-		sl_topPanel.putConstraint(SpringLayout.NORTH, chefButton, 0, SpringLayout.NORTH, cookButton);
-		sl_topPanel.putConstraint(SpringLayout.NORTH, cookButton, 10, SpringLayout.NORTH, topPanel);
-		sl_topPanel.putConstraint(SpringLayout.WEST, cookButton, 362, SpringLayout.WEST, topPanel);
-		sl_topPanel.putConstraint(SpringLayout.SOUTH, cookButton, 165, SpringLayout.NORTH, topPanel);
-		sl_topPanel.putConstraint(SpringLayout.EAST, cookButton, 690, SpringLayout.WEST, topPanel);
-		topPanel.add(cookButton);
+        sl_topPanel.putConstraint(SpringLayout.WEST, chefButton, space, SpringLayout.WEST, topPanel);
+        sl_topPanel.putConstraint(SpringLayout.EAST, chefButton, (-space - getContentPane().getWidth()) / 2, SpringLayout.EAST, topPanel);
+        sl_topPanel.putConstraint(SpringLayout.NORTH, chefButton, space, SpringLayout.NORTH, topPanel);
+        sl_topPanel.putConstraint(SpringLayout.SOUTH, chefButton, 0, SpringLayout.SOUTH, topPanel);
 
-		backgroundPanel.add(titleLabel);
+        sl_topPanel.putConstraint(SpringLayout.EAST, cookButton, -space, SpringLayout.EAST, topPanel);
+        sl_topPanel.putConstraint(SpringLayout.NORTH, cookButton, space, SpringLayout.NORTH, topPanel);
+        sl_topPanel.putConstraint(SpringLayout.WEST, cookButton, (space + getContentPane().getWidth()) / 2, SpringLayout.WEST, topPanel);
+        sl_topPanel.putConstraint(SpringLayout.SOUTH, cookButton, 0, SpringLayout.SOUTH, topPanel);
 
-		JPanel downPanel = new JPanel();
-		downPanel.setOpaque(false);
-		backgroundPanel.add(downPanel);
-		SpringLayout sl_downPanel = new SpringLayout();
-		downPanel.setLayout(sl_downPanel);
+        topPanel.add(cookButton);
+        topPanel.add(chefButton);
 
-		JButton waiterButton = new JButton("Waiter");
-		sl_downPanel.putConstraint(SpringLayout.NORTH, waiterButton, 0, SpringLayout.NORTH, downPanel);
-		sl_downPanel.putConstraint(SpringLayout.WEST, waiterButton, 10, SpringLayout.WEST, downPanel);
-		sl_downPanel.putConstraint(SpringLayout.SOUTH, waiterButton, -10, SpringLayout.SOUTH, downPanel);
-		sl_downPanel.putConstraint(SpringLayout.EAST, waiterButton, 338, SpringLayout.WEST, downPanel);
-		downPanel.add(waiterButton);
 
-		JButton cashButton = new JButton("Cash");
-		sl_downPanel.putConstraint(SpringLayout.NORTH, cashButton, 0, SpringLayout.NORTH, downPanel);
-		sl_downPanel.putConstraint(SpringLayout.WEST, cashButton, 362, SpringLayout.WEST, downPanel);
-		sl_downPanel.putConstraint(SpringLayout.SOUTH, cashButton, -10, SpringLayout.SOUTH, downPanel);
-		sl_downPanel.putConstraint(SpringLayout.EAST, cashButton, 690, SpringLayout.WEST, downPanel);
-		downPanel.add(cashButton);
+        backgroundPanel.add(titleLabel);
 
-	}
+        JPanel downPanel = new JPanel();
+        downPanel.setOpaque(false);
+        backgroundPanel.add(downPanel);
+        SpringLayout sl_downPanel = new SpringLayout();
+        downPanel.setLayout(sl_downPanel);
+
+        cashButton = new JButton("Cash");
+        cashButton.setToolTipText("Click here for generate receipts");
+        cashButton.addActionListener(this::actionPerformed);
+        waiterButton = new JButton("Waiter");
+        waiterButton.setToolTipText("Click here for take orders and check orders state");
+        waiterButton.addActionListener(this::actionPerformed);
+
+        sl_downPanel.putConstraint(SpringLayout.NORTH, waiterButton, 0, SpringLayout.NORTH, downPanel);
+        sl_downPanel.putConstraint(SpringLayout.WEST, waiterButton, space, SpringLayout.WEST, downPanel);
+        sl_downPanel.putConstraint(SpringLayout.EAST, waiterButton, (-space - getContentPane().getWidth()) / 2, SpringLayout.EAST, downPanel);
+        sl_downPanel.putConstraint(SpringLayout.SOUTH, waiterButton, -space, SpringLayout.SOUTH, downPanel);
+
+        sl_downPanel.putConstraint(SpringLayout.EAST, cashButton, -space, SpringLayout.EAST, downPanel);
+        sl_downPanel.putConstraint(SpringLayout.NORTH, cashButton, 0, SpringLayout.NORTH, downPanel);
+        sl_downPanel.putConstraint(SpringLayout.WEST, cashButton, (space + getContentPane().getWidth()) / 2, SpringLayout.WEST, downPanel);
+        sl_downPanel.putConstraint(SpringLayout.SOUTH, cashButton, -space, SpringLayout.SOUTH, downPanel);
+
+
+        downPanel.add(cashButton);
+        downPanel.add(waiterButton);
+
+    }
+
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource().equals(waiterButton)) {
+            new WaiterFrame();
+        }
+
+        if (e.getSource().equals(chefButton)) {
+            new ChefFrame();
+
+        }
+
+        if (e.getSource().equals(cookButton)) {
+            new CookFrame();
+        }
+
+        if (e.getSource().equals(cashButton)) {
+            new CashFrame();
+
+        }
+        dispose();
+
+    }
 }

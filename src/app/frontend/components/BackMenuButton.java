@@ -1,6 +1,7 @@
 package app.frontend.components;
 
 import app.frontend.window.MainMenu;
+import app.frontend.window.MainMenu2;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +17,7 @@ public class BackMenuButton extends JButton {
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu f = new MainMenu();
+                MainMenu2 f = new MainMenu2();
                 f.setVisible(true);
                 frame.dispose();
             }
