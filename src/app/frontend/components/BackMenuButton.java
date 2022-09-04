@@ -17,7 +17,7 @@ public class BackMenuButton extends JButton {
         addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu2 f = new MainMenu2();
+                MainMenu f = new MainMenu();
                 f.setVisible(true);
                 frame.dispose();
             }

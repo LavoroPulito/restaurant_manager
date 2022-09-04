@@ -1,12 +1,12 @@
 package app.backend;
 
-import app.frontend.window.MainMenu2;
+import app.frontend.window.MainMenu;
 
 public class Main {
         //Open role selector menu
 	public static void main(String args[]) {
 		System.out.print("Ciao");
-		MainMenu2 m= new MainMenu2();
+		MainMenu m= new MainMenu();
 		m.setVisible(true);
 
 	}

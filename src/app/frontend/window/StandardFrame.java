@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public abstract class StandardFrame extends JFrame {
+public class StandardFrame extends JFrame {
     private final int WIDTH = 1080;
     private final int HEIGHT = 720;
     final Dimension dimension = new Dimension(WIDTH, HEIGHT);
