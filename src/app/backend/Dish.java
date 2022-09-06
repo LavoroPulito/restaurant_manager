@@ -8,6 +8,9 @@ package app.backend;
  * @version 1.0
  *
  */
+/**
+ * 
+ */
 public class Dish {
     /**
      * name of the dish

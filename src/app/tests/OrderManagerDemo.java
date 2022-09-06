@@ -40,7 +40,7 @@ public class OrderManagerDemo {
         orderRegister.save();
 
         //creo la stringa json e la stampo
-        String jsonOrderRegister = orderRegister.toString();
+        String jsonOrderRegister = orderRegister.toJson();
         System.out.println(jsonOrderRegister);
 
         //carico il json dentro l'oggetto

@@ -1,5 +1,5 @@
 package app.backend;
-
+// TODO: JavaDoc
 public class OrderPreview extends Order {
 
     private int quantity;

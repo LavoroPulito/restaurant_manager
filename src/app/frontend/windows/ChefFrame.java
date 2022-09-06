@@ -33,7 +33,6 @@ public class ChefFrame extends StandardFrame {
     }
 
     public void init() {
-        setSize(1000,600);
         // Main panel
         JPanel background = new JPanel();
         getContentPane().add(background, BorderLayout.CENTER);

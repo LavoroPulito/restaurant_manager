@@ -18,17 +18,24 @@ public class DishMenu {
      */
     private HashMap<String, ArrayList<Dish>> menu;
 
+    /**
+     * Initializes the DishMenu
+     */
     public DishMenu() {
         menu = new HashMap<String, ArrayList<Dish>>();
 
     }
 
+    /**
+     * Returns the menu
+     * @return HashMap menu
+     */    
     public HashMap<String, ArrayList<Dish>> getMenu() {
         return menu;
     }
 
     /**
-     * this class add a dish in the HashMap menu in the right category if it exists or create a new one
+     * this method add a dish in the HashMap menu in the right category if it exists or creates a new one
      *
      * @param dish
      */
@@ -45,7 +52,7 @@ public class DishMenu {
     }
 
     /**
-     * remove a dish from the HashMap, if the key to which "dish" belonged remains empty, it also deletes the key
+     * removes a dish from the HashMap, if the key to which "dish" belonged remains empty, it also deletes the key
      *
      * @param dish to remove
      * @return if the removal was successful
@@ -67,7 +74,7 @@ public class DishMenu {
      * it returns the plate corresponding to the supplied parameters if it exists in the menu otherwise it returns null
      * @param name of the dish
      * @param category of the dish
-     * @return dish o null
+     * @return dish or null
      */
     public Dish getDish(String name, String category) {
         for (Dish e :
@@ -82,7 +89,7 @@ public class DishMenu {
     /**
      * it returns the plate corresponding to the supplied parameters if it exists in the menu otherwise it returns null
      * @param name of the dish
-     * @return dish o null
+     * @return dish or null
      */
     public Dish getDish(String name) {
         for (String key :

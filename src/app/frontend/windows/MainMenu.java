@@ -129,7 +129,6 @@ public class  MainMenu extends StandardFrame implements ActionListener {
 
 			ChefFrame a = new ChefFrame();
 			a.setVisible(true);
-			a.pack();
 		}
 
 		if (e.getSource().equals(btnCuoco)) {
