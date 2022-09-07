@@ -193,7 +193,9 @@ public class Receipt {
             String name = o.getDishName();
             receiptText += name + " ".repeat(STRING_LENGHT - price.length() - name.length()) + price + '\n';
         }
-        receiptText += "\nTOTALE: " + total + "€  di cui iva: " + total * IVA / 100 + "€";
+        int temp = (int)(total*100.0);
+        total = ((double)temp)/100.0;
+        receiptText += "\nTOTAL: " + total + "€  of which VAT: " + total * IVA / 100 + "€";
 
     }
 
@@ -203,10 +205,10 @@ public class Receipt {
     public void writeEndReceipt() {
         if (amount > 0) {
             receiptText += "\n";
-            receiptText += "PAGATO: " + amount + "€\n";
-            receiptText += "resto: " + (giveChange()) + "€\n";
-            receiptText += "date: " + data.format(x) + "_" + time.format(y);
-            receiptText += "\nARIVEDERCI";
+            receiptText += "Paid: " + amount + "€\n";
+            receiptText += "Rest: " + (giveChange()) + "€\n";
+            receiptText += "Date: " + data.format(x) + "_" + time.format(y);
+            receiptText += "\nGood bye";
         }
 
     }
