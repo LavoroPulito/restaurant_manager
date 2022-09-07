@@ -54,14 +54,14 @@ public class ChefFrame extends StandardFrame {
         settingsPanel.setLayout(new GridLayout(2, 1, 0, 0));
         background.add(settingsPanel);
 
-        sl_panel.putConstraint(SpringLayout.NORTH, menuPanel, 10, SpringLayout.NORTH, background);
-        sl_panel.putConstraint(SpringLayout.WEST, menuPanel, 10, SpringLayout.WEST, background);
-        sl_panel.putConstraint(SpringLayout.SOUTH, menuPanel, -10, SpringLayout.SOUTH, background);
-        sl_panel.putConstraint(SpringLayout.EAST, menuPanel, -4, SpringLayout.WEST, settingsPanel);
+        sl_panel.putConstraint(SpringLayout.NORTH, scrollPane, 10, SpringLayout.NORTH, background);
+        sl_panel.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, background);
+        sl_panel.putConstraint(SpringLayout.SOUTH, scrollPane, -10, SpringLayout.SOUTH, background);
+        sl_panel.putConstraint(SpringLayout.EAST, scrollPane, -4, SpringLayout.WEST, settingsPanel);
         sl_panel.putConstraint(SpringLayout.WEST, settingsPanel, 147, SpringLayout.WEST, background);
         sl_panel.putConstraint(SpringLayout.EAST, settingsPanel, -10, SpringLayout.EAST, background);
         sl_panel.putConstraint(SpringLayout.NORTH, settingsPanel, 10, SpringLayout.NORTH, background);
-        sl_panel.putConstraint(SpringLayout.SOUTH, settingsPanel, 0, SpringLayout.SOUTH, menuPanel);
+        sl_panel.putConstraint(SpringLayout.SOUTH, settingsPanel, 0, SpringLayout.SOUTH, scrollPane);
 
         JPanel attributesPanel = new JPanel();
         attributesPanel.setLayout(new BoxLayout(attributesPanel, BoxLayout.X_AXIS));
@@ -198,6 +198,7 @@ public class ChefFrame extends StandardFrame {
         menu.save();
         menu.load();
         list.setListData(menu.toArrayList().toArray());
+        resetInput();
     }
 
     private void removeProtocol(){

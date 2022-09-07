@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import app.backend.OrderManager;
 
-public class TablesPanelColored extends JPanel implements ActionListener {
+public class TablesPanelColored extends BackgroundPanel implements ActionListener {
     ArrayList<TableButton> tb;
     ArrayList<Integer> tn;
         public TablesPanelColored(){

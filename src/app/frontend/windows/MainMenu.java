@@ -1,76 +1,103 @@
 package app.frontend.windows;
 
-import java.awt.Color;
+import app.frontend.components.BackgroundPanel;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSeparator;
-import javax.swing.LayoutStyle;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class  MainMenu extends StandardFrame implements ActionListener {
+public class MainMenu extends StandardFrame implements ActionListener {
 
-	private JButton btnWaiter;
-	private JButton btnChef;
-	private JButton btnCuoco;
-	private JButton btnCash;
-	private JLabel jLabel2;
-	private JPanel jPanel1;
-	private JSeparator jSeparator2;
+    private JButton btnWaiter;
+    private JButton btnChef;
+    private JButton btnCuoco;
+    private JButton btnCash;
+    private JLabel programTitle;
+    private JPanel panel;
+    private JPanel btnPanel;
+    private int cornice;
+    private static final double ratio = 0.0578;
+    public MainMenu() {
+        super("Restaurant Manager");
+        initComponents();
+    }
 
-	public MainMenu() {
-		super("Restaurant Manager");initComponents();
-	}
-
-	private void initComponents() {
-
-		jPanel1 = new JPanel();
-		jLabel2 = new JLabel();
-		jSeparator2 = new JSeparator();
-		btnWaiter = new JButton();
-		btnChef = new JButton();
-		btnCuoco = new JButton();
-		btnCash = new JButton();
+    private void initComponents() {
+        cornice = (int) (getContentPane().getHeight()*ratio);
+        panel = new BackgroundPanel();
+        programTitle = new JLabel();
+        btnWaiter = new JButton();
+        btnChef = new JButton();
+        btnCuoco = new JButton();
+        btnCash = new JButton();
+        btnPanel = new JPanel();
 
 
+        //jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
-		jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        programTitle.setFont(new java.awt.Font("Chalkboard SE", 1, 55));
+        programTitle.setForeground(new java.awt.Color(0, 70, 0));
+        programTitle.setText("PIPPO PIZZA");
+        programTitle.setHorizontalAlignment(JLabel.CENTER);
 
-		jLabel2.setFont(new java.awt.Font("Tahoma", 1, 38)); 
-		jLabel2.setForeground(new java.awt.Color(0, 0, 204));
-		jLabel2.setText("PIPPO PIZZA");
+        btnWaiter.setFont(new java.awt.Font("Chalkduster", 1, 32));
+        btnWaiter.setForeground(new java.awt.Color(0, 90, 0));
+        btnWaiter.setText("Waiter");
+        btnWaiter.setToolTipText("Click here for take orders and check orders state");
+        btnWaiter.addActionListener(this);
 
-		btnWaiter.setFont(new java.awt.Font("Verdana", 1, 12)); 
-		btnWaiter.setForeground(new java.awt.Color(0, 0, 153));
-		btnWaiter.setText("Waiter");
-		btnWaiter.setToolTipText("Click here for take orders and check orders state");
-		btnWaiter.addActionListener(this);
+        btnChef.setFont(new java.awt.Font("Chalkduster", 1, 32));
+        btnChef.setForeground(new java.awt.Color(0, 90, 0));
+        btnChef.setText("Chef");
+        btnChef.setToolTipText("Click here for create and modify the Menu");
+        btnChef.setName("btnChef");
+        btnChef.addActionListener(this);
 
-		btnChef.setFont(new java.awt.Font("Verdana", 1, 12)); 
-		btnChef.setForeground(new java.awt.Color(0, 0, 153));
-		btnChef.setText("Chef");
-		btnChef.setToolTipText("Click here for create and modify the Menu");
-		btnChef.setMargin(new java.awt.Insets(2, 12, 2, 14));
-		btnChef.setName("btnChef"); 
-		btnChef.addActionListener(this);
+        btnCuoco.setFont(new java.awt.Font("Chalkduster", 1, 32));
+        btnCuoco.setForeground(new java.awt.Color(0, 90, 0));
+        btnCuoco.setText("Cook");
+        btnCuoco.setToolTipText("Click here for check orders to prepare");
+        btnCuoco.addActionListener(this);
 
-		btnCuoco.setFont(new java.awt.Font("Verdana", 1, 12)); 
-		btnCuoco.setForeground(new java.awt.Color(0, 0, 153));
-		btnCuoco.setText("Cook");
-		btnCuoco.setToolTipText("Click here for check orders to prepare");
-		btnCuoco.addActionListener(this);
+        btnCash.setFont(new java.awt.Font("Chalkduster", 1, 32));
+        btnCash.setForeground(new java.awt.Color(0, 90, 0));
+        btnCash.setText("Cassa");
+        btnCash.setToolTipText("Click here for generate receipts");
+        btnCash.addActionListener(this);
 
-		btnCash.setFont(new java.awt.Font("Verdana", 1, 12)); 
-		btnCash.setForeground(new java.awt.Color(0, 0, 153));
-		btnCash.setText("Cassa");
-		btnCash.setToolTipText("Click here for generate receipts");
-		btnCash.setMargin(new java.awt.Insets(2, 12, 2, 14));
-		btnCash.addActionListener(this);
+        GridLayout gridLayout = new GridLayout(4,1,0,cornice/4);
+        btnPanel.setOpaque(false);
+        btnPanel.setLayout(gridLayout);
+        btnPanel.add(btnChef);
+        btnPanel.add(btnWaiter);
+        btnPanel.add(btnCuoco);
+        btnPanel.add(btnCash);
 
+        SpringLayout springLayout = new SpringLayout();
+        panel.setLayout(springLayout);
+
+
+        springLayout.putConstraint(SpringLayout.NORTH, programTitle, cornice*2, SpringLayout.NORTH, panel);
+        springLayout.putConstraint(SpringLayout.SOUTH, programTitle, 50+cornice*2, SpringLayout.NORTH, panel);
+        springLayout.putConstraint(SpringLayout.EAST, programTitle, -cornice, SpringLayout.EAST, panel);
+        springLayout.putConstraint(SpringLayout.WEST, programTitle, cornice, SpringLayout.WEST, panel);
+
+        springLayout.putConstraint(SpringLayout.NORTH, btnPanel, cornice*2, SpringLayout.SOUTH,programTitle);
+		springLayout.putConstraint(SpringLayout.EAST, btnPanel, -cornice, SpringLayout.EAST,panel);
+		springLayout.putConstraint(SpringLayout.WEST, btnPanel, cornice, SpringLayout.WEST,panel);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnPanel, -cornice, SpringLayout.SOUTH,panel);
+
+
+
+
+        panel.add(btnPanel);
+        panel.add(programTitle);
+
+        getContentPane().add(panel);
+		/*
 		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
 		jPanel1.setLayout(jPanel1Layout);
 		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
@@ -113,36 +140,38 @@ public class  MainMenu extends StandardFrame implements ActionListener {
 		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 		jPanel1.getAccessibleContext().setAccessibleName("");
 
-		pack();
-	}
+		//pack();
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+		 */
+    }
 
-		if (e.getSource().equals(btnWaiter)) {
-			WaiterFrame a = new WaiterFrame();
-			a.setVisible(true);
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-		}
+        if (e.getSource().equals(btnWaiter)) {
+            WaiterFrame a = new WaiterFrame();
+            a.setVisible(true);
 
-		if (e.getSource().equals(btnChef)) {
+        }
 
-			ChefFrame a = new ChefFrame();
-			a.setVisible(true);
-		}
+        if (e.getSource().equals(btnChef)) {
 
-		if (e.getSource().equals(btnCuoco)) {
+            ChefFrame a = new ChefFrame();
+            a.setVisible(true);
+        }
 
-			CookFrame a = new CookFrame();
-			a.setVisible(true);
-		}
+        if (e.getSource().equals(btnCuoco)) {
 
-		if (e.getSource().equals(btnCash)) {
-			CashFrame a = new CashFrame();
-			a.setVisible(true);
+            CookFrame a = new CookFrame();
+            a.setVisible(true);
+        }
 
-		}
-		dispose();
+        if (e.getSource().equals(btnCash)) {
+            CashFrame a = new CashFrame();
+            a.setVisible(true);
 
-	}
+        }
+        dispose();
+
+    }
 }

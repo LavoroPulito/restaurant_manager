@@ -25,7 +25,7 @@ public class CookFrame extends StandardFrame {
         pt.addActionListener(new Listener());
 
         JPanel pt1 = new JPanel();
-
+        pt1.setOpaque(false);
 
         add(pt1);
 
