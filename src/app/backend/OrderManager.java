@@ -155,7 +155,7 @@ public class OrderManager {
  */
     public void save() {
         try {
-            File f = new File("orders.json");
+            File f = new File("assets/saves/orders.json");
             FileWriter w = new FileWriter(f);
             BufferedWriter writer = new BufferedWriter(w);
             writer.write(this.toJson());
@@ -173,7 +173,7 @@ public class OrderManager {
         String string = "";
         String sCurrentLine = "";
         try {
-            File f = new File("orders.json");
+            File f = new File("assets/saves/orders.json");
             FileReader r = new FileReader(f);
             BufferedReader br = new BufferedReader(r);
             while ((sCurrentLine = br.readLine()) != null) {
