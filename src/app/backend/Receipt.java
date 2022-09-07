@@ -10,15 +10,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// TODO aggiustare la grafica che così fa proprio cacare
-
 /**
  * This class creates and manages a receipt
+ *
  * @author Armando Coppola
  * @author Niccolò Di Santo
  * @author Francesco Daprile
  * @version 1.0
- *
  */
 public class Receipt {
     /**
@@ -54,7 +52,7 @@ public class Receipt {
     /**
      * the predefinite string to use in casse the title file doesn't exist
      */
-    private final String PREDEFINITE_TITLE =  "          Pippo Pizza           ";
+    private final String PREDEFINITE_TITLE = "          Pippo Pizza           ";
     //                                      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM  x32 space
     /**
      * length of each line, i.e. the width of the receipt text
@@ -106,16 +104,17 @@ public class Receipt {
 
     /**
      * write the new title in the file and reload it
-     * @param title
+     *
+     * @param title String to the new title
      */
     public void setTitle(String title) {
         try {
             File file = new File(titlePath);
             FileWriter fw = new FileWriter(file);
             String[] lines = title.split("/n");
-            for (String line: lines){
+            for (String line : lines) {
                 System.out.println(line);
-                fw.write(line+'\n');
+                fw.write(line + '\n');
             }
             fw.flush();
             fw.close();
@@ -135,7 +134,7 @@ public class Receipt {
             title = "";
             Scanner in = new Scanner(file);
             while (in.hasNextLine()) {
-                title += in.nextLine()+'\n';
+                title += in.nextLine() + '\n';
 
             }
             in.close();
@@ -146,6 +145,7 @@ public class Receipt {
 
     /**
      * return total
+     *
      * @return total
      */
     public double getTotal() {
@@ -154,7 +154,8 @@ public class Receipt {
 
     /**
      * adds a list of orders to the receipt
-     * @param orders
+     *
+     * @param orders orders to add
      */
     public void addOrders(ArrayList<Order> orders) {
         this.orders.addAll(orders);
@@ -167,7 +168,8 @@ public class Receipt {
 
     /**
      * set the amount received by the customer
-     * @param amount
+     *
+     * @param amount the amount
      */
     public void enterAmount(double amount) {
         this.amount = amount;
@@ -175,8 +177,8 @@ public class Receipt {
 
     /**
      * return the difference between amount and total
-     * @return change
      *
+     * @return change
      */
     public double giveChange() {
         return amount - total;
@@ -215,6 +217,7 @@ public class Receipt {
 
     /**
      * return a String with the text of the receipt
+     *
      * @return receiptText
      */
     public String getReciptText() {
