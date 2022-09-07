@@ -1,16 +1,17 @@
 package app.backend;
 
 import java.util.Objects;
+
 /**
  * This class creates and describes an order
- * 
+ *
  * @author Armando Coppola
  * @author Niccolò Di Santo
  * @author Francesco Daprile
  * @version 1.0
  */
 
- public class Order {
+public class Order {
     /**
      * Name of the dish
      */
@@ -21,11 +22,11 @@ import java.util.Objects;
     private double dishPrice;
     /**
      * State of the order
-     */    
+     */
     private int state;
     /**
      * Table of the order
-     */    
+     */
     private int table;
     /**
      * notes of the order
@@ -38,7 +39,7 @@ import java.util.Objects;
 
     /**
      * Creates a new order
-     * 
+     *
      * @param dish
      * @param table
      * @param note
@@ -53,7 +54,7 @@ import java.util.Objects;
 
     /**
      * Creates a new order
-     * 
+     *
      * @param dishName
      * @param dishPrice
      * @param table
@@ -66,33 +67,39 @@ import java.util.Objects;
         this.note = note;
         state = 0;
     }
-/**
- * return the dish price
- * @return dishPrice
- */
+
+    /**
+     * return the dish price
+     *
+     * @return dishPrice
+     */
     public double getDishPrice() {
         return dishPrice;
     }
-/**
- * return the table of the order
- * @return table
- */
+
+    /**
+     * return the table of the order
+     *
+     * @return table
+     */
     public int getTable() {
         return table;
     }
 
-/**
- * Sets the state
- * @param state
- */
+    /**
+     * Sets the state
+     *
+     * @param state
+     */
     public void setState(int state) {
         this.state = state;
     }
 
     //imposta automaticamente il prossimo stato, dopo l'ultimo stato ricomincia da capo
-/**
- * Sets automatically the next state, after state 2 returns to 0
- */
+
+    /**
+     * Sets automatically the next state, after state 2 returns to 0
+     */
     public void setNextState() {
         int nextState = state + 1;
         if (nextState < states.length) {
@@ -102,43 +109,49 @@ import java.util.Objects;
         }
 
     }
-/**
- * return the dish name
- * @return dishName
- */
+
+    /**
+     * return the dish name
+     *
+     * @return dishName
+     */
     public String getDishName() {
         return dishName;
     }
 
-/**
- * return the order note
- * @return note
- */
+    /**
+     * return the order note
+     *
+     * @return note
+     */
     public String getNote() {
         return note;
     }
 
-/**
- * return the order state
- * @return state
- */
+    /**
+     * return the order state
+     *
+     * @return state
+     */
     public String getState() {
         return states[this.state];
     }
 
-/**
- * writes the order information in string
- * @return dishPrice
- */
+    /**
+     * writes the order information in string
+     *
+     * @return dishPrice
+     */
     @Override
     public String toString() {
-        return table+", "+dishName+": "+note;
+        return table + ", " + dishName + ": " + note;
     }
 
-/**
- * compares this object with another, if it is an order and has the same attributes are equals
- * @return dishPrice
- */
+    /**
+     * compares this object with another, if it is an order and has the same attributes are equals
+     *
+     * @return dishPrice
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
