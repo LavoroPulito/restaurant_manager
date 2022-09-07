@@ -11,12 +11,7 @@ import app.backend.Receipt;
 import app.frontend.components.BackMenuButton;
 import app.frontend.components.NumberField;
 
-import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.SpringLayout;
+import javax.swing.*;
 
 public class CashFrame extends StandardFrame {
     private NumberField amountField;

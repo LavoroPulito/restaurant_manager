@@ -2,7 +2,6 @@ package app.frontend.windows;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class StandardFrame extends JFrame {
     private final int WIDTH = 1080;

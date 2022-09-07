@@ -68,7 +68,7 @@ public class MenuDemo {
         dm.load();
         System.out.println(dm.getMenu());
         */
-        ChefFrame f = new ChefFrame();
+        new ChefFrame();
         DishMenu carta = new DishMenu();
         carta.load();
         System.out.println(carta.getMenu());
