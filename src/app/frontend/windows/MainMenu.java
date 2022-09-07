@@ -64,7 +64,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
 
         btnCash.setFont(new java.awt.Font("Chalkduster", 1, 32));
         btnCash.setForeground(new java.awt.Color(0, 90, 0));
-        btnCash.setText("Cassa");
+        btnCash.setText("Cash");
         btnCash.setToolTipText("Click here for generate receipts");
         btnCash.addActionListener(this);
 
@@ -97,52 +97,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
         panel.add(programTitle);
 
         getContentPane().add(panel);
-		/*
-		GroupLayout jPanel1Layout = new GroupLayout(jPanel1);
-		jPanel1.setLayout(jPanel1Layout);
-		jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel1Layout.createSequentialGroup().addContainerGap().addGroup(jPanel1Layout
-						.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addGroup(jPanel1Layout.createSequentialGroup().addComponent(jSeparator2).addContainerGap())
-						.addGroup(GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-								.addGap(0, 126, Short.MAX_VALUE)
-								.addGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-										.addGroup(GroupLayout.Alignment.TRAILING,
-												jPanel1Layout.createSequentialGroup().addComponent(jLabel2).addGap(126,
-														126, 126))
-										.addGroup(GroupLayout.Alignment.TRAILING,
-												jPanel1Layout.createSequentialGroup().addGroup(jPanel1Layout
-														.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-														.addComponent(btnChef, GroupLayout.DEFAULT_SIZE,
-																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-														.addComponent(btnCuoco, GroupLayout.DEFAULT_SIZE, 197,
-																Short.MAX_VALUE)
-														.addComponent(btnWaiter, GroupLayout.Alignment.LEADING,
-																GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE,
-																Short.MAX_VALUE)
-														.addComponent(btnCash, GroupLayout.DEFAULT_SIZE,
-																GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-														.addGap(117, 117, 117)))))));
-		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(jPanel1Layout.createSequentialGroup().addGap(6, 6, 6).addComponent(jLabel2)
-						.addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-						.addComponent(jSeparator2, GroupLayout.PREFERRED_SIZE, 10, GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18)
-						.addComponent(btnWaiter, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18)
-						.addComponent(btnChef, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18)
-						.addComponent(btnCuoco, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
-						.addGap(18, 18, 18)
-						.addComponent(btnCash, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(53, Short.MAX_VALUE)));
-
-		getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-		jPanel1.getAccessibleContext().setAccessibleName("");
-
-		//pack();
-
-		 */
+		
     }
 
     @Override

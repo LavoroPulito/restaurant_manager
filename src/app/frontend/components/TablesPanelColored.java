@@ -6,10 +6,30 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import app.backend.OrderManager;
+/**
+ * This class is a Panel that contains all the tables that has some order to prepare
+ * 
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 
 public class TablesPanelColored extends BackgroundPanel implements ActionListener {
+    /**
+     * list of tableButtons
+     */
     ArrayList<TableButton> tb;
+    /**
+     * list of table numbers
+     */
     ArrayList<Integer> tn;
+
+    /**
+     * this method creates a new TablesPanelColored. It loads all the tables, if the tables has at least an order to prepare
+     * it will add to the panel with the TableButton. If in the order at least one is ready the button will be yellow otherwise
+     * the table's order are all to prepare and the button will be green 
+     */
         public TablesPanelColored(){
             OrderManager om = new OrderManager();
             om.load();
@@ -62,9 +82,16 @@ public class TablesPanelColored extends BackgroundPanel implements ActionListene
         }
     }
 
+    /**
+     * returns the number of buttons 
+     * @return
+     */
     public int getNButtons(){
         return tn.size();
     }
+    /**
+     * Sets the actionListener of all TableButton
+     */
     public void addActionListener(ActionListener act){ //da passare un oggetto di una classe con metodo actionListener (Vedi app.frontend.window.CookFrame)
         for(TableButton t: tb) {
             t.addActionListener(act);

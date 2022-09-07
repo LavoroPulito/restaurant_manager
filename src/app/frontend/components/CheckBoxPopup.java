@@ -11,12 +11,24 @@ import app.backend.Order;
 import app.backend.OrderManager;
 import app.frontend.windows.CookFrame;
 
+/**
+ * This class is the popup opened after the selection of the table in CookFrame, allow the cooker to view the order to prepare and remove them
+ * 
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 public class CheckBoxPopup extends JFrame implements ActionListener {
   ArrayList<JCheckBox> cb;
   ArrayList<Integer> indexes;
   int table;
   JButton confirm;
 
+  /**
+   * Creates a new CheckboxPopup with the relative table's informations
+   * @param table
+   */
   public CheckBoxPopup(int table){
       cb=new ArrayList<JCheckBox>();
       indexes=new ArrayList<Integer>();
@@ -24,6 +36,9 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
       initComponents();
     }
 
+    /**
+     *Sets the style and load the table's information into the window 
+     */
   public void initComponents(){
     setTitle("Orders table "+table);
     
@@ -67,6 +82,10 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
 
   }
 
+  /**
+   * This method is invoked if an action occours, in this case if the button confirm or notes is clicked
+   *@param event
+   */
   @Override
   public void actionPerformed(ActionEvent e) {
     
@@ -91,7 +110,12 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
       }
     }
   
-
+/**
+ * If an order is been prepared his state will change in "ready"
+ * @param indexOrder
+ * @param table
+ * @param om
+ */
   public void changeState(int indexOrder, int table, OrderManager om){
 
     om.getRegister().get(table).get(indexOrder).setNextState(); //Spacchettamento del HashMap e cambio lo stato dell'ordine
