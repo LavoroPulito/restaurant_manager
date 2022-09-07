@@ -1,9 +1,6 @@
 package app.frontend.windows;
 
-import app.frontend.components.BackMenuButton;
-import app.frontend.components.CheckBoxPopup;
-import app.frontend.components.TableButton;
-import app.frontend.components.TablesPanelColored;
+import app.frontend.components.*;
 
 import javax.swing.JPanel;
 
@@ -39,6 +36,7 @@ public class CookFrame extends StandardFrame {
         }
         int rows = buttons / col;
         setSize(col * 100, rows * 50 + 80);
+        setResizable(true);
         setContentPane(pt);
         add(new BackMenuButton(this), BorderLayout.SOUTH);
 

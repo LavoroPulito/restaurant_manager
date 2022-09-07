@@ -135,7 +135,7 @@ public class DishMenu {
         String jsonMenu = this.toJson();
 
         try {
-            File f = new File("assets/saves/menu.json");
+            File f = new File("src/assets/saves/menu.json");
             FileWriter w = new FileWriter(f);
             BufferedWriter writer = new BufferedWriter(w);
             writer.write(jsonMenu);
@@ -153,7 +153,7 @@ public class DishMenu {
         String string = "";
         String sCurrentLine = "";
         try {
-            File f = new File("assets/saves/menu.json");
+            File f = new File("src/assets/saves/menu.json");
             FileReader r = new FileReader(f);
             BufferedReader br = new BufferedReader(r);
             while ((sCurrentLine = br.readLine()) != null) {

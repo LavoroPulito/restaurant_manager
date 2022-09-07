@@ -3,7 +3,7 @@ package app.frontend.components;
 import javax.swing.*;
 
 import app.frontend.windows.MainMenu;
-import app.frontend.windows.MainMenu2;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

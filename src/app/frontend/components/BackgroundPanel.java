@@ -1,9 +1,6 @@
 package app.frontend.components;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.MediaTracker;
-import java.awt.Toolkit;
+import java.awt.*;
 
 import javax.swing.JPanel;
 
@@ -19,7 +16,8 @@ public class BackgroundPanel extends JPanel {
 
 	public BackgroundPanel() {
 		img = Toolkit.getDefaultToolkit()
-				.createImage("assets/image/sfondoMargheritaSfocata.jpg");
+				.createImage("src/assets/image/sfondoMargheritaSfocata.jpg");
+
 		loadImage(img);
 	}
 
