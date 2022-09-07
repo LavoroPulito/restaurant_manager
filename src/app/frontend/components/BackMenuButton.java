@@ -14,6 +14,7 @@ public class BackMenuButton extends JButton {
         super();
         setText("back to main menù");
         setBackground(Color.RED);
+        setForeground(Color.WHITE);
         setOpaque(true);
         addActionListener(new ActionListener() {
             @Override
