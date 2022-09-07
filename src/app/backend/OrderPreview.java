@@ -12,9 +12,9 @@ public class OrderPreview extends Order {
     /**
      * create a new OrderPreview using the parameters provided and set the quantity at 1
      *
-     * @param dish
-     * @param table
-     * @param note
+     * @param dish name of the dish
+     * @param table table of order
+     * @param note note of order
      */
     public OrderPreview(Dish dish, int table, String note) {
         super(dish, table, note);
@@ -24,7 +24,7 @@ public class OrderPreview extends Order {
     /**
      * set the quantity to the supplied value
      *
-     * @param quantity
+     * @param quantity new quantity
      */
     public void setQuantity(int quantity) {
         this.quantity = quantity;

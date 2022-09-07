@@ -36,7 +36,6 @@ public class MainMenu extends StandardFrame implements ActionListener {
         btnPanel = new JPanel();
 
 
-        //jPanel1.setBackground(new java.awt.Color(204, 204, 255));
 
         programTitle.setFont(new java.awt.Font("Chalkboard SE", 1, 55));
         programTitle.setForeground(new java.awt.Color(0, 70, 0));

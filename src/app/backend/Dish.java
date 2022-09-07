@@ -8,9 +8,6 @@ package app.backend;
  * @version 1.0
  *
  */
-/**
- * 
- */
 public class Dish {
     /**
      * name of the dish
@@ -39,11 +36,11 @@ public class Dish {
 
     /**
      * create a new dish using the parameters provided
-     * @param name
-     * @param price
-     * @param description
-     * @param category
-     * @param available
+     * @param name name of the dish
+     * @param price price of the dish (with IVA)
+     * @param description description of the dish
+     * @param category category of the dish
+     * @param available if the dish is available or is not
      */
     public Dish(String name, double price, String description, String category,boolean available) {
         this.name = name;
@@ -55,10 +52,10 @@ public class Dish {
 
     /**
      * create a new dish using the parameters provided
-     * @param name
-     * @param price
-     * @param description
-     * @param category
+     * @param name name of the dish
+     * @param price price of the dish (with IVA)
+     * @param description description of the dish
+     * @param category category of the dish
      */
     public Dish(String name, double price, String description, String category) {
         this.name = name;
@@ -110,7 +107,7 @@ public class Dish {
 
     /**
      * sets dish name
-     * @param name
+     * @param name new name of the dish
      */
     public void setName(String name) {
         this.name = name;
@@ -118,7 +115,7 @@ public class Dish {
 
     /**
      * sets dish available
-     * @param available
+     * @param available true if is available, false if it is not
      */
     public void setAvailable(boolean available) {
         this.available = available;
@@ -133,7 +130,7 @@ public class Dish {
 
     /**
      * sets dish description
-     * @param description
+     * @param description new description of the dish
      */
     public void setDescription(String description) {
         this.description = description;
@@ -141,7 +138,7 @@ public class Dish {
 
     /**
      * sets dish price
-     * @param price
+     * @param price new price of the dish
      */
     public void setPrice(double price) {
         this.price = price;
@@ -149,7 +146,7 @@ public class Dish {
 
     /**
      * sets dish category
-     * @param category
+     * @param category new category of the dish
      */
     public void setCategory(String category) {
         this.category = category;
