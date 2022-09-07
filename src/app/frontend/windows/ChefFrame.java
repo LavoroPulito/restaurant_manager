@@ -147,7 +147,7 @@ public class ChefFrame extends StandardFrame {
         list.clearSelection();
         txtNameDish.setText("Name");
         price.setText("Price");
-        txtCateg.setText("category");
+        txtCateg.setText("Category");
         txtDescription.setText("Description");
         availableCkBx.setSelected(true);
         textArea.setText("select a dish to view its attributes or to modify it.\n"
