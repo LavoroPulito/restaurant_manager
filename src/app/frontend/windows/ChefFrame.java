@@ -10,6 +10,14 @@ import javax.swing.*;
 import app.backend.DishMenu;
 import app.backend.Dish;
 
+/**
+ * This class is the graphical interface of the Chef, who manages the menu in the restaurant
+ *
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 public class ChefFrame extends StandardFrame {
     /**
      * the menu to manage

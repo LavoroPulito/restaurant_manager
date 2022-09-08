@@ -2,6 +2,11 @@ package app.backend;
 
 /**
  * this class extends the Order class by adding the quantity attribute to be able to count the same orders
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ *
  */
 public class OrderPreview extends Order {
     /**

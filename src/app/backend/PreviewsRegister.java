@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 /**
  * this class manages an OrderPreview ArrayList to count the same orders, increment or decrement them
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
  */
 public class PreviewsRegister {
     /**

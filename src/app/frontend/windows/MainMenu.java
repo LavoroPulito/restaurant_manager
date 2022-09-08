@@ -9,6 +9,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
+/**
+ * Menu of the project, you can select the role
+ *
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 public class MainMenu extends StandardFrame implements ActionListener {
 
     /**
