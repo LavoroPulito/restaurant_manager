@@ -7,15 +7,30 @@ import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.event.*;
 
+/**
+ * This class is the graphical interface of the Cookeer, who manages the Orders to prepare and prepared
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 public class CookFrame extends StandardFrame {
-
+/**
+ * Panel with all the tables with at least an order to prepare
+ */
     private TablesPanelColored pt;
 
+/**
+ * Opens a window cook
+ */
     public CookFrame() {
         super("Cook");
         this.initComponents();
     }
 
+/**
+ * initialize the components loading the table's informations and setting the dimensions and style
+ */
     private void initComponents() {
 
         pt = new TablesPanelColored();
@@ -46,13 +61,22 @@ public class CookFrame extends StandardFrame {
 
     }
 
+/**
+ * Removes all the content in the page for reset
+ */
     private void clear() {
         this.getContentPane().remove(pt);
     }
 
-
+/**
+ * This is an interface that has reference only at table's buttons
+ */
     private class Listener implements ActionListener, WindowListener {
 
+        /**
+         * When a table's button is clicked a popup opens with the information of the relative table
+         * @param event
+         */
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().getClass().getName().equals("app.frontend.components.TableButton")) {
                 int table = ((TableButton) e.getSource()).getTable();
@@ -71,6 +95,10 @@ public class CookFrame extends StandardFrame {
         public void windowClosing(WindowEvent e) {
         }
 
+/**
+ * When the popup closes the window reset the informations and reload them
+ * @param event
+ */
         @Override
         public void windowClosed(WindowEvent e) {
             clear();

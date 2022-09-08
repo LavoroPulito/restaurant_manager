@@ -9,25 +9,73 @@ import javax.swing.*;
 
 import app.backend.DishMenu;
 import app.backend.Dish;
-
+/**
+ * This class is the graphical interface of the Chef, who manages the menu in the restaurant
+ * 
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 public class ChefFrame extends StandardFrame {
-
+/**
+ * Object DishMenu, it's the restaurant's menu 
+ */
     private DishMenu menu;
+
+/**
+ *Field where is written the description  
+*/    
     private JTextField txtDescription;
+
+/**
+ *Field where is written the name's dish 
+*/        
     private JTextField txtNameDish;
+
+/**
+ *Field where is written the price's dish 
+*/     
     private NumberField price;
+
+/**
+ *Field where is written the category's dish 
+*/     
     private JTextField txtCateg;
+
+/**
+ *Text area where is written the istruction for use the window
+*/     
     private JTextArea textArea;
+
+/**
+ *
+ * CheckBox that indicates if a plate is avaible or not, it can be changed
+*/     
     private JCheckBox availableCkBx;
+
+/**
+ *Button that allow to add a new dish at the menu
+*/     
     private JToggleButton add_new_dish;
+
+/**
+ *Dish's list  
+*/    
     private JList list;
 
+/**
+ * Opens a window chef
+ */
     public ChefFrame() {
         super("Chef");
         init();
 
     }
 
+/**
+ * initialize the components loading the informations into them and sets the layout 
+ */
     public void init() {
         // Main panel
         JPanel background = new JPanel();
@@ -138,7 +186,9 @@ public class ChefFrame extends StandardFrame {
         resetInput();
 
     }
-
+/**
+ * Resets the text in the fields and write the istructions to use the window
+ */
     private void resetInput() {
         list.clearSelection();
         txtNameDish.setText("Name");
@@ -151,6 +201,9 @@ public class ChefFrame extends StandardFrame {
 
     }
 
+    /**
+     * If there is a Dish selected its informations will be write in the fields
+     */
     private void setTextAreas() {
         add_new_dish.setSelected(false);
         textArea.setText("select a dish to view its attributes or to modify it.\n"
@@ -164,7 +217,9 @@ public class ChefFrame extends StandardFrame {
             txtDescription.setText(dish.getDescription());
         }
     }
-
+/**
+ * Manages the button add dish
+ */
     private void manageAddButton() {
         if (add_new_dish.isSelected()) {
             add_new_dish.setText("add new dish: ON");
@@ -177,7 +232,9 @@ public class ChefFrame extends StandardFrame {
 
         }
     }
-
+/**
+ * Saves the menu
+ */
     private void saveProtocol(){
         if (price.isDouble()) { // if price.getText has no alphabetic characters
             if (!add_new_dish.isSelected()) { // if we are not adding a new dish
@@ -196,7 +253,9 @@ public class ChefFrame extends StandardFrame {
         list.setListData(menu.toArrayList().toArray());
         resetInput();
     }
-
+/**
+ * Removes a dish from the menu
+ */
     private void removeProtocol(){
         if (list.getSelectedValue() != null) {
             menu.removeDish((Dish) list.getSelectedValue());

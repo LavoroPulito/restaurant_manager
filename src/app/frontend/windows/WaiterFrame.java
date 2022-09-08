@@ -10,16 +10,38 @@ import javax.swing.*;
 
 import app.backend.*;
 
-
+/**
+ * This class is the graphical interface of the Waiter, who manages the Orders: sends order to prepare and removes those delivered
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 public class WaiterFrame extends StandardFrame {
 
-
+/**
+ * Dish menu
+ */
     private DishMenu menu;
+
+/**
+ * Previews register
+ */
     private PreviewsRegister previewsRegister;
+
+/**
+ * Order manager
+ */
     private OrderManager orderManager;
+
+/** 
+*Field where you can write only numbers
+*/
     private NumberField numberField;
 
-
+/**
+ * Opens a new window WaiterFrame, adds informations into components and sets the style
+ */
     public WaiterFrame() {
 
         super("Waiter");
@@ -96,6 +118,10 @@ public class WaiterFrame extends StandardFrame {
 
 
         deliverList.addMouseListener(new MouseAdapter() {
+            /**
+             * Method that occours when a components is clicked
+             * @param e
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseReleased(e);
@@ -105,6 +131,9 @@ public class WaiterFrame extends StandardFrame {
             }
         });
         subButton.addActionListener(new ActionListener() {
+            /**Method that occours when there is an anction on a component
+             * @param event
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (listPreview.getSelectedValue() != null) {
@@ -116,6 +145,8 @@ public class WaiterFrame extends StandardFrame {
             }
         });
         addButton.addActionListener(new ActionListener() {
+            /**Method that occours when there is an anction on a component
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (listPreview.getSelectedValue() != null) {
@@ -128,6 +159,8 @@ public class WaiterFrame extends StandardFrame {
         });
 
         placeButton.addActionListener(new ActionListener() {
+            /**Method that occours when there is an anction on a component
+             */
             public void actionPerformed(ActionEvent e) {
                 if (!previewsRegister.getPreviews().isEmpty()) {
                     orderManager.add(previewsRegister.toOrders());
@@ -138,6 +171,9 @@ public class WaiterFrame extends StandardFrame {
             }
         });
         listMenu.addMouseListener(new MouseAdapter() {
+            /**
+            Method that occours when a components is clicked
+            */
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (listMenu.getSelectedValue() != null) {

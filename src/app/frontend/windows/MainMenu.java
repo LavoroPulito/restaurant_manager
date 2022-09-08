@@ -9,29 +9,76 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
+/**
+ * Menu of the project, you can select the role
+ * 
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
 public class MainMenu extends StandardFrame implements ActionListener {
 
+/**
+ * Waiter button
+ */
     private JButton btnWaiter;
+
+/**
+ * Chef button
+ */
     private JButton btnChef;
-    private JButton btnCuoco;
+
+/**
+ * Cook button
+ */
+    private JButton btnCook;
+
+/**
+ * Cash button
+ */    
     private JButton btnCash;
+
+/**
+ * Title of the restaurant
+ */
     private JLabel programTitle;
+
+/**
+ * Panel
+ */
     private JPanel panel;
+
+/**
+ * Buttons' panel 
+ */
     private JPanel btnPanel;
-    private int cornice;
+
+/**
+ *Distance by the board
+ */    
+    private int padding;
+
+/**
+ * Ratio of distance by the board
+ */
     private static final double ratio = 0.0578;
+
+/**
+ * Opens a new MainMenu window
+ */
     public MainMenu() {
         super("Restaurant Manager");
         initComponents();
     }
 
     private void initComponents() {
-        cornice = (int) (getContentPane().getHeight()*ratio);
+        padding = (int) (getContentPane().getHeight()*ratio);
         panel = new BackgroundPanel();
         programTitle = new JLabel();
         btnWaiter = new JButton();
         btnChef = new JButton();
-        btnCuoco = new JButton();
+        btnCook = new JButton();
         btnCash = new JButton();
         btnPanel = new JPanel();
 
@@ -55,11 +102,11 @@ public class MainMenu extends StandardFrame implements ActionListener {
         btnChef.setName("btnChef");
         btnChef.addActionListener(this);
 
-        btnCuoco.setFont(new java.awt.Font("Chalkduster", 1, 32));
-        btnCuoco.setForeground(new java.awt.Color(0, 90, 0));
-        btnCuoco.setText("Cook");
-        btnCuoco.setToolTipText("Click here for check orders to prepare");
-        btnCuoco.addActionListener(this);
+        btnCook.setFont(new java.awt.Font("Chalkduster", 1, 32));
+        btnCook.setForeground(new java.awt.Color(0, 90, 0));
+        btnCook.setText("Cook");
+        btnCook.setToolTipText("Click here for check orders to prepare");
+        btnCook.addActionListener(this);
 
         btnCash.setFont(new java.awt.Font("Chalkduster", 1, 32));
         btnCash.setForeground(new java.awt.Color(0, 90, 0));
@@ -67,27 +114,27 @@ public class MainMenu extends StandardFrame implements ActionListener {
         btnCash.setToolTipText("Click here for generate receipts");
         btnCash.addActionListener(this);
 
-        GridLayout gridLayout = new GridLayout(4,1,0,cornice/4);
+        GridLayout gridLayout = new GridLayout(4,1,0,padding/4);
         btnPanel.setOpaque(false);
         btnPanel.setLayout(gridLayout);
         btnPanel.add(btnChef);
         btnPanel.add(btnWaiter);
-        btnPanel.add(btnCuoco);
+        btnPanel.add(btnCook);
         btnPanel.add(btnCash);
 
         SpringLayout springLayout = new SpringLayout();
         panel.setLayout(springLayout);
 
 
-        springLayout.putConstraint(SpringLayout.NORTH, programTitle, cornice*2, SpringLayout.NORTH, panel);
-        springLayout.putConstraint(SpringLayout.SOUTH, programTitle, 50+cornice*2, SpringLayout.NORTH, panel);
-        springLayout.putConstraint(SpringLayout.EAST, programTitle, -cornice, SpringLayout.EAST, panel);
-        springLayout.putConstraint(SpringLayout.WEST, programTitle, cornice, SpringLayout.WEST, panel);
+        springLayout.putConstraint(SpringLayout.NORTH, programTitle, padding*2, SpringLayout.NORTH, panel);
+        springLayout.putConstraint(SpringLayout.SOUTH, programTitle, 50+padding*2, SpringLayout.NORTH, panel);
+        springLayout.putConstraint(SpringLayout.EAST, programTitle, -padding, SpringLayout.EAST, panel);
+        springLayout.putConstraint(SpringLayout.WEST, programTitle, padding, SpringLayout.WEST, panel);
 
-        springLayout.putConstraint(SpringLayout.NORTH, btnPanel, cornice*2, SpringLayout.SOUTH,programTitle);
-		springLayout.putConstraint(SpringLayout.EAST, btnPanel, -cornice, SpringLayout.EAST,panel);
-		springLayout.putConstraint(SpringLayout.WEST, btnPanel, cornice, SpringLayout.WEST,panel);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnPanel, -cornice, SpringLayout.SOUTH,panel);
+        springLayout.putConstraint(SpringLayout.NORTH, btnPanel, padding*2, SpringLayout.SOUTH,programTitle);
+		springLayout.putConstraint(SpringLayout.EAST, btnPanel, -padding, SpringLayout.EAST,panel);
+		springLayout.putConstraint(SpringLayout.WEST, btnPanel, padding, SpringLayout.WEST,panel);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnPanel, -padding, SpringLayout.SOUTH,panel);
 
 
 
@@ -114,7 +161,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
             a.setVisible(true);
         }
 
-        if (e.getSource().equals(btnCuoco)) {
+        if (e.getSource().equals(btnCook)) {
 
             CookFrame a = new CookFrame();
             a.setVisible(true);
