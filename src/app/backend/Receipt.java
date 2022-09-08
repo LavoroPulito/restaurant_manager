@@ -96,7 +96,7 @@ public class Receipt {
         orders = new ArrayList<>();
         amount = 0;
         receiptsPath = "Receipts";
-        titlePath = "title.txt";
+        titlePath = "src/assets/saves/title.txt";
         loadTitle();
         receiptText = title;
 
