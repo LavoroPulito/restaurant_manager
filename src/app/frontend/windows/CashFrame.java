@@ -12,6 +12,15 @@ import app.frontend.components.NumberField;
 
 import javax.swing.*;
 
+/**
+ * This class is the graphical interface of the Casher, who manages the receipts and the payments
+ * 
+ * @author Armando Coppola
+ * @author Niccolò Di Santo
+ * @author Francesco Daprile
+ * @version 1.0
+ */
+
 public class CashFrame extends StandardFrame {
     /**
      * field to enter the amount

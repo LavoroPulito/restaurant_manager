@@ -15,7 +15,7 @@ public class PreviewsRegister {
      * creates a new empty ArrayList
      */
     public PreviewsRegister() {
-        previews = new ArrayList<>();
+        previews = new ArrayList<OrderPreview>();
     }
 
     /**
