@@ -60,9 +60,13 @@ public class MainMenu extends StandardFrame implements ActionListener {
         BackgroundPanel panel = new BackgroundPanel();
         JLabel mainTitle = new JLabel();
         btnWaiter = new JButton();
+        btnWaiter.setOpaque(false);
         btnChef = new JButton();
+        btnChef.setOpaque(false);
         btnCook = new JButton();
+        btnCook.setOpaque(false);
         btnCash = new JButton();
+        btnCash.setOpaque(false);
         JPanel btnPanel = new JPanel();
 
 
