@@ -13,7 +13,7 @@ import app.frontend.components.NumberField;
 import javax.swing.*;
 
 /**
- * This class is the graphical interface of the Casher, who manages the receipts and the payments
+ * This class is the graphical interface of the Cash desk, who manages the receipts and the payments
  * 
  * @author Armando Coppola
  * @author Niccolò Di Santo

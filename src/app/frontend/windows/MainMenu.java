@@ -11,7 +11,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 /**
  * Menu of the project, you can select the role
- * 
+ *
  * @author Armando Coppola
  * @author Niccolò Di Santo
  * @author Francesco Daprile
@@ -19,75 +19,58 @@ import javax.swing.*;
  */
 public class MainMenu extends StandardFrame implements ActionListener {
 
-/**
- * Waiter button
- */
+    /**
+     * button to open waiter frame
+     */
     private JButton btnWaiter;
 
-/**
- * Chef button
- */
+    /**
+     * button to open chef frame
+     */
     private JButton btnChef;
 
-/**
- * Cook button
- */
+    /**
+     * button to open cook frame
+     */
     private JButton btnCook;
 
-/**
- * Cash button
- */    
+    /**
+     * button to open cash frame
+     */
     private JButton btnCash;
 
-/**
- * Title of the restaurant
- */
-    private JLabel programTitle;
-
-/**
- * Panel
- */
-    private JPanel panel;
-
-/**
- * Buttons' panel 
- */
-    private JPanel btnPanel;
-
-/**
- *Distance by the board
- */    
-    private int padding;
-
-/**
- * Ratio of distance by the board
- */
+    /**
+     * ratio for frame dimension
+     */
     private static final double ratio = 0.0578;
 
-/**
- * Opens a new MainMenu window
- */
+    /**
+     * create a new main menu'
+     */
     public MainMenu() {
         super("Restaurant Manager");
         initComponents();
     }
 
+    /**
+     * initialize all the component
+     */
     private void initComponents() {
-        padding = (int) (getContentPane().getHeight()*ratio);
-        panel = new BackgroundPanel();
-        programTitle = new JLabel();
+        int cornice = (int) (getContentPane().getHeight() * ratio);
+        BackgroundPanel panel = new BackgroundPanel();
+        JLabel mainTitle = new JLabel();
         btnWaiter = new JButton();
         btnChef = new JButton();
         btnCook = new JButton();
         btnCash = new JButton();
-        btnPanel = new JPanel();
+        JPanel btnPanel = new JPanel();
 
 
 
-        programTitle.setFont(new java.awt.Font("Chalkboard SE", 1, 55));
-        programTitle.setForeground(new java.awt.Color(0, 70, 0));
-        programTitle.setText("PIPPO PIZZA");
-        programTitle.setHorizontalAlignment(JLabel.CENTER);
+        mainTitle.setFont(new java.awt.Font("Chalkboard SE", 1, 55));
+        mainTitle.setForeground(new java.awt.Color(0, 70, 0));
+        mainTitle.setText("PIPPO PIZZA");
+        mainTitle.setHorizontalAlignment(JLabel.CENTER);
 
         btnWaiter.setFont(new java.awt.Font("Chalkduster", 1, 32));
         btnWaiter.setForeground(new java.awt.Color(0, 90, 0));
@@ -114,7 +97,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
         btnCash.setToolTipText("Click here for generate receipts");
         btnCash.addActionListener(this);
 
-        GridLayout gridLayout = new GridLayout(4,1,0,padding/4);
+        GridLayout gridLayout = new GridLayout(4,1,0, cornice /4);
         btnPanel.setOpaque(false);
         btnPanel.setLayout(gridLayout);
         btnPanel.add(btnChef);
@@ -126,26 +109,30 @@ public class MainMenu extends StandardFrame implements ActionListener {
         panel.setLayout(springLayout);
 
 
-        springLayout.putConstraint(SpringLayout.NORTH, programTitle, padding*2, SpringLayout.NORTH, panel);
-        springLayout.putConstraint(SpringLayout.SOUTH, programTitle, 50+padding*2, SpringLayout.NORTH, panel);
-        springLayout.putConstraint(SpringLayout.EAST, programTitle, -padding, SpringLayout.EAST, panel);
-        springLayout.putConstraint(SpringLayout.WEST, programTitle, padding, SpringLayout.WEST, panel);
+        springLayout.putConstraint(SpringLayout.NORTH, mainTitle, cornice *2, SpringLayout.NORTH, panel);
+        springLayout.putConstraint(SpringLayout.SOUTH, mainTitle, 50+ cornice *2, SpringLayout.NORTH, panel);
+        springLayout.putConstraint(SpringLayout.EAST, mainTitle, -cornice, SpringLayout.EAST, panel);
+        springLayout.putConstraint(SpringLayout.WEST, mainTitle, cornice, SpringLayout.WEST, panel);
 
-        springLayout.putConstraint(SpringLayout.NORTH, btnPanel, padding*2, SpringLayout.SOUTH,programTitle);
-		springLayout.putConstraint(SpringLayout.EAST, btnPanel, -padding, SpringLayout.EAST,panel);
-		springLayout.putConstraint(SpringLayout.WEST, btnPanel, padding, SpringLayout.WEST,panel);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnPanel, -padding, SpringLayout.SOUTH,panel);
+        springLayout.putConstraint(SpringLayout.NORTH, btnPanel, cornice *2, SpringLayout.SOUTH, mainTitle);
+		springLayout.putConstraint(SpringLayout.EAST, btnPanel, -cornice, SpringLayout.EAST,panel);
+		springLayout.putConstraint(SpringLayout.WEST, btnPanel, cornice, SpringLayout.WEST,panel);
+		springLayout.putConstraint(SpringLayout.SOUTH, btnPanel, -cornice, SpringLayout.SOUTH,panel);
 
 
 
 
         panel.add(btnPanel);
-        panel.add(programTitle);
+        panel.add(mainTitle);
 
         getContentPane().add(panel);
 		
     }
 
+    /**
+     * open the selected frame and close this frame
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

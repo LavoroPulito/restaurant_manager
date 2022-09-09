@@ -9,80 +9,79 @@ import javax.swing.*;
 
 import app.backend.DishMenu;
 import app.backend.Dish;
+
 /**
  * This class is the graphical interface of the Chef, who manages the menu in the restaurant
- * 
+ *
  * @author Armando Coppola
  * @author Niccolò Di Santo
  * @author Francesco Daprile
  * @version 1.0
  */
 public class ChefFrame extends StandardFrame {
-/**
- * Object DishMenu, it's the restaurant's menu 
- */
+    /**
+     * the menu to manage
+     */
     private DishMenu menu;
 
-/**
- *Field where is written the description  
-*/    
+    /**
+     * field for the description of the dish
+     */
     private JTextField txtDescription;
 
-/**
- *Field where is written the name's dish 
-*/        
+    /**
+     * field for the name of the dish
+     */
     private JTextField txtNameDish;
 
-/**
- *Field where is written the price's dish 
-*/     
+    /**
+     * field for the price of the dish
+     */
     private NumberField price;
 
-/**
- *Field where is written the category's dish 
-*/     
-    private JTextField txtCateg;
+    /**
+     * field for the category of the dish
+     */
+    private JTextField txtCategory;
 
-/**
- *Text area where is written the istruction for use the window
-*/     
-    private JTextArea textArea;
-
-/**
- *
- * CheckBox that indicates if a plate is avaible or not, it can be changed
-*/     
+    /**
+     * check box to set availability
+     */
     private JCheckBox availableCkBx;
 
-/**
- *Button that allow to add a new dish at the menu
-*/     
+    /**
+     * text area for advice and instructions for use
+     */
+    private JTextArea textArea;
+
+    /**
+     * button to add new dish
+     */
     private JToggleButton add_new_dish;
 
-/**
- *Dish's list  
-*/    
+    /**
+     * list that contain the menu'
+     */
     private JList list;
 
-/**
- * Opens a window chef
- */
+    /**
+     * create a new chef frame
+     */
     public ChefFrame() {
         super("Chef");
         init();
 
     }
 
-/**
- * initialize the components loading the informations into them and sets the layout 
- */
+    /**
+     * initialize all the component
+     */
     public void init() {
         // Main panel
         JPanel background = new JPanel();
         getContentPane().add(background, BorderLayout.CENTER);
         SpringLayout sl_panel = new SpringLayout();
         background.setLayout(sl_panel);
-
 
         // menu' panel on the left
         JPanel menuPanel = new JPanel();
@@ -141,9 +140,9 @@ public class ChefFrame extends StandardFrame {
         price = new NumberField();
         sideFieldPanel.add(price);
 
-        txtCateg = new JTextField();
-        txtCateg.setColumns(10);
-        sideFieldPanel.add(txtCateg);
+        txtCategory = new JTextField();
+        txtCategory.setColumns(10);
+        sideFieldPanel.add(txtCategory);
 
         availableCkBx = new JCheckBox("available");
         sideFieldPanel.add(availableCkBx);
@@ -155,8 +154,6 @@ public class ChefFrame extends StandardFrame {
         textArea = new JTextArea();
         textArea.setWrapStyleWord(true);
         controlPanel.add(textArea);
-
-
 
         add_new_dish = new JToggleButton("Add new dish: OFF");
         add_new_dish.setToolTipText("turn it on to add new dishes, turn it off to view or edit other dishes");
@@ -186,14 +183,15 @@ public class ChefFrame extends StandardFrame {
         resetInput();
 
     }
-/**
- * Resets the text in the fields and write the istructions to use the window
- */
+
+    /**
+     * set all the field and text areas with descriptive or useful strings
+     */
     private void resetInput() {
         list.clearSelection();
         txtNameDish.setText("Name");
         price.setText("Price");
-        txtCateg.setText("Category");
+        txtCategory.setText("Category");
         txtDescription.setText("Description");
         availableCkBx.setSelected(true);
         textArea.setText("select a dish to view its attributes or to modify it.\n"
@@ -202,7 +200,7 @@ public class ChefFrame extends StandardFrame {
     }
 
     /**
-     * If there is a Dish selected its informations will be write in the fields
+     * set the text fields with the information of the selected dish
      */
     private void setTextAreas() {
         add_new_dish.setSelected(false);
@@ -212,14 +210,15 @@ public class ChefFrame extends StandardFrame {
         if (dish != null) {
             txtNameDish.setText(dish.getName());
             price.setText("" + dish.getPrice());
-            txtCateg.setText(dish.getCategory());
+            txtCategory.setText(dish.getCategory());
             availableCkBx.setSelected(dish.isAvailable());
             txtDescription.setText(dish.getDescription());
         }
     }
-/**
- * Manages the button add dish
- */
+
+    /**
+     * manages the behavior of the button and gives advice on how to add a new dish
+     */
     private void manageAddButton() {
         if (add_new_dish.isSelected()) {
             add_new_dish.setText("add new dish: ON");
@@ -232,9 +231,10 @@ public class ChefFrame extends StandardFrame {
 
         }
     }
-/**
- * Saves the menu
- */
+
+    /**
+     * takes care of the correct saving of changes to the menu, recognizing if a dish has been added, deleted or modified
+     */
     private void saveProtocol(){
         if (price.isDouble()) { // if price.getText has no alphabetic characters
             if (!add_new_dish.isSelected()) { // if we are not adding a new dish
@@ -242,7 +242,7 @@ public class ChefFrame extends StandardFrame {
 
             }
             menu.add(new Dish(txtNameDish.getText(), price.getDouble(),
-                    txtDescription.getText(), txtCateg.getText(), availableCkBx.isSelected()));
+                    txtDescription.getText(), txtCategory.getText(), availableCkBx.isSelected()));
         }
 
         add_new_dish.setSelected(false);
@@ -253,9 +253,10 @@ public class ChefFrame extends StandardFrame {
         list.setListData(menu.toArrayList().toArray());
         resetInput();
     }
-/**
- * Removes a dish from the menu
- */
+
+    /**
+     * remove from menu' the selected dish
+     */
     private void removeProtocol(){
         if (list.getSelectedValue() != null) {
             menu.removeDish((Dish) list.getSelectedValue());

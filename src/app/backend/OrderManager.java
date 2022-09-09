@@ -7,10 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
-
-*This class manages the orders
-*Inserts an ArrayList
-
+ *This class manages the orders inserts an ArrayList
  * @author Armando Coppola
  * @author Niccolò Di Santo
  * @author Francesco Daprile
