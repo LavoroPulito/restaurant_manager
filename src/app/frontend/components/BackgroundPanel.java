@@ -33,6 +33,7 @@ public class BackgroundPanel extends JPanel {
      *
      * @param g the Graphics object to protect
      */
+    @Override
     protected void paintComponent(Graphics g) {
         setOpaque(false);
         g.drawImage(img, 0, 0, null);
