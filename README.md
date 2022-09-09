@@ -12,7 +12,7 @@ Restaurant Manager is a Java project that allow to manage an entire restaurant. 
 * [Chef] manage the menu, add and remove dish from menu
 * [Chef] create new dishes for the menu
 * [Casher] See all table's orders and generate receipts and save them in text file
-
+* [Casher] Change restaurant name
 
 <img src="/.github/screenshot.png">
 

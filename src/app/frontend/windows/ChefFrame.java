@@ -4,6 +4,8 @@ import app.frontend.components.BackMenuButton;
 import app.frontend.components.NumberField;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.*;
 
@@ -124,6 +126,7 @@ public class ChefFrame extends StandardFrame {
         sideFieldPanel.setLayout(new GridLayout(0, 1, 0, 0));
         attributesPanel.add(sideFieldPanel);
 
+
         menu = new DishMenu();
         menu.load();
 
@@ -136,7 +139,7 @@ public class ChefFrame extends StandardFrame {
         txtNameDish = new JTextField();
         txtNameDish.setColumns(10);
         sideFieldPanel.add(txtNameDish);
-
+        
         price = new NumberField();
         sideFieldPanel.add(price);
 
@@ -152,7 +155,9 @@ public class ChefFrame extends StandardFrame {
         attributesPanel.add(txtDescription);
 
         textArea = new JTextArea();
+        textArea.setFont(new Font("Chalkduster", 0, 32));
         textArea.setWrapStyleWord(true);
+        textArea.setEditable(false);
         controlPanel.add(textArea);
 
         add_new_dish = new JToggleButton("Add new dish: OFF");

@@ -70,7 +70,7 @@ public class CashFrame extends StandardFrame {
         textPanel.setLayout(new BorderLayout(0, 0));
 
         textArea = new JTextArea();
-        textArea.setFont(new Font("Andale Mono", Font.PLAIN, 12));
+        textArea.setFont(new Font("Andale Mono", Font.PLAIN, 15));
         textPanel.add(textArea);
 
         //button to set the title
