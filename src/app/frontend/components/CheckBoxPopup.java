@@ -26,8 +26,8 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
   JButton confirm;
 
   /**
-   * Creates a new CheckboxPopup with the relative table's informations
-   * @param table
+   * Creates a new CheckboxPopup with the relative table's information
+   * @param table to select
    */
   public CheckBoxPopup(int table){
       cb=new ArrayList<JCheckBox>();
@@ -83,8 +83,8 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
   }
 
   /**
-   * This method is invoked if an action occours, in this case if the button confirm or notes is clicked
-   *@param event
+   * This method is invoked if an action occurs, in this case if the button confirm or notes is clicked
+   *@param e the event to be processed
    */
   @Override
   public void actionPerformed(ActionEvent e) {
@@ -111,15 +111,15 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
     }
   
 /**
- * If an order is been prepared his state will change in "ready"
- * @param indexOrder
- * @param table
- * @param om
+ * If an order is being prepared his state will change in "ready"
+ * @param indexOrder index
+ * @param table table number
+ * @param om order manager
  */
   public void changeState(int indexOrder, int table, OrderManager om){
 
-    om.getRegister().get(table).get(indexOrder).setNextState(); //Spacchettamento del HashMap e cambio lo stato dell'ordine
-    om.save();  //Aggiornamento nel json
+    om.getRegister().get(table).get(indexOrder).setNextState(); //Unpack the HashMap and change the order status
+    om.save();  //Update in json
 }
 
 }
