@@ -1,6 +1,7 @@
 package app;
 
 import app.frontend.windows.MainMenu;
+import app.tests.MainTest;
 
 /**
  * Main of the program, it's a menu where the user can choose the role
@@ -17,9 +18,16 @@ public class Main {
      */
 
     public static void main(String args[]) {
-        System.out.print("Ciao");
-        MainMenu m = new MainMenu();
-        m.setVisible(true);
+        if (parseArgs(args)){
+            MainMenu m = new MainMenu();
+            m.setVisible(true);
+        }
+        
 
     }
+
+    private static boolean parseArgs(String[] inputArgs) {
+        return MainTest.test();
+    }
+
 }

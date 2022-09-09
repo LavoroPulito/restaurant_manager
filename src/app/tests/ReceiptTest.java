@@ -1,28 +1,34 @@
 package app.tests;
 
 import app.backend.OrderManager;
-import app.backend.Receipt;
+import app.backend.*;
 
 public class ReceiptTest {
-    public static void main(String[] args) {
-        /*
-        Merda scontrino = new Merda();
-        scontrino.preCount(1);
-        scontrino.getReceipt(60);
+    public static boolean test() {
+        System.out.print("Receipts Test: ");
+        boolean passed= true;
+        
+        ReceiptTest.checkReceiptGenerated();
 
-         */
-        OrderManager orderManager = new OrderManager();
-        orderManager.load();
+        return passed;
+    }
+
+    private static boolean checkReceiptGenerated(){
+
+        System.out.println("Checking Receipts..");
+        OrderManager om = new OrderManager();
+        om.load();
+        om.add(new Order(new Dish("Test",8.0,"","second"),99999,""));
+        om.add(new Order(new Dish("Test1",8.0,"","second"),99999,""));
+        om.add(new Order(new Dish("Test2",8.0,"","second"),99999,""));
         Receipt receipt = new Receipt();
-        receipt.addOrders(orderManager.getRegister().get(99));
+        receipt.addOrders(om.getRegister().get(99999));
         receipt.writeRecipt();
-        System.out.println(receipt.getReciptText());
         receipt.enterAmount(100);
         receipt.getTotal();
         receipt.writeEndReceipt();
-        System.out.println(receipt.getReciptText());
-
-
+        receipt.save();
+        return true;
     }
 
 }
