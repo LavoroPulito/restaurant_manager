@@ -13,7 +13,7 @@ public class Main {
     /**
      * Open role selector menu
      *
-     * @param args
+     * @param args arguments
      */
 
     public static void main(String args[]) {
