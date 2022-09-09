@@ -1,35 +1,32 @@
-# restaurant_manager
-##To Do List:
-- [ ] tenere aggiornata la uml
-- [ ] su `chefFrame` finire tasto menù principale 
-- [ ] ricontrollare tutti i possibili errori di `chefFrame`
-- [x] su `app.frontend.window.WaiterFrame` i tasti "+" e "-" vanno finiti
-- [x] su `app.frontend.window.WaiterFrame` il tasto "back to main menu va finito"(?) 
-- [ ] su `app.frontend.window.CashFrame` aggiungere pulsante per cambiare l'intestazione dello scontrino
+# Restaurant Manager
+
+Restaurant Manager is a Java project that allow to manage an entire restaurant. It has a graphical interface and all the role in the restaurant have a personal window.
+
+## 🚀 Features
+
+* Select the role in the menu
+* [Waiter] put orders in the system selecting dish, quantity and table
+* [Waiter] see orders that have to be delivered
+* [Cooker] see the tables that have some order to be preparated
+* [Cooker] see the order's informations and remove orders preparated
+* [Chef] manage the menu, add and remove dish from menu
+* [Chef] create new dishes for the menu
+* [Casher] See all table's orders and generate receipts and save them in text file
 
 
-###lista eccezioni da condsiderare
-- [ ] text field che devono prendere solo numeri in `cashFrame` e in `chefFrame` e in `app.frontend.window.WaiterFrame`
-- [ ] capire se conviene fare una classe con metodi statici da usare tipo numberOnly in `app.frontend.window.WaiterFrame`
-- [ ] usare jOptionPane nella gestione delle eccezioni 
+<img src="/.github/screenshot.png">
 
-###bug da risolvere:
-- [ ] su mac i bottoni colorati si vedono comunque bianchi quindi forse 
-      per i bottoni colorati è meglio passare alle icone
-- [ ] text area panel va sistemato nella gestione del testo( non va a capo)
+## ⚠️ Requirements
+For working appropriately Restaurant Manager needs Java 8+ to run jar file and be sure that the graphical interface will be load correctly
 
+## 👷 Installation
+The portable executable Restaurant_Manager.jar file can be found in the [releases page](https://github.com/LavoroPulito/restaurant_manager/releases) of this repository. You have only to download the last version and you are ready to use it.
 
-###divisioni interfacce grafiche:
-  - [ ] main menu `Nicco`
-  - [ ] cassa `Nicco`
-  - [x] chef `Armando`
-  - [X] cuoco  `Fradap`
-    - [ ] Aggiustamento grafica 
-  - [x] cameriere:
-    - [ ] Panel: menu a lista di bottoni `Fradap` 
-    - [ ] Panel: anteprima ordini `Armando`
-    - [ ] Panel: bottoni(caricamento/uscita) `Armando`
-    - [ ] Panel: ordini da consegnare `Fradap` 
-    
+## 💻 Usage
 
+To use the program just click on the jar file or you can open it from line code:
+
+## 📚 Libs
+
+* Gson: it's a Google library that allow to work with Json in java. It is imported and inclueded in the project in the [libs directory](https://github.com/LavoroPulito/restaurant_manager/tree/main/libs)
 

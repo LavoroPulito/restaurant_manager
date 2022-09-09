@@ -1,4 +1,4 @@
-package app.backend;
+package app;
 
 import app.frontend.windows.MainMenu;
 

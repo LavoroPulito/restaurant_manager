@@ -1,0 +1,18 @@
+--------FRADAP-------------
+Finire readme
+
+Fare classi testing
+
+Fare il jar
+
+Fare la release
+
+Aggiustare caratteri in TextArea di Chef
+
+---------------------------
+
+La relazione e il diagramma classi vanno messe nella cartella .github
+
+Spostare il file title.txt
+
+
