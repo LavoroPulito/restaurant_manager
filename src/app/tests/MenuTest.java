@@ -7,6 +7,8 @@ import app.backend.Dish;
 import app.backend.DishMenu;
 
 public class MenuTest {
+
+    static Dish d = new Dish("Test", 8.0, "","Second"); 
     public static boolean test() {
         boolean passed=true;
         System.out.println("Manage menu test\n");
@@ -15,8 +17,8 @@ public class MenuTest {
         menu.load();
         //System.out.println(menu.getMenu());
 
-        //sif(! MenuTest.addDish()){passed=false;}
-        //if(! MenuTest.removeDish()){passed=false;}
+        if(! MenuTest.addDish()){passed=false;}
+        if(! MenuTest.removeDish()){passed=false;}
 
 
     return passed;
@@ -28,7 +30,7 @@ public class MenuTest {
         DishMenu menu = new DishMenu();
         menu.load();
         
-        menu.add(new Dish("Test", 8.0, "","Second"));
+        menu.add(d);
 
         menu.save();
 
@@ -48,15 +50,16 @@ public class MenuTest {
 
         DishMenu menu = new DishMenu();
         menu.load();
-        menu.removeDish(new Dish("Test", 8.0, "","Second"));
-        menu.save();
+        
 
 
-        if (menu.getDish("Test").equals(null)){
+        if (menu.removeDish(menu.getDish("Test"))){
             System.out.println(" Test passed\n");
+            menu.save();
             return true;
         }
         System.out.println(" The program doesn't remove dish to menu\n");
+        menu.save();
         return false;
     }
 }

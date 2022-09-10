@@ -42,7 +42,7 @@ public class OrderManagerTest {
         om.save();
         om.load();
         om.add(new Order(new Dish("Test1",8.0,"","second"),88888,""));
-       if( om.getRegister().get(88888).size()==2){
+       if( om.getRegister().get(88888).size()!=2){
         System.out.println("The program doesn't append new orders at tables\n");
         om.cleanTable(88888);
         om.save();

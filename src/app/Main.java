@@ -3,6 +3,8 @@ package app;
 import app.frontend.windows.MainMenu;
 import app.tests.MainTest;
 
+import java.util.*;
+
 /**
  * Main of the program, it's a menu where the user can choose the role
  * @author Armando Coppola
@@ -27,7 +29,13 @@ public class Main {
     }
 
     private static boolean parseArgs(String[] inputArgs) {
-        return MainTest.test();
+        List<String> args = Arrays.asList(inputArgs);
+        if (args.contains("-test") || args.contains("-t")) {
+            return MainTest.test();
+        }
+        else{
+            return true;
+        }
     }
 
 }
