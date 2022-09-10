@@ -1,0 +1,12 @@
+          Pippo Pizza           
+Tab 2
+sorbetto al limone           9.0
+sorbetto al limone           9.0
+sorbetto al limone           9.0
+sorbetto al limone           9.0
+
+TOTAL: 36.0€  of which VAT: 3.6€
+Paid: 55.0€
+Rest: 19.0€
+Date: 10_settembre_2022_17:21
+Good bye
