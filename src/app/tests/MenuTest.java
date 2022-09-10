@@ -36,10 +36,10 @@ public class MenuTest {
         DishMenu menu1 = new DishMenu();
         menu1.load();
         if (menu1.getDish("Test").equals(null)){
-            System.out.println(" The program doesn't add dish to menu");
+            System.out.println(" The program doesn't add dish to menu\n");
             return false;
         }
-        System.out.println(" Test passed");
+        System.out.println(" Test passed\n");
         return true;
     }
 
@@ -48,12 +48,7 @@ public class MenuTest {
 
         DishMenu menu = new DishMenu();
         menu.load();
-        Dish d = new Dish("Test", 8.0, "","Second"); 
-        menu.add(d);
-        menu.save();
-
-        menu.load();
-        menu.removeDish(d);
+        menu.removeDish(new Dish("Test", 8.0, "","Second"));
         menu.save();
 
 

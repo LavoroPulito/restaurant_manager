@@ -1,13 +1,10 @@
 --------FRADAP-------------
-Finire readme
 
 Fare classi testing
 
 Fare il jar
 
 Fare la release
-
-Aggiustare caratteri in TextArea di Chef
 
 ---------------------------
 

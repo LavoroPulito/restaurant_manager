@@ -7,16 +7,16 @@ public class MainTest {
         System.out.println("Restaurant Manager Test");
         System.out.println("_________________________");
 
-        System.out.println("Test number 1:\n");
+        System.out.println("Test number 1:");
         if(!FrameTest.test()){passed=false;}
 
-        System.out.println("Test number 2:\n");
+        System.out.println("Test number 2:");
         if(!MenuTest.test()){passed=false;}
 
-        System.out.println("Test number 2:\n");
+        System.out.println("Test number 3:");
         if(!OrderManagerTest.test()){passed=false;}
 
-        System.out.println("Test number 3:\n");
+        System.out.println("Test number 4:");
         if(! ReceiptTest.test()){passed=false;}
 
         return passed;
