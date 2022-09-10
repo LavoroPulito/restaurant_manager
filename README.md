@@ -2,7 +2,7 @@
 
 Restaurant Manager is a Java project that allow to manage an entire restaurant. It has a graphical interface and all the role in the restaurant have a personal window.
 
-## 🚀 Features
+## 💡 Features
 
 * Select the role in the menu
 * [Waiter] put orders in the system selecting dish, quantity and table
@@ -25,8 +25,19 @@ The portable executable Restaurant_Manager.jar file can be found in the [release
 ## 💻 Usage
 
 To use the program just click on the jar file or you can open it from line code:
+```bash
+java Restaurant_Manager.jar
+```
+or if you want to test the program you can add params -tests or -t
+
 
 ## 📚 Libs
 
 * Gson: it's a Google library that allow to work with Json in java. It is imported and inclueded in the project in the [libs directory](https://github.com/LavoroPulito/restaurant_manager/tree/main/libs)
 
+
+## 🚀 Roadmap
+This program is executed in local, so for the whole restaurant there is only a computer. The idea is implementing a separated program for each role. It can be done with two improvements:
+* Socket connection: the informations are trasmitted from one terminal and the other via internet connection(using TCP protocol for example), connecting to the Main terminal's socket (the cash register for example)
+
+* Database: so the main terminal receives and sends informations but it has to save them, it can use Json files but using databases in the project makes it more maintainable and tidy, specially if it is used in connections
