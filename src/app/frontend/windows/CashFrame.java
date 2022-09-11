@@ -149,7 +149,7 @@ public class CashFrame extends StandardFrame {
 
     /**
      * shows the complete receipt on the screen and saves it as txt.
-     * check that the amount is entered and that it covers the total
+     * checks that the amount is entered and that it covers the total
      */
     private void printReceipt() {
         if (amountField.getText().isEmpty()) {

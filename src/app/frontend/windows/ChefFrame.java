@@ -48,7 +48,7 @@ public class ChefFrame extends StandardFrame {
     private JTextField txtCategory;
 
     /**
-     * check box to set availability
+     * checks box to set availability
      */
     private JCheckBox availableCkBx;
 
@@ -68,7 +68,7 @@ public class ChefFrame extends StandardFrame {
     private JList list;
 
     /**
-     * create a new chef frame
+     * creates a new chef frame
      */
     public ChefFrame() {
         super("Chef");
@@ -199,7 +199,7 @@ public class ChefFrame extends StandardFrame {
     }
 
     /**
-     * set all the field and text areas with descriptive or useful strings
+     * sets all the field and text areas with descriptive or useful strings
      */
     private void resetInput() {
         list.clearSelection();
@@ -215,7 +215,7 @@ public class ChefFrame extends StandardFrame {
     }
 
     /**
-     * set the text fields with the information of the selected dish
+     * sets the text fields with the information of the selected dish
      */
     private void setTextAreas() {
         add_new_dish.setSelected(false);
@@ -271,7 +271,7 @@ public class ChefFrame extends StandardFrame {
     }
 
     /**
-     * remove from menu' the selected dish
+     * removes from menu' the selected dish
      */
     private void removeProtocol(){
         if (list.getSelectedValue() != null) {
