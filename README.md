@@ -5,7 +5,7 @@ Restaurant Manager is a Java project that allow to manage an entire restaurant. 
 ## 💡 Features
 
 * Select the role in the menu
-* [Waiter] put orders in the system selecting dish, quantity and table
+* `Waiter` put orders in the system selecting dish, quantity and table
 * [Waiter] see orders that have to be delivered
 * [Cooker] see the tables that have some order to be preparated
 * [Cooker] see the order's informations and remove orders preparated
