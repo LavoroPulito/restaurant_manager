@@ -26,14 +26,14 @@ public class OrderManager {
     private String filePath = "./Saves";
 
     /**
-     * Inizialize a new orderManager
+     * Inizializes a new orderManager
      */
     public OrderManager() {
         register = new HashMap<Integer, ArrayList<Order>>();
     }
 
     /**
-     * This method add orders to the collection of orders. if there isn't the table, it is created instead the orders are concatenated at the table's array
+     * This method add orders to the collection of orders. If the table isn't there, it is created, instead the orders are concatenated at the table's array
      *
      * @param orders
      */
@@ -49,7 +49,7 @@ public class OrderManager {
     }
 
     /**
-     * This method add an order to the collection of orders. if there isn't the table, it is created instead the order is concatenated at the table's array
+     * This method adds an order to the collection of orders. If the table isn't there, it is created instead the order is concatenated at the table's array
      *
      * @param order
      */
@@ -158,7 +158,7 @@ public class OrderManager {
     }
 
     /**
-     * clears the table and removes it from collection
+     * Clears the table and removes it from collection
      */
     public void cleanTable(int table) {
         if (register.containsKey(table)) {
