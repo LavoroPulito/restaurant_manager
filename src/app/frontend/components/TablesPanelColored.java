@@ -15,7 +15,7 @@ import app.backend.OrderManager;
  * @version 1.0
  */
 
-public class TablesPanelColored extends JPanel implements ActionListener {
+public class TablesPanelColored extends BackgroundPanel implements ActionListener {
     /**
      * list of tableButtons
      */

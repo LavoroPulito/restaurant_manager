@@ -36,7 +36,7 @@ public class CookFrame extends StandardFrame {
         pt = new TablesPanelColored();
         pt.addActionListener(new Listener());
 
-        JPanel pt1 = new JPanel();
+        BackgroundPanel pt1 = new BackgroundPanel();
         pt1.setOpaque(false);
 
         add(pt1);
