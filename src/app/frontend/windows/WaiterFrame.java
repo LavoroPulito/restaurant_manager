@@ -1,10 +1,10 @@
 package app.frontend.windows;
 
 import app.frontend.components.BackMenuButton;
+import app.frontend.components.BackgroundPanel;
 import app.frontend.components.NumberField;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -64,7 +64,7 @@ public class WaiterFrame extends StandardFrame {
      * initialize all component of the frame
      */
     private void init() {
-        JPanel panel = new JPanel();
+        BackgroundPanel panel = new BackgroundPanel();
         getContentPane().add(panel, BorderLayout.CENTER);
         panel.setLayout(new GridLayout(1, 0, 0, 0));
 
@@ -87,6 +87,7 @@ public class WaiterFrame extends StandardFrame {
         menuPanel.setLayout(new BorderLayout(0, 0));
 
         listMenu = new JList(menu.toArrayList().toArray());
+        listMenu.setFont(new Font("Verdana", 0, 18));
         listMenu.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -117,27 +118,56 @@ public class WaiterFrame extends StandardFrame {
         });
         quantityPanel.add(addButton);
 
+        JScrollPane spPreview = new JScrollPane();
         listPreview = new JList(previewsRegister.getPreviews().toArray());
-        previewPanel.add(listPreview, BorderLayout.CENTER);
+        previewPanel.add(spPreview, BorderLayout.CENTER);
+        spPreview.setRowHeaderView(spPreview.getVerticalScrollBar());
+        spPreview.setViewportView(listPreview);
 
         JPanel rightPanel = new JPanel();
+        rightPanel.setOpaque(false);
         panel.add(rightPanel);
         rightPanel.setLayout(new GridLayout(2, 1, 0, 0));
 
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setOpaque(false);
+        SpringLayout springLayout = new SpringLayout();
+        buttonPanel.setLayout(springLayout);
         rightPanel.add(buttonPanel);
 
         JLabel tableLabel = new JLabel("table:");
-        buttonPanel.add(tableLabel);
-        buttonPanel.add(numberField);
+        tableLabel.setForeground(new java.awt.Color(0, 90, 0));
+        tableLabel.setFont(new Font("Chalkboard SE", Font.BOLD, 24));
+        numberField.setFont(new Font("Chalkboard SE", Font.ITALIC, 24));
 
-        JButton placeButton = new JButton("place orders");
+        JButton placeButton = new JButton("Place orders");
+        placeButton.setForeground(new java.awt.Color(0, 90, 0));
+        placeButton.setFont(new Font("Chalkboard SE", Font.BOLD, 24));
         placeButton.addActionListener(e -> {
             placeOrder();
         });
-        buttonPanel.add(placeButton);
 
         BackMenuButton menuButton = new BackMenuButton(WaiterFrame.this);
+
+        springLayout.putConstraint(SpringLayout.WEST, tableLabel, 0, SpringLayout.WEST, buttonPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, tableLabel, 0, SpringLayout.NORTH, buttonPanel);
+        springLayout.putConstraint(SpringLayout.SOUTH, tableLabel, 0, SpringLayout.SOUTH, numberField);
+        springLayout.putConstraint(SpringLayout.WEST, numberField, 0, SpringLayout.EAST, tableLabel);
+        springLayout.putConstraint(SpringLayout.EAST, numberField, 0, SpringLayout.EAST, buttonPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, numberField, 0, SpringLayout.NORTH, buttonPanel);
+        springLayout.putConstraint(SpringLayout.SOUTH, numberField, 50, SpringLayout.NORTH, buttonPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, placeButton, (getContentPane().getHeight() / 4) - 25, SpringLayout.NORTH, buttonPanel);
+        springLayout.putConstraint(SpringLayout.SOUTH, placeButton, (getContentPane().getHeight() / 4) + 25, SpringLayout.NORTH, buttonPanel);
+        springLayout.putConstraint(SpringLayout.WEST, placeButton, 10, SpringLayout.WEST, buttonPanel);
+        springLayout.putConstraint(SpringLayout.EAST, placeButton, -10, SpringLayout.EAST, buttonPanel);
+        springLayout.putConstraint(SpringLayout.NORTH, menuButton, -60, SpringLayout.SOUTH, buttonPanel);
+        springLayout.putConstraint(SpringLayout.WEST, menuButton, 10, SpringLayout.WEST, buttonPanel);
+        springLayout.putConstraint(SpringLayout.EAST, menuButton, -10, SpringLayout.EAST, buttonPanel);
+        springLayout.putConstraint(SpringLayout.SOUTH, menuButton, -10, SpringLayout.SOUTH, buttonPanel);
+
+        buttonPanel.add(tableLabel);
+        buttonPanel.add(numberField);
+        buttonPanel.add(placeButton);
         buttonPanel.add(menuButton);
 
         JPanel checkBoxPanel = new JPanel();
@@ -221,9 +251,11 @@ public class WaiterFrame extends StandardFrame {
      * change the state of selected order to mark that it has been delivered
      */
     private void deliverOrder() {
-        orderManager.setNextState((Order) deliverList.getSelectedValue());
-        orderManager.save();
-        deliverList.setListData(orderManager.getOrdersToDeliver().toArray());
+        if (!deliverList.isSelectionEmpty()) {
+            orderManager.setNextState((Order) deliverList.getSelectedValue());
+            orderManager.save();
+            deliverList.setListData(orderManager.getOrdersToDeliver().toArray());
 
+        }
     }
 }

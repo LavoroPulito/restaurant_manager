@@ -1,6 +1,7 @@
 package app.frontend.windows;
 
 import app.frontend.components.BackMenuButton;
+import app.frontend.components.BackgroundPanel;
 import app.frontend.components.NumberField;
 
 import java.awt.BorderLayout;
@@ -80,7 +81,7 @@ public class ChefFrame extends StandardFrame {
      */
     public void init() {
         // Main panel
-        JPanel background = new JPanel();
+        BackgroundPanel background = new BackgroundPanel();
         getContentPane().add(background, BorderLayout.CENTER);
         SpringLayout sl_panel = new SpringLayout();
         background.setLayout(sl_panel);
@@ -96,6 +97,7 @@ public class ChefFrame extends StandardFrame {
 
         // settings panel with field for change attributes and button to manage the menù
         JPanel settingsPanel = new JPanel();
+        settingsPanel.setOpaque(false);
         settingsPanel.setLayout(new GridLayout(2, 1, 0, 0));
         background.add(settingsPanel);
 
@@ -103,26 +105,30 @@ public class ChefFrame extends StandardFrame {
         sl_panel.putConstraint(SpringLayout.WEST, scrollPane, 10, SpringLayout.WEST, background);
         sl_panel.putConstraint(SpringLayout.SOUTH, scrollPane, -10, SpringLayout.SOUTH, background);
         sl_panel.putConstraint(SpringLayout.EAST, scrollPane, -4, SpringLayout.WEST, settingsPanel);
-        sl_panel.putConstraint(SpringLayout.WEST, settingsPanel, 147, SpringLayout.WEST, background);
+        sl_panel.putConstraint(SpringLayout.WEST, settingsPanel, 300, SpringLayout.WEST, background);
         sl_panel.putConstraint(SpringLayout.EAST, settingsPanel, -10, SpringLayout.EAST, background);
         sl_panel.putConstraint(SpringLayout.NORTH, settingsPanel, 10, SpringLayout.NORTH, background);
         sl_panel.putConstraint(SpringLayout.SOUTH, settingsPanel, 0, SpringLayout.SOUTH, scrollPane);
 
         JPanel attributesPanel = new JPanel();
+        attributesPanel.setOpaque(false);
         attributesPanel.setLayout(new BoxLayout(attributesPanel, BoxLayout.X_AXIS));
         settingsPanel.add(attributesPanel);
 
         JPanel controlPanel = new JPanel();
+        controlPanel.setOpaque(false);
         controlPanel.setLayout(new GridLayout(0, 1, 0, 0));
         settingsPanel.add(controlPanel);
 
 
 
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setOpaque(false);
         buttonPanel.setLayout(new GridLayout(2, 2, 0, 0));
         controlPanel.add(buttonPanel);
 
         JPanel sideFieldPanel = new JPanel();
+        sideFieldPanel.setOpaque(false);
         sideFieldPanel.setLayout(new GridLayout(0, 1, 0, 0));
         attributesPanel.add(sideFieldPanel);
 
@@ -131,6 +137,7 @@ public class ChefFrame extends StandardFrame {
         menu.load();
 
         list = new JList(menu.toArrayList().toArray());
+        list.setFont(new Font("Verdana",0,18));
         list.getSelectionModel().addListSelectionListener(e -> {
             setTextAreas();
         });
@@ -147,7 +154,9 @@ public class ChefFrame extends StandardFrame {
         txtCategory.setColumns(10);
         sideFieldPanel.add(txtCategory);
 
-        availableCkBx = new JCheckBox("available");
+        availableCkBx = new JCheckBox("AVAILABLE");
+        availableCkBx.setFont(new Font("Chalkboard SE",1,24));
+        availableCkBx.setForeground(new java.awt.Color(0, 0, 240));
         sideFieldPanel.add(availableCkBx);
 
         txtDescription = new JTextField();
@@ -155,7 +164,7 @@ public class ChefFrame extends StandardFrame {
         attributesPanel.add(txtDescription);
 
         textArea = new JTextArea();
-        textArea.setFont(new Font("Chalkboard SE", 0, 16));
+        textArea.setFont(new Font("Chalkboard SE", 0, 20));
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
         controlPanel.add(textArea);

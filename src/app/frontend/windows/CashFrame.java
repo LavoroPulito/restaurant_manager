@@ -8,6 +8,7 @@ import app.backend.OrderManager;
 import app.backend.Receipt;
 
 import app.frontend.components.BackMenuButton;
+import app.frontend.components.BackgroundPanel;
 import app.frontend.components.NumberField;
 
 import javax.swing.*;
@@ -62,11 +63,12 @@ public class CashFrame extends StandardFrame {
             showReceipt();
         });
 
-        getContentPane().setLayout(new GridLayout(1, 3, 0, 0));
-
+        BackgroundPanel background = new BackgroundPanel();
+        background.setLayout(new GridLayout(1, 3, 0, 0));
+        getContentPane().add(background);
         //panel for text (on the left)
         JPanel textPanel = new JPanel();
-        getContentPane().add(textPanel);
+        background.add(textPanel);
         textPanel.setLayout(new BorderLayout(0, 0));
 
         textArea = new JTextArea();
@@ -82,41 +84,54 @@ public class CashFrame extends StandardFrame {
 
         //panel for the list of table (in the center)
         JPanel tablesPanel = new JPanel();
-        getContentPane().add(tablesPanel);
+        background.add(tablesPanel);
         tablesPanel.setLayout(new BorderLayout(0, 0));
         tablesPanel.add(list, BorderLayout.CENTER);
 
         //panel for buttons and field (on the right)
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setOpaque(false);
 
         //layout of buttonPanel
         SpringLayout sl_buttonPanel = new SpringLayout();
         buttonPanel.setLayout(sl_buttonPanel);
-        getContentPane().add(buttonPanel);
+        background.add(buttonPanel);
+
+        JLabel tableLabel = new JLabel("Amount:");
+        tableLabel.setForeground(new java.awt.Color(0, 90, 0));
+        tableLabel.setFont(new Font("Chalkboard SE", Font.BOLD, 24));
 
         JButton receiptButton = new JButton("print receipt");
+        receiptButton.setForeground(new java.awt.Color(0, 90, 0));
+        receiptButton.setFont(new Font("Chalkboard SE", Font.BOLD, 24));
         receiptButton.addActionListener(e -> {
             printReceipt();
         });
+        BackMenuButton menuButton = new BackMenuButton(CashFrame.this);
+        amountField = new NumberField();
+
+        sl_buttonPanel.putConstraint(SpringLayout.WEST, tableLabel, 10, SpringLayout.WEST, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.NORTH, tableLabel, 0, SpringLayout.NORTH, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.SOUTH, tableLabel, 60, SpringLayout.NORTH, buttonPanel);
 
         sl_buttonPanel.putConstraint(SpringLayout.WEST, receiptButton, 10, SpringLayout.WEST, buttonPanel);
         sl_buttonPanel.putConstraint(SpringLayout.EAST, receiptButton, -10, SpringLayout.EAST, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.NORTH, receiptButton, 0, SpringLayout.SOUTH, amountField);
+        sl_buttonPanel.putConstraint(SpringLayout.SOUTH, receiptButton, 50, SpringLayout.SOUTH, tableLabel);
 
-        amountField = new NumberField();
-        sl_buttonPanel.putConstraint(SpringLayout.NORTH, receiptButton, 6, SpringLayout.SOUTH, amountField);
-        sl_buttonPanel.putConstraint(SpringLayout.WEST, amountField, 0, SpringLayout.WEST, receiptButton);
+        sl_buttonPanel.putConstraint(SpringLayout.WEST, amountField, 0, SpringLayout.EAST, tableLabel);
         sl_buttonPanel.putConstraint(SpringLayout.EAST, amountField, 0, SpringLayout.EAST, receiptButton);
-        sl_buttonPanel.putConstraint(SpringLayout.NORTH, amountField, 0, SpringLayout.NORTH, buttonPanel);
-        amountField.setText("enter amount received");
+        sl_buttonPanel.putConstraint(SpringLayout.NORTH, amountField, 10, SpringLayout.NORTH, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.SOUTH, amountField, 60, SpringLayout.NORTH, buttonPanel);
+
+        sl_buttonPanel.putConstraint(SpringLayout.NORTH, menuButton, -60, SpringLayout.SOUTH, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.WEST, menuButton, 10, SpringLayout.WEST, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.SOUTH, menuButton, -10, SpringLayout.SOUTH, buttonPanel);
+        sl_buttonPanel.putConstraint(SpringLayout.EAST, menuButton, -10, SpringLayout.EAST, buttonPanel);
+        buttonPanel.add(tableLabel);
+        buttonPanel.add(menuButton);
         buttonPanel.add(amountField);
         buttonPanel.add(receiptButton);
-
-        BackMenuButton menuButton = new BackMenuButton(CashFrame.this);
-        sl_buttonPanel.putConstraint(SpringLayout.WEST, menuButton, 0, SpringLayout.WEST, amountField);
-        sl_buttonPanel.putConstraint(SpringLayout.SOUTH, menuButton, -10, SpringLayout.SOUTH, buttonPanel);
-        sl_buttonPanel.putConstraint(SpringLayout.EAST, menuButton, 0, SpringLayout.EAST, amountField);
-
-        buttonPanel.add(menuButton);
     }
 
     /**
