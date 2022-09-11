@@ -35,7 +35,7 @@ public class PreviewsRegister {
 
     /**
      * decreases the quantity of the supplied OrderPreview:
-     * if the quantity become 0 the OrderPreview is removed from the list
+     * if the quantity becomes 0 the OrderPreview will be removed from the list
      *
      * @param orderPreview orderPreview to decrease
      */
@@ -61,14 +61,14 @@ public class PreviewsRegister {
     }
 
     /**
-     * clear the OrderPreview ArrayList
+     * clears the OrderPreview ArrayList
      */
     public void clear() {
         previews.clear();
     }
 
     /**
-     * return the ArrayList that contain all the OrderPreviews
+     * returns the ArrayList that contain all the OrderPreviews
      *
      * @return previews ArrayList
      */

@@ -45,7 +45,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
     private static final double ratio = 0.0578;
 
     /**
-     * create a new main menu'
+     * creates a new main menu'
      */
     public MainMenu() {
         super("mainMenu");
@@ -134,7 +134,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
     }
 
     /**
-     * open the selected frame and close this frame
+     * opens the selected frame and close this frame
      * @param e the event to be processed
      */
     @Override

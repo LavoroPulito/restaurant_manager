@@ -111,7 +111,7 @@ public class CheckBoxPopup extends JFrame implements ActionListener {
     }
   
 /**
- * If an order is being prepared his state will change in "ready"
+ * If an order is being prepared his state will change to "ready"
  * @param indexOrder index
  * @param table table number
  * @param om order manager

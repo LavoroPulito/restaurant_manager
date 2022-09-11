@@ -36,7 +36,7 @@ public class WaiterFrame extends StandardFrame {
     private NumberField numberField;
 
     /**
-     * ist of orders to be delivered
+     * list of orders to be delivered
      */
     private JList deliverList;
 

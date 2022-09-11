@@ -157,7 +157,7 @@ public class DishMenu {
     }
 
     /**
-     * load from the file the json String and loads the data into the menu
+     * loads from the file the json String and loads the data into the menu
      */
     public void load() {
         String string = "";

@@ -26,8 +26,8 @@ public class TablesPanelColored extends BackgroundPanel implements ActionListene
     ArrayList<Integer> tn;
 
     /**
-     * this method creates a new TablesPanelColored. It loads all the tables, if the tables has at least an order to prepare
-     * it will add to the panel with the TableButton. If in the order at least one is ready the button will be yellow otherwise
+     * this method creates a new TablesPanelColored. It loads all the tables, if the tables has at least an order that isn't prepared yet,
+     * it will add to the panel with the TableButton. If in the order at least one is ready the button will be yellow, otherwise
      * the table's order are all to prepare and the button will be green 
      */
         public TablesPanelColored(){

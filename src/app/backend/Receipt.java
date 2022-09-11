@@ -87,7 +87,7 @@ public class Receipt {
     private DateTimeFormatter y = DateTimeFormatter.ofPattern("kk:mm");
 
     /**
-     * create an empty receipt by initializing
+     * creates an empty receipt by initializing
      * date, time, total, order list, amount, receiptsPath, titlePath, receipt Text
      * and upload the title.
      */
@@ -103,7 +103,7 @@ public class Receipt {
     }
 
     /**
-     * write the new title in the file and reload it
+     * writes the new title in the file and reload it
      *
      * @param title String to the new title
      */
@@ -125,7 +125,7 @@ public class Receipt {
     }
 
     /**
-     * load the title from the file, if it does not exist, set the title with a predefined string
+     * loads the title from the file, if it does not exist, set the title with a predefined string
      */
     private void loadTitle() {
         try {
@@ -167,7 +167,7 @@ public class Receipt {
     }
 
     /**
-     * set the amount received by the customer
+     * sets the amount received by the customer
      *
      * @param amount the amount
      */
@@ -185,7 +185,7 @@ public class Receipt {
     }
 
     /**
-     * write on receiptText the name of the products with the price on the right
+     * writes on receiptText the name of the products with the price on the right
      * at the end add the total on receiptText
      */
     public void writeReceipt() {
@@ -202,7 +202,7 @@ public class Receipt {
     }
 
     /**
-     * write the end of app.backend.Receipt with the amount, the change and the date
+     * writes the end of app.backend.Receipt with the amount, the change and the date
      */
     public void writeEndReceipt() {
         if (amount > 0) {
@@ -233,7 +233,7 @@ public class Receipt {
     }
 
     /**
-     * save the receipt in a text file in the directory path
+     * saves the receipt in a text file in the directory path
      */
     public void save() {
         String filename = "receiptTab" + table + "_" + data.format(x) + "_" + time.format(y);

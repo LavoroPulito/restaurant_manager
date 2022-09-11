@@ -5,7 +5,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * this class is a TextField in which you can write only number
+ * This class is a TextField in which you can write only number
  * 
  * @author Armando Coppola
  * @author Niccolò Di Santo
@@ -16,7 +16,7 @@ import java.awt.event.KeyEvent;
 public class NumberField extends JTextField {
 
     /**
-     * Create a new NumberField and it does controls in the input because it can be only numeric
+     * Creates a new NumberField and it does controls in the input because it can be only numeric
      */
     public NumberField(){
         setColumns(8);
@@ -39,7 +39,7 @@ public class NumberField extends JTextField {
     }
 
     /**
-     * This method checks if the number is a double
+     * this method checks if the number is a double
      * @return isDouble
      */
     public boolean isDouble(){

@@ -15,7 +15,7 @@ public class OrderPreview extends Order {
     private int quantity;
 
     /**
-     * create a new OrderPreview using the parameters provided and set the quantity at 1
+     * creates a new OrderPreview using the parameters provided and set the quantity to 1
      *
      * @param dish name of the dish
      * @param table table of order
@@ -27,7 +27,7 @@ public class OrderPreview extends Order {
     }
 
     /**
-     * set the quantity to the supplied value
+     * sets the quantity to the supplied value
      *
      * @param quantity new quantity
      */
