@@ -142,8 +142,8 @@ public class CashFrame extends StandardFrame {
             amountField.setText("");
             receipt = new Receipt();
             receipt.addOrders(orderManager.getRegister().get((int) list.getSelectedValue()));
-            receipt.writeRecipt();
-            textArea.setText(receipt.getReciptText());
+            receipt.writeReceipt();
+            textArea.setText(receipt.getReceiptText());
         }
     }
 
@@ -164,7 +164,7 @@ public class CashFrame extends StandardFrame {
             } else {
                 receipt.enterAmount(amountField.getDouble());
                 receipt.writeEndReceipt();
-                textArea.setText(receipt.getReciptText());
+                textArea.setText(receipt.getReceiptText());
                 receipt.save();
                 orderManager.cleanTable((int) list.getSelectedValue());
                 orderManager.save();
@@ -182,7 +182,7 @@ public class CashFrame extends StandardFrame {
                 "insert new title:\n add '/n' to start a new line");
         if (newTitle != null) {
             receipt.setTitle(newTitle);
-            textArea.setText(receipt.getReciptText());
+            textArea.setText(receipt.getReceiptText());
         }
     }
 

@@ -28,6 +28,11 @@ public class Main {
 
     }
 
+    /**
+     * if the required parameters are provided, it performs the tests
+     * @param inputArgs arguments
+     * @return true if all tests passed successfully, otherwise false
+     */
     private static boolean parseArgs(String[] inputArgs) {
         List<String> args = Arrays.asList(inputArgs);
         if (args.contains("-test") || args.contains("-t")) {

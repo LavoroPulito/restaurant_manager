@@ -57,7 +57,7 @@ public class Receipt {
     /**
      * length of each line, i.e. the width of the receipt text
      */
-    private int STRING_LENGHT = 32;
+    private final int STRING_LENGHT = 32;
 
     /**
      * title of the receipt containing the merchant's data
@@ -67,12 +67,12 @@ public class Receipt {
     /**
      * directory where receipts are saved
      */
-    private String receiptsPath;
+    private final String receiptsPath;
 
     /**
      * directory where the title of the receipt is read and written
      */
-    private String titlePath;
+    private final String titlePath;
 
     /**
      * receipt data and format
@@ -96,7 +96,7 @@ public class Receipt {
         orders = new ArrayList<>();
         amount = 0;
         receiptsPath = "./Saves/Receipts";
-        titlePath = "title.txt";
+        titlePath = "./Saves/title.txt";
         loadTitle();
         receiptText = title;
 
@@ -188,7 +188,7 @@ public class Receipt {
      * write on receiptText the name of the products with the price on the right
      * at the end add the total on receiptText
      */
-    public void writeRecipt() {
+    public void writeReceipt() {
 
         for (Order o : orders) {
             String price = "" + o.getDishPrice();
@@ -220,8 +220,16 @@ public class Receipt {
      *
      * @return receiptText
      */
-    public String getReciptText() {
+    public String getReceiptText() {
         return receiptText;
+    }
+
+    /**
+     * return the receipt title
+     * @return title
+     */
+    public String getTitle() {
+        return title;
     }
 
     /**

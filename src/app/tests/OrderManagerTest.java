@@ -2,9 +2,15 @@ package app.tests;
 
 import app.backend.*;
 
+/**
+ * this class tests the correct functioning of the order manager class
+ */
 public class OrderManagerTest {
 
-
+    /**
+     * start the tests
+     * @return if all test are passed
+     */
     public static boolean test() {
         boolean passed=true;
         System.out.println("Manage orders test\n");
@@ -15,6 +21,10 @@ public class OrderManagerTest {
         return passed;
     }
 
+    /**
+     * adds a table with an order to the register and verifies its addition
+     * @return true if the order was added otherwise false
+     */
     private static boolean createTableTest(){
         System.out.print("Create table test: ");
         OrderManager om = new OrderManager();
@@ -34,6 +44,10 @@ public class OrderManagerTest {
         return true;
     }
 
+    /**
+     * adds other orders to the register and verifies its addition
+     * @return true if the order was added otherwise false
+     */
     private static boolean appendToTableTest(){
         System.out.print("Append to table test: ");
         OrderManager om = new OrderManager();

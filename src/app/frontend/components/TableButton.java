@@ -21,7 +21,7 @@ public class TableButton extends JButton {
 	int table;
 	/**
 	 * Creates a new TableButton with its table number and it defines the style of the button
-	 * @param table
+	 * @param table table
 	 */
 	public TableButton (int table) {
 		this.table=table;
@@ -33,7 +33,7 @@ public class TableButton extends JButton {
 	}
 	/**
 	 * Returns the number of the table
-	 * @return
+	 * @return table
 	 */
 	public  int getTable() {
 		return table;

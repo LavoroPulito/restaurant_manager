@@ -100,8 +100,7 @@ public class TablesPanelColored extends BackgroundPanel implements ActionListene
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+
     }
 
 }
