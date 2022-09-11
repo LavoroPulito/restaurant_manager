@@ -48,7 +48,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
      * create a new main menu'
      */
     public MainMenu() {
-        super("Restaurant Manager");
+        super("mainMenu");
         initComponents();
     }
 
@@ -73,7 +73,7 @@ public class MainMenu extends StandardFrame implements ActionListener {
 
         mainTitle.setFont(new java.awt.Font("Chalkboard SE", 1, 55));
         mainTitle.setForeground(new java.awt.Color(0, 70, 0));
-        mainTitle.setText("PIPPO PIZZA");
+        mainTitle.setText("Restaurant Manager");
         mainTitle.setHorizontalAlignment(JLabel.CENTER);
 
         btnWaiter.setFont(new java.awt.Font("Chalkduster", 1, 32));
