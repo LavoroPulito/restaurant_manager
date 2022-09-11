@@ -35,7 +35,7 @@ public class Dish {
     private boolean available;
 
     /**
-     * create a new dish using the parameters provided
+     * creates a new dish using the parameters provided
      * @param name name of the dish
      * @param price price of the dish (with IVA)
      * @param description description of the dish
@@ -51,7 +51,7 @@ public class Dish {
     }
 
     /**
-     * create a new dish using the parameters provided
+     * creates a new dish using the parameters provided
      * @param name name of the dish
      * @param price price of the dish (with IVA)
      * @param description description of the dish
@@ -153,7 +153,7 @@ public class Dish {
     }
 
     /**
-     * represent the object using only the dish name
+     * represents the object using only the dish name
      * @return name
      */
     @Override
