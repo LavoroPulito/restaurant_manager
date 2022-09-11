@@ -155,7 +155,7 @@ public class ChefFrame extends StandardFrame {
         attributesPanel.add(txtDescription);
 
         textArea = new JTextArea();
-        textArea.setFont(new Font("Chalkduster", 0, 32));
+        textArea.setFont(new Font("Chalkboard SE", 0, 16));
         textArea.setWrapStyleWord(true);
         textArea.setEditable(false);
         controlPanel.add(textArea);
@@ -199,6 +199,7 @@ public class ChefFrame extends StandardFrame {
         txtCategory.setText("Category");
         txtDescription.setText("Description");
         availableCkBx.setSelected(true);
+
         textArea.setText("select a dish to view its attributes or to modify it.\n"
                 + "use the button to modify the menu.\n" + "remember to save or your changes will be lost");
 
@@ -257,6 +258,7 @@ public class ChefFrame extends StandardFrame {
         menu.load();
         list.setListData(menu.toArrayList().toArray());
         resetInput();
+
     }
 
     /**

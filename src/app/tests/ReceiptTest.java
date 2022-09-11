@@ -21,7 +21,7 @@ public class ReceiptTest {
         om.add(new Order(new Dish("Test",8.0,"","second"),99999,""));
         om.add(new Order(new Dish("Test1",8.0,"","second"),99999,""));
         om.add(new Order(new Dish("Test2",8.0,"","second"),99999,""));
-        Receipt1 receipt = new Receipt1();
+        Receipt receipt = new Receipt();
         receipt.addOrders(om.getRegister().get(99999));
         receipt.writeRecipt();
         receipt.enterAmount(100);

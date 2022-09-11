@@ -1,6 +1,7 @@
 package app.backend;
 
 import com.google.gson.Gson;
+
 import java.util.*;
 import java.io.*;
 
@@ -19,17 +20,23 @@ public class DishMenu {
     private HashMap<String, ArrayList<Dish>> menu;
 
     /**
+     * path where the menu is saved and loaded
+     */
+    private final String filePath = "./Saves";
+
+    /**
      * Initializes the DishMenu
      */
     public DishMenu() {
-        menu = new HashMap<String, ArrayList<Dish>>();
+        menu = new HashMap<>();
 
     }
 
     /**
      * Returns the menu
+     *
      * @return HashMap menu
-     */    
+     */
     public HashMap<String, ArrayList<Dish>> getMenu() {
         return menu;
     }
@@ -37,7 +44,7 @@ public class DishMenu {
     /**
      * this method add a dish in the HashMap menu in the right category if it exists or creates a new one
      *
-     * @param dish
+     * @param dish to add
      */
     public void add(Dish dish) {
         String key = dish.getCategory();
@@ -72,7 +79,8 @@ public class DishMenu {
 
     /**
      * it returns the plate corresponding to the supplied parameters if it exists in the menu otherwise it returns null
-     * @param name of the dish
+     *
+     * @param name     of the dish
      * @param category of the dish
      * @return dish or null
      */
@@ -88,6 +96,7 @@ public class DishMenu {
 
     /**
      * it returns the plate corresponding to the supplied parameters if it exists in the menu otherwise it returns null
+     *
      * @param name of the dish
      * @return dish or null
      */
@@ -106,6 +115,7 @@ public class DishMenu {
 
     /**
      * creates an ArrayList with all the dish in menu
+     *
      * @return ArrayList menu
      */
     public ArrayList<Dish> toArrayList() {
@@ -119,6 +129,7 @@ public class DishMenu {
 
     /**
      * creates a Json string with the HashMap menu, to save
+     *
      * @return Json string
      */
     public String toJson() {
@@ -131,18 +142,17 @@ public class DishMenu {
      * saves in a file the json String
      */
     public void save() {
+        File Dir = new File(filePath);
 
-        String jsonMenu = this.toJson();
-
+        if (!Dir.exists()) {
+            Dir.mkdir();
+        }
         try {
-            File f = new File("src/assets/saves/menu.json");
-            FileWriter w = new FileWriter(f);
-            BufferedWriter writer = new BufferedWriter(w);
-            writer.write(jsonMenu);
+            FileWriter writer = new FileWriter(filePath+"/menu.json");
+            writer.write(this.toJson());
             writer.close();
-            w.close();
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -153,7 +163,7 @@ public class DishMenu {
         String string = "";
         String sCurrentLine = "";
         try {
-            File f = new File("src/assets/saves/menu.json");
+            File f = new File(filePath+"/menu.json");
             FileReader r = new FileReader(f);
             BufferedReader br = new BufferedReader(r);
             while ((sCurrentLine = br.readLine()) != null) {
@@ -164,7 +174,7 @@ public class DishMenu {
             string = "";
         }
         if (string == "") {
-            menu = new HashMap<String, ArrayList<Dish>>();
+            menu = new HashMap<>();
         } else {
             Gson gson = new Gson();
             menu = gson.fromJson(string, DishMenu.class).getMenu();

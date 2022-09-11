@@ -1,7 +1,10 @@
 package app.frontend.components;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 /**
@@ -17,16 +20,20 @@ public class BackgroundPanel extends JPanel {
      * Image on the background
      */
     private Image img;
+    private String imageDefaultPath = "assets/image/sfondoMargheritaSfocata.jpg";
 
     /**
      * Creates a new background with an image by default
      */
     public BackgroundPanel() {
-        img = Toolkit.getDefaultToolkit()
-                .createImage("src/assets/image/sfondoMargheritaSfocata.jpg");
-
+        try {
+            img = ImageIO.read(this.getClass().getClassLoader().getResourceAsStream(imageDefaultPath));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         loadImage(img);
     }
+
 
     /**
      * override the method for painting the background with the loaded image
