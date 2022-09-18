@@ -66,6 +66,7 @@ public class CashFrame extends StandardFrame {
         BackgroundPanel background = new BackgroundPanel();
         background.setLayout(new GridLayout(1, 3, 0, 0));
         getContentPane().add(background);
+
         //panel for text (on the left)
         JPanel textPanel = new JPanel();
         background.add(textPanel);
@@ -73,7 +74,10 @@ public class CashFrame extends StandardFrame {
 
         textArea = new JTextArea();
         textArea.setFont(new Font("Andale Mono", Font.PLAIN, 15));
-        textPanel.add(textArea);
+        JScrollPane scrollPaneReceipt = new JScrollPane();
+        textPanel.add(scrollPaneReceipt);
+        scrollPaneReceipt.setRowHeaderView(scrollPaneReceipt.getVerticalScrollBar());
+        scrollPaneReceipt.setViewportView(textArea);
 
         //button to set the title
         JButton titleButton = new JButton("change title");
@@ -83,10 +87,13 @@ public class CashFrame extends StandardFrame {
         textPanel.add(titleButton, BorderLayout.SOUTH);
 
         //panel for the list of table (in the center)
+        JScrollPane scrollPaneTables = new JScrollPane();
         JPanel tablesPanel = new JPanel();
-        background.add(tablesPanel);
         tablesPanel.setLayout(new BorderLayout(0, 0));
-        tablesPanel.add(list, BorderLayout.CENTER);
+        tablesPanel.add(scrollPaneTables, BorderLayout.CENTER);
+        scrollPaneTables.setRowHeaderView(scrollPaneTables.getVerticalScrollBar());
+        scrollPaneTables.setViewportView(list);
+        background.add(tablesPanel);
 
         //panel for buttons and field (on the right)
         JPanel buttonPanel = new JPanel();
